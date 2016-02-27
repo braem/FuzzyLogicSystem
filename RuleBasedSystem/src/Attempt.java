@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class Attempt {
+public class Attempt
+{
 	
 	ArrayList<String> answers;
 

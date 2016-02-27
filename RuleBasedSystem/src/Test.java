@@ -9,7 +9,8 @@ import java.util.ArrayList;
  *
  *	TODO give each test its own folder of which holds the attempts
  */
-public class Test {
+public class Test
+{
 
 	private String testName;
 	private ArrayList<Question> questions;
@@ -18,5 +19,4 @@ public class Test {
 	public String toString() {
 		return testName;
 	}
-	
 }
