@@ -1,11 +1,10 @@
 
 public class Question
 {
-
 	private String question;
-	private String answer;
+	private AnswerValue answer;
 	
-	public Question(String question, String answer) {
+	public Question(String question, AnswerValue answer) {
 		this.question = question;
 		this.answer = answer;
 	}
@@ -14,13 +13,12 @@ public class Question
 		return question;
 	}
 
-	public String getAnswer() {
+	public AnswerValue getAnswer() {
 		return answer;
 	}
 	
-	public boolean correctAnswer(String attempt) {
-		if(answer.equals(attempt)) return true;
+	public boolean correctAnswer(AnswerValue answer) {
+		if(this.answer.equals(answer)) return true;
 		else return false;
 	}
-	
 }

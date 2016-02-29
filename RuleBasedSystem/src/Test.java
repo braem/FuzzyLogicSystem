@@ -1,5 +1,3 @@
-import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -11,9 +9,9 @@ import java.util.ArrayList;
  */
 public class Test
 {
-
 	private String testName;
-	private ArrayList<Question> questions;
+	private ArrayList<Question> normalQuestions;
+	private ArrayList<Question> bonusQuestions;
 
 	@Override
 	public String toString() {
