@@ -1,3 +1,4 @@
+package structures;
 
 public enum AnswerValue
 {

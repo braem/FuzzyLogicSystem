@@ -1,3 +1,4 @@
+package structures;
 
 public class Question
 {
@@ -17,7 +18,7 @@ public class Question
 		return answer;
 	}
 	
-	public boolean correctAnswer(AnswerValue answer) {
+	public boolean isCorrectAnswer(AnswerValue answer) {
 		if(this.answer.equals(answer)) return true;
 		else return false;
 	}

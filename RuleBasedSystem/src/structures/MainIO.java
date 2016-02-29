@@ -1,9 +1,11 @@
+package structures;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainIO
@@ -37,18 +39,31 @@ public class MainIO
 		
 		//if this attempt is better, rewrite the file
 		if(shouldWrite && mark>previousMark) {
-			
+			content = new ArrayList<String>();
+			content.add(mark+"");
+			content.add("Normal Answers:");
+			for(AnswerValue ans : attempt.getNormalAnswers())
+				content.add(ans+"");
+			content.add("Bonus Answers:");
+			for(AnswerValue ans : attempt.getBonusAnswers())
+				content.add(ans+"");
+			try {
+				writeToFile(content, fileName);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
 	
-	private static List<String> readFile(String filename) throws IOException {
-		Path path = Paths.get(filename);
+	private static List<String> readFile(String fileName) throws IOException {
+		Path path = Paths.get(fileName);
 		return Files.readAllLines(path, ENCODING);
 	}
 	
-	private static void writeToFile(List<String> lines, String filename) throws IOException {
-		Path path = Paths.get(filename);
+	private static void writeToFile(List<String> lines, String fileName) throws IOException {
+		Path path = Paths.get(fileName);
 		Files.write(path, lines, ENCODING);
 	}
 }
