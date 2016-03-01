@@ -1,7 +1,9 @@
 package system;
 
-public interface Rule
+import java.util.List;
+
+public class Rule
 {
-	boolean antecedant = false;
-	public boolean consequent();
+	List<String> antecedent;
+	List<String> consequent;
 }

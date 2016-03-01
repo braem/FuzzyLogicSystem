@@ -1,11 +1,25 @@
 package structures;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Attempt
 {
-	private ArrayList<AnswerValue> normalAnswers;
-	private ArrayList<AnswerValue> bonusAnswers;
+	private List<AnswerValue> normalAnswers;
+	private List<AnswerValue> bonusAnswers;
 
-	public ArrayList<AnswerValue> getNormalAnswers() { return normalAnswers; }
-	public ArrayList<AnswerValue> getBonusAnswers() { return bonusAnswers; }
+	public Attempt() {
+		normalAnswers = new ArrayList<AnswerValue>();
+		bonusAnswers = new ArrayList<AnswerValue>();
+	}
+	public Attempt(List<AnswerValue> normalAnswers) {
+		this.normalAnswers = normalAnswers;
+		bonusAnswers = new ArrayList<AnswerValue>();
+	}
+	public Attempt(List<AnswerValue> normalAnswers, List<AnswerValue> bonusAnswers) {
+		this.normalAnswers = normalAnswers;
+		this.bonusAnswers = bonusAnswers;
+	}
+	
+	public List<AnswerValue> getNormalAnswers() { return normalAnswers; }
+	public List<AnswerValue> getBonusAnswers() { return bonusAnswers; }
 }

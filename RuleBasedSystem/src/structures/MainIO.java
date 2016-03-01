@@ -13,11 +13,25 @@ public class MainIO
 	private final static Charset ENCODING = StandardCharsets.UTF_8;
 	private final static String FILE_EXTENSION = ".txt";
 	private final static String DIRECTORY = System.getProperty("user.dir");
+	private final static String TEST_DIRECTORY = DIRECTORY+"\\TestBucket";
 	private final static int SCORE_INDEX = 0;
 	
-	//TODO
-	public static void writeTestResults(String testName, String userName, Attempt attempt, double mark) {
-		String fileName = DIRECTORY+"\\"+testName+"\\"+userName+FILE_EXTENSION;
+	/* Writing a New Test */
+	public static void createNewTest(Test test) {
+		List<String> keyContents = makeAttemptContent(test, 100.0);
+		List<String> prereqContents = makePrereqContent(test);
+		try {
+			writeToFile(keyContents, TEST_DIRECTORY+"\\"+test.getTestName()+"\\Answer_Key"+FILE_EXTENSION);
+			writeToFile(prereqContents, TEST_DIRECTORY+"\\"+test.getTestName()+"\\PreReqs"+FILE_EXTENSION);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/* Writing a Test Attempt */
+	public static void writeTestAttempt(Test test, User user, Attempt attempt, double mark) {
+		String fileName = TEST_DIRECTORY+"\\"+test.getTestName()+"\\"+user.getUserName()+FILE_EXTENSION;
 		
 		//get last attempts mark
 		boolean shouldWrite = true;
@@ -39,14 +53,7 @@ public class MainIO
 		
 		//if this attempt is better, rewrite the file
 		if(shouldWrite && mark>previousMark) {
-			content = new ArrayList<String>();
-			content.add(mark+"");
-			content.add("Normal Answers:");
-			for(AnswerValue ans : attempt.getNormalAnswers())
-				content.add(ans+"");
-			content.add("Bonus Answers:");
-			for(AnswerValue ans : attempt.getBonusAnswers())
-				content.add(ans+"");
+			content = makeAttemptContent(attempt, mark);
 			try {
 				writeToFile(content, fileName);
 			} catch (IOException e) {
@@ -54,14 +61,41 @@ public class MainIO
 				e.printStackTrace();
 			}
 		}
-		
+	}
+	
+	private static List<String> makePrereqContent(Test test) {
+		List<String> content = new ArrayList<String>();
+		for(PreReq prereq : test.getPrereq()) {
+			content.add(prereq.getPrereq().getTestName());
+		}
+		return content;
+	}
+	private static List<String> makeAttemptContent(Test test, double mark) {
+		List<String> content = new ArrayList<String>();
+		content.add(mark+"");
+		content.add("Normal Answers:");
+		for(Question q : test.getNormalQuestions())
+			content.add(q.getAnswer()+"");
+		for(Question q : test.getBonusQuestions())
+			content.add(q.getAnswer()+"");
+		return content;
+	}
+	private static List<String> makeAttemptContent(Attempt attempt, double mark) {
+		List<String> content = new ArrayList<String>();
+		content.add(mark+"");
+		content.add("Normal Answers:");
+		for(AnswerValue ans : attempt.getNormalAnswers())
+			content.add(ans+"");
+		content.add("Bonus Answers:");
+		for(AnswerValue ans : attempt.getBonusAnswers())
+			content.add(ans+"");
+		return content;
 	}
 	
 	private static List<String> readFile(String fileName) throws IOException {
 		Path path = Paths.get(fileName);
 		return Files.readAllLines(path, ENCODING);
 	}
-	
 	private static void writeToFile(List<String> lines, String fileName) throws IOException {
 		Path path = Paths.get(fileName);
 		Files.write(path, lines, ENCODING);
