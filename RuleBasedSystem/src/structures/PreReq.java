@@ -1,28 +1,32 @@
 package structures;
-
 public class PreReq
 {
-	private Test prereq;
-	private Test test;
+	private Goal prereq;
+	private Goal goal;
 	
-	public PreReq(Test prereq, Test test) {
-		this.setPrereq(prereq);
-		this.setTest(test);
+	public PreReq(Goal prereq, Goal test) {
+		this.setPreReq(prereq);
+		this.setGoal(test);
 	}
 
-	public Test getPrereq() {
+	public Goal getPreReq() {
 		return prereq;
 	}
 
-	private void setPrereq(Test prereq) {
+	private void setPreReq(Goal prereq) {
 		this.prereq = prereq;
 	}
 
-	public Test getTest() {
-		return test;
+	public Goal getGoal() {
+		return goal;
 	}
 
-	private void setTest(Test test) {
-		this.test = test;
+	private void setGoal(Goal test) {
+		this.goal = test;
+	}
+	
+	public boolean equals(PreReq pr)
+	{
+		return this.getGoal().equals(pr.getGoal()) && this.getPreReq().equals(pr.getPreReq());
 	}
 }

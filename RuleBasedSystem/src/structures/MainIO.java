@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MainIO
 {
@@ -19,10 +20,10 @@ public class MainIO
 	/* Writing a New Test */
 	public static void createNewTest(Test test) {
 		List<String> keyContents = makeAttemptContent(test, 100.0);
-		List<String> prereqContents = makePrereqContent(test);
+//		List<String> prereqContents = makePrereqContent(test);
 		try {
 			writeToFile(keyContents, TEST_DIRECTORY+"\\"+test.getTestName()+"\\Answer_Key"+FILE_EXTENSION);
-			writeToFile(prereqContents, TEST_DIRECTORY+"\\"+test.getTestName()+"\\PreReqs"+FILE_EXTENSION);
+//			writeToFile(prereqContents, TEST_DIRECTORY+"\\"+test.getTestName()+"\\PreReqs"+FILE_EXTENSION);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,13 +64,13 @@ public class MainIO
 		}
 	}
 	
-	private static List<String> makePrereqContent(Test test) {
-		List<String> content = new ArrayList<String>();
-		for(PreReq prereq : test.getPrereq()) {
-			content.add(prereq.getPrereq().getTestName());
-		}
-		return content;
-	}
+//	private static List<String> makePrereqContent(Test test) {
+//		List<String> content = new ArrayList<String>();
+//		for(PreReq prereq : test.getPreReq()) {
+//			content.add(prereq.getPreReq().getTestName());
+//		}
+//		return content;
+//	}
 	private static List<String> makeAttemptContent(Test test, double mark) {
 		List<String> content = new ArrayList<String>();
 		content.add(mark+"");
@@ -99,5 +100,28 @@ public class MainIO
 	private static void writeToFile(List<String> lines, String fileName) throws IOException {
 		Path path = Paths.get(fileName);
 		Files.write(path, lines, ENCODING);
+	}
+	
+	public static double getAttemptMark(String testName)
+	{
+		Scanner in = null;
+		double mark = -1;
+		try{
+			in = new Scanner(TEST_DIRECTORY+"\\"+testName+"\\Answer_Key"+FILE_EXTENSION);
+		}finally
+		{
+			mark = -1;
+		}
+		
+		try{
+			mark = Double.parseDouble(in.nextLine());
+		}finally
+		{
+			mark = -1;
+		}
+		
+		in.close();
+		
+		return mark;
 	}
 }

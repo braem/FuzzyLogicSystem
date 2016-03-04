@@ -2,6 +2,9 @@ package structures;
 import java.util.ArrayList;
 import java.util.List;
 
+import system.Antecedent;
+
+
 /**
  * 
  * @author braemen
@@ -9,30 +12,31 @@ import java.util.List;
  *
  *	TODO give each test its own folder of which holds the attempts
  */
-public class Test
+public class Test implements Antecedent
 {
+	
+	private static final double passingGrade = 50.0;
 	private String testName;
 	private List<Question> normalQuestions;
 	private List<Question> bonusQuestions;
-	private List<PreReq> prereqs;
 
-	public Test(String testName, List<Question> normalQuestions, List<Question> bonusQuestions, List<PreReq> prereqs) {
+	public Test(String testName, List<Question> normalQuestions, List<Question> bonusQuestions) {
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = bonusQuestions;
-		this.prereqs = prereqs;
 	}
-	public Test(String testName, List<Question> normalQuestions, List<PreReq> prereqs) {
-		this.testName = testName;
-		this.normalQuestions = normalQuestions;
-		this.bonusQuestions = new ArrayList<Question>();
-		this.prereqs = prereqs;
-	}
+
+	
 	public Test(String testName, List<Question> normalQuestions) {
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = new ArrayList<Question>();
-		this.prereqs = null;
+	}
+	
+	public boolean isPassed()
+	{
+		double mark = MainIO.getAttemptMark(this.testName);
+		return mark > passingGrade;
 	}
 	
 	@Override
@@ -59,11 +63,10 @@ public class Test
 	public void setBonusQuestions(List<Question> bonusQuestions) {
 		this.bonusQuestions = bonusQuestions;
 	}
-	public List<PreReq> getPrereq() {
-		return prereqs;
-	}
-	public void setPrereq(List<PreReq> prereqs) {
-		this.prereqs = prereqs;
-	}
 	
+	public boolean testAntecedent()
+	{
+		return this.isPassed();
+	}
+
 }
