@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import file_io.FileIO;
 import structures.*;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -13,9 +14,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class LearningPlanWindow extends JFrame {
+public class SelectWindow extends JFrame {
 
 	/**
 	 * 
@@ -23,13 +25,14 @@ public class LearningPlanWindow extends JFrame {
 	private static final long serialVersionUID = -8807127458602336380L;
 	private JPanel contentPane;
 	private JFrame thisFrame = this;
-	private static JComboBox<LearningPlan> learningPlanCB = new JComboBox<LearningPlan>();
+	private JComboBox<LearningPlan> learningPlanCB;
 	private JButton btnBack;
 	private JButton btnStart;
 	private JComboBox<Goal> goalCB;
 	private JComboBox<Test> testCB;
 	private JLabel lblSelectAGoal;
 	private JLabel lblSelectATest;
+	private ArrayList<LearningPlan> learningPlans;
 
 	/**
 	 * Launch the application.
@@ -38,7 +41,7 @@ public class LearningPlanWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LearningPlanWindow frame = new LearningPlanWindow(null);
+					SelectWindow frame = new SelectWindow(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,21 +53,20 @@ public class LearningPlanWindow extends JFrame {
 	public void enable() {
 		this.setVisible(true);
 	}
-	
-	public static void addPlanToCB(LearningPlan plan) {
-		learningPlanCB.addItem(plan);
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public LearningPlanWindow(User user) {
+	public SelectWindow(User user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 802, 234);
+		setBounds(100, 100, 577, 234);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		//load the learning plans
+		learningPlans = FileIO.loadLearningPlans();
 		
 		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
 		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,6 +74,17 @@ public class LearningPlanWindow extends JFrame {
 		lblSelectALearning.setBounds(10, 11, 235, 22);
 		contentPane.add(lblSelectALearning);
 		
+		learningPlanCB = new JComboBox<LearningPlan>();
+		learningPlanCB.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+		        if(plan == null) return;
+		        goalCB.removeAllItems();
+		        testCB.removeAllItems();
+		        for(Goal goal : plan.getGoals())
+		        	goalCB.addItem(goal);
+		    }
+		});
 		learningPlanCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
@@ -94,11 +107,25 @@ public class LearningPlanWindow extends JFrame {
 		contentPane.add(btnStart);
 		
 		goalCB = new JComboBox<Goal>();
+		goalCB.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        Goal goal = (Goal)goalCB.getSelectedItem();
+		        if(goal == null) return;
+		        testCB.removeAllItems();
+		        for(Test test : goal.getTests())
+		        	testCB.addItem(test);
+		    }
+		});
 		goalCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		goalCB.setBounds(10, 110, 235, 22);
 		contentPane.add(goalCB);
 		
 		testCB = new JComboBox<Test>();
+		testCB.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        
+		    }
+		});
 		testCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		testCB.setBounds(255, 44, 235, 22);
 		contentPane.add(testCB);
@@ -114,6 +141,9 @@ public class LearningPlanWindow extends JFrame {
 		lblSelectATest.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSelectATest.setBounds(255, 11, 235, 22);
 		contentPane.add(lblSelectATest);
+		
+		//fill the comboboxes
+		for(LearningPlan plan : learningPlans)
+			learningPlanCB.addItem(plan);
 	}
-
 }

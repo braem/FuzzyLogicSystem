@@ -105,7 +105,7 @@ public class LoginWindow extends JFrame {
 					return;
 				}
 				User user = new User(firstName, lastName);
-				LearningPlanWindow window = new LearningPlanWindow(user);
+				SelectWindow window = new SelectWindow(user);
 				thisFrame.dispose();
 				window.enable();
 			}
