@@ -25,7 +25,11 @@ public class LearningPlanWindow extends JFrame {
 	private JFrame thisFrame = this;
 	private static JComboBox<LearningPlan> learningPlanCB = new JComboBox<LearningPlan>();
 	private JButton btnBack;
-	private JButton btnSelect;
+	private JButton btnStart;
+	private JComboBox<Goal> goalCB;
+	private JComboBox<Test> testCB;
+	private JLabel lblSelectAGoal;
+	private JLabel lblSelectATest;
 
 	/**
 	 * Launch the application.
@@ -56,7 +60,7 @@ public class LearningPlanWindow extends JFrame {
 	 */
 	public LearningPlanWindow(User user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 289, 206);
+		setBounds(100, 100, 802, 234);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -81,13 +85,35 @@ public class LearningPlanWindow extends JFrame {
 			}
 		});
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnBack.setBounds(82, 116, 89, 23);
+		btnBack.setBounds(393, 107, 97, 26);
 		contentPane.add(btnBack);
 		
-		btnSelect = new JButton("Select Plan");
-		btnSelect.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSelect.setBounds(53, 77, 149, 28);
-		contentPane.add(btnSelect);
+		btnStart = new JButton("Start Test");
+		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnStart.setBounds(255, 107, 128, 28);
+		contentPane.add(btnStart);
+		
+		goalCB = new JComboBox<Goal>();
+		goalCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		goalCB.setBounds(10, 110, 235, 22);
+		contentPane.add(goalCB);
+		
+		testCB = new JComboBox<Test>();
+		testCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		testCB.setBounds(255, 44, 235, 22);
+		contentPane.add(testCB);
+		
+		lblSelectAGoal = new JLabel("Select a Goal");
+		lblSelectAGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectAGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSelectAGoal.setBounds(10, 77, 235, 22);
+		contentPane.add(lblSelectAGoal);
+		
+		lblSelectATest = new JLabel("Select a Test");
+		lblSelectATest.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectATest.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSelectATest.setBounds(255, 11, 235, 22);
+		contentPane.add(lblSelectATest);
 	}
 
 }
