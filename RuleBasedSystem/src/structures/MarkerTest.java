@@ -25,7 +25,7 @@ public class MarkerTest {
 		questions.add(q1); questions.add(q2); questions.add(q3);
 		ArrayList<AnswerValue> exampleKey = new ArrayList<AnswerValue>();
 		exampleKey.add(AnswerValue.G); exampleKey.add(AnswerValue.C); exampleKey.add(AnswerValue.C);
-		structures.Test test = new structures.Test("example_test", questions);
+		structures.Test test = new structures.Test("example_test", questions, new Attempt(exampleKey));
 		assertTrue(Marker.mark(test, new Attempt(exampleKey)) == 100.0);
 	}
 	

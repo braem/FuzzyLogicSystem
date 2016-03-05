@@ -152,7 +152,9 @@ public class TestWindow extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Attempt attempt = new Attempt(normalAnswers, bonusAnswers);
-				
+				ReviewWindow window = new ReviewWindow(test, attempt);
+				thisFrame.dispose();
+				window.enable();
 			}
 		});
 		btnSubmit.setFont(new Font("Tahoma", Font.PLAIN, 14));

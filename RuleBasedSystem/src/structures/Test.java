@@ -1,7 +1,6 @@
 package structures;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import system.Antecedent;
 import system.Consequent;
@@ -11,8 +10,6 @@ import system.Consequent;
  * 
  * @author braemen
  *
- *
- *	TODO give each test its own folder of which holds the attempts
  */
 public class Test implements Antecedent, Consequent, Serializable
 {
@@ -24,6 +21,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private String testName;
 	private ArrayList<Question> normalQuestions;
 	private ArrayList<Question> bonusQuestions;
+	private Attempt answerKey;
 	private boolean satisfied = false;
 
 	public Test()
@@ -33,17 +31,19 @@ public class Test implements Antecedent, Consequent, Serializable
 		bonusQuestions = null;
 	}
 	
-	public Test(String testName, ArrayList<Question> normalQuestions, ArrayList<Question> bonusQuestions) {
+	public Test(String testName, ArrayList<Question> normalQuestions, ArrayList<Question> bonusQuestions, Attempt answerKey) {
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = bonusQuestions;
+		this.answerKey = answerKey;
 	}
 
 	
-	public Test(String testName, ArrayList<Question> normalQuestions) {
+	public Test(String testName, ArrayList<Question> normalQuestions, Attempt answerKey) {
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = new ArrayList<Question>();
+		this.answerKey = answerKey;
 	}
 	
 	public boolean isPassed()
@@ -91,6 +91,14 @@ public class Test implements Antecedent, Consequent, Serializable
 	public void setSatisfied(boolean arg) {
 		// TODO Auto-generated method stub
 		satisfied = arg;
+	}
+
+	public Attempt getAnswerKey() {
+		return answerKey;
+	}
+
+	public void setAnswerKey(Attempt answerKey) {
+		this.answerKey = answerKey;
 	}
 
 }
