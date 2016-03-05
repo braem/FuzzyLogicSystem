@@ -1,25 +1,44 @@
 package structures;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Attempt
+public class Attempt implements Serializable
 {
-	private List<AnswerValue> normalAnswers;
-	private List<AnswerValue> bonusAnswers;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1037934762325930610L;
+	private ArrayList<AnswerValue> normalAnswers;
+	private ArrayList<AnswerValue> bonusAnswers;
+	private String name;
 
 	public Attempt() {
 		normalAnswers = new ArrayList<AnswerValue>();
 		bonusAnswers = new ArrayList<AnswerValue>();
+		this.name = "Unnamed";
 	}
-	public Attempt(List<AnswerValue> normalAnswers) {
+	public Attempt(ArrayList<AnswerValue> normalAnswers) {
 		this.normalAnswers = normalAnswers;
 		bonusAnswers = new ArrayList<AnswerValue>();
+		this.name = "Unnamed";
 	}
-	public Attempt(List<AnswerValue> normalAnswers, List<AnswerValue> bonusAnswers) {
+	public Attempt(ArrayList<AnswerValue> normalAnswers, String n) {
+		this.normalAnswers = normalAnswers;
+		bonusAnswers = new ArrayList<AnswerValue>();
+		this.name = n;
+		
+	}
+	public Attempt(ArrayList<AnswerValue> normalAnswers, ArrayList<AnswerValue> bonusAnswers, String n) {
 		this.normalAnswers = normalAnswers;
 		this.bonusAnswers = bonusAnswers;
+		this.name = n;
 	}
 	
-	public List<AnswerValue> getNormalAnswers() { return normalAnswers; }
-	public List<AnswerValue> getBonusAnswers() { return bonusAnswers; }
+	public ArrayList<AnswerValue> getNormalAnswers() { return normalAnswers; }
+	public ArrayList<AnswerValue> getBonusAnswers() { return bonusAnswers; }
+	
+	public String toString()
+	{
+		return name;
+	}
 }

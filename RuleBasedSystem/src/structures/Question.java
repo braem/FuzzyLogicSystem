@@ -1,7 +1,13 @@
 package structures;
 
-public class Question
+import java.io.Serializable;
+
+public class Question implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5309465185881803883L;
 	private String question;
 	private AnswerValue answer;
 	

@@ -1,31 +1,46 @@
 package structures;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 import system.Antecedent;
 import system.Consequent;
 
-public class Goal implements Consequent, Antecedent{
+public class Goal implements Consequent, Antecedent, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7884557923175830060L;
 	private ArrayList<Test> tests;
 	private boolean satisfied;
 	private User user;
+	public String name;
 	
-	public Goal(User s)
+	public Goal()
+	{
+		tests = null;
+		satisfied = false;
+		user = null;
+		name = null;
+	}
+	
+	public Goal(User s, String g)
 	{
 		setUser(s);
 		setTests(new ArrayList<Test>());
 		setSatisfied(false);
+		setName(g);
 		
 	}
 	
-	public Goal(User s, ArrayList<Test> t, boolean c)
+	public Goal(User s, ArrayList<Test> t, boolean c, String g)
 	{
 		setUser(s);
 		setTests(t);
 		setSatisfied(c);
+		setName(g);
 	}
-	
 
 
 	public void setUser(User s)
@@ -35,6 +50,11 @@ public class Goal implements Consequent, Antecedent{
 	
 	public void setTests(ArrayList<Test> tests) {
 		this.tests = tests;
+	}
+	
+	public void setName(String g)
+	{
+		name = g;
 	}
 
 	@Override
@@ -51,6 +71,11 @@ public class Goal implements Consequent, Antecedent{
 	public User getUser()
 	{
 		return user;
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 
 	@Override
@@ -82,6 +107,11 @@ public class Goal implements Consequent, Antecedent{
 		}
 		
 		return equal;
+	}
+	
+	public String toString()
+	{
+		return name;
 	}
 }
 

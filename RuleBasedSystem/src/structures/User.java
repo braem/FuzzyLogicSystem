@@ -1,6 +1,12 @@
 package structures;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4383872330755026265L;
 	private String firstName;
 	private String lastName;
 	private LearningPlan plan;
