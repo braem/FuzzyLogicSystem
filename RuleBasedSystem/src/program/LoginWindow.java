@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginWindow extends JFrame {
 
@@ -49,6 +51,31 @@ public class LoginWindow extends JFrame {
 		this.setVisible(true);
 	}
 	
+	private void login() {
+		String firstName = null;
+		String lastName = null;
+		if(firstNameTF.getText().matches("[A-Z][a-z]+")) {
+			lblInvalidName.setVisible(false);
+			firstName = firstNameTF.getText();
+		}
+		else {
+			lblInvalidName.setVisible(true);
+			return;
+		}
+		if(lastNameTF.getText().matches("[A-Z][a-z]+")) {	
+			lblInvalidName.setVisible(false);
+			lastName = lastNameTF.getText();
+		}
+		else {
+			lblInvalidName.setVisible(true);
+			return;
+		}
+		User user = new User(firstName, lastName);
+		SelectWindow window = new SelectWindow(user);
+		thisFrame.dispose();
+		window.enable();
+	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -60,6 +87,13 @@ public class LoginWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
+					login();
+			}
+		});
 		
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -76,38 +110,38 @@ public class LoginWindow extends JFrame {
 		firstNameTF.setBounds(101, 11, 122, 20);
 		contentPane.add(firstNameTF);
 		firstNameTF.setColumns(10);
+		firstNameTF.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
+					login();
+			}
+		});
 		
 		lastNameTF = new JTextField();
 		lastNameTF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lastNameTF.setBounds(101, 39, 122, 20);
 		contentPane.add(lastNameTF);
 		lastNameTF.setColumns(10);
+		lastNameTF.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
+					login();
+			}
+		});
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String firstName = null;
-				String lastName = null;
-				if(firstNameTF.getText().matches("[A-Z][a-z]+")) {
-					lblInvalidName.setVisible(false);
-					firstName = firstNameTF.getText();
-				}
-				else {
-					lblInvalidName.setVisible(true);
-					return;
-				}
-				if(lastNameTF.getText().matches("[A-Z][a-z]+")) {	
-					lblInvalidName.setVisible(false);
-					lastName = lastNameTF.getText();
-				}
-				else {
-					lblInvalidName.setVisible(true);
-					return;
-				}
-				User user = new User(firstName, lastName);
-				SelectWindow window = new SelectWindow(user);
-				thisFrame.dispose();
-				window.enable();
+				login();
+			}
+		});
+		btnLogin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
+					login();
 			}
 		});
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
