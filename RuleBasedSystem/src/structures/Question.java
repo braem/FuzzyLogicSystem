@@ -11,8 +11,10 @@ public class Question implements Serializable
 	private String question;
 	private AnswerValue answer;
 	
-	public Question(String question, AnswerValue answer) {
-		this.question = question;
+	public Question(String question, AnswerValue answer, boolean isBonus) {
+		if(isBonus)
+			this.question = "-Bonus-\n";
+		this.question += question;
 		this.answer = answer;
 	}
 	
@@ -27,5 +29,10 @@ public class Question implements Serializable
 	public boolean isCorrectAnswer(AnswerValue answer) {
 		if(this.answer.equals(answer)) return true;
 		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		return question;
 	}
 }

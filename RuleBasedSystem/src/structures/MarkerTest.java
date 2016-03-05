@@ -18,9 +18,9 @@ public class MarkerTest {
 
 	@Test
 	public void perfectScoreTest2() {
-		Question q1 = new Question("Q1", AnswerValue.G);
-		Question q2 = new Question("Q2", AnswerValue.C);
-		Question q3 = new Question("Q3", AnswerValue.C);
+		Question q1 = new Question("Q1", AnswerValue.G, false);
+		Question q2 = new Question("Q2", AnswerValue.C, false);
+		Question q3 = new Question("Q3", AnswerValue.C, false);
 		ArrayList<Question> questions = new ArrayList<Question>();
 		questions.add(q1); questions.add(q2); questions.add(q3);
 		ArrayList<AnswerValue> exampleKey = new ArrayList<AnswerValue>();

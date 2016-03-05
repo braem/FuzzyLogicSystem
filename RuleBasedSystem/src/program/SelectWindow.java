@@ -102,6 +102,13 @@ public class SelectWindow extends JFrame {
 		contentPane.add(btnBack);
 		
 		btnStart = new JButton("Start Test");
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TestWindow window = new TestWindow((Test)testCB.getSelectedItem());
+				thisFrame.dispose();
+				window.enable();
+			}
+		});
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnStart.setBounds(255, 107, 128, 28);
 		contentPane.add(btnStart);

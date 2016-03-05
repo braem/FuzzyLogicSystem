@@ -1,8 +1,10 @@
 package structures;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import system.Antecedent;
+import system.Consequent;
 
 
 /**
@@ -12,17 +14,17 @@ import system.Antecedent;
  *
  *	TODO give each test its own folder of which holds the attempts
  */
-public class Test implements Antecedent, Serializable
+public class Test implements Antecedent, Consequent, Serializable
 {
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 486056762589500608L;
+	private static final long serialVersionUID = 4250849022572701526L;
 	private static final double passingGrade = 50.0;
 	private String testName;
 	private ArrayList<Question> normalQuestions;
 	private ArrayList<Question> bonusQuestions;
+	private boolean satisfied = false;
 
 	public Test()
 	{
@@ -78,6 +80,17 @@ public class Test implements Antecedent, Serializable
 	public boolean testAntecedent()
 	{
 		return this.isPassed();
+	}
+	
+	public boolean isSatisfied()
+	{
+		return satisfied;
+	}
+
+	@Override
+	public void setSatisfied(boolean arg) {
+		// TODO Auto-generated method stub
+		satisfied = arg;
 	}
 
 }
