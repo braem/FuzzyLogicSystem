@@ -96,18 +96,6 @@ public class SelectWindow extends JFrame {
 		contentPane.add(lblSelectALearning);
 		
 		learningPlanCB = new JComboBox<LearningPlan>();
-		learningPlanCB.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		    	goalCB.removeAllItems();
-		        testCB.removeAllItems();
-		        prereqList.removeAll();
-		    	btnStart.setEnabled(false);
-		        LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
-		        if(plan == null) return;
-		        for(Goal goal : plan.getGoals())
-		        	goalCB.addItem(goal);
-		    }
-		});
 		learningPlanCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
@@ -206,5 +194,19 @@ public class SelectWindow extends JFrame {
 		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPrereqs.setBounds(496, 11, 235, 22);
 		contentPane.add(lblPrereqs);
+		
+		learningPlanCB.addActionListener (new ActionListener () {
+         public void actionPerformed(ActionEvent e) {
+           goalCB.removeAllItems();
+             testCB.removeAllItems();
+             prereqList.removeAll();
+           btnStart.setEnabled(false);
+             LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+             if(plan == null) return;
+             for(Goal goal : plan.getGoals())
+              goalCB.addItem(goal);
+         }
+     });
+     
 	}
 }

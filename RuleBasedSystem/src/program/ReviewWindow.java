@@ -139,10 +139,13 @@ public class ReviewWindow extends JFrame {
 						else
 							tableContents[i][j] = "x";
 					else
-						if(bonusKey.get(j).equals(studentBAnswers.get(j)))
-							tableContents[i][j] = "✓";
-						else
-							tableContents[i][j] = "x";
+						if(bonusKey.size() > 0)
+						{
+						   if(bonusKey.get(j).equals(studentBAnswers.get(j)))
+	                     tableContents[i][j] = "✓";
+	                  else
+	                     tableContents[i][j] = "x";
+						}
 				}
 				else {
 					if(j >= normalKey.size())

@@ -25,8 +25,12 @@ public class FileIO
 			try {
 				FileInputStream fis = new FileInputStream(learningPlanStr);
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				LearningPlan result = (LearningPlan) ois.readObject();
-				learningPlans.add(result);
+				Object obj = ois.readObject();
+				if (obj instanceof LearningPlan)
+				{
+				   LearningPlan result = (LearningPlan) obj;
+	            learningPlans.add(result);
+				}
 				ois.close();
 			} catch (IOException e) {} catch (ClassNotFoundException e) {}
 		}
