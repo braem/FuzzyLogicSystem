@@ -80,7 +80,7 @@ public class SelectWindow extends JFrame {
 	public SelectWindow(User user) {
 		setTitle(user.getUserName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 798, 210);
+		setBounds(100, 100, 550, 339);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -186,14 +186,25 @@ public class SelectWindow extends JFrame {
 		
 		prereqList = new List();
 		prereqList.setEnabled(false);
-		prereqList.setBounds(496, 44, 235, 89);
+		prereqList.setBounds(255, 172, 235, 89);
 		contentPane.add(prereqList);
 		
 		JLabel lblPrereqs = new JLabel("Prequisites");
 		lblPrereqs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPrereqs.setBounds(496, 11, 235, 22);
+		lblPrereqs.setBounds(255, 142, 235, 22);
 		contentPane.add(lblPrereqs);
+		
+		JLabel lblToDoList = new JLabel("To Do");
+		lblToDoList.setHorizontalAlignment(SwingConstants.CENTER);
+		lblToDoList.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblToDoList.setBounds(10, 142, 235, 22);
+		contentPane.add(lblToDoList);
+		
+		List todoList = new List();
+		todoList.setEnabled(false);
+		todoList.setBounds(10, 172, 235, 89);
+		contentPane.add(todoList);
 		
 		learningPlanCB.addActionListener (new ActionListener () {
          public void actionPerformed(ActionEvent e) {

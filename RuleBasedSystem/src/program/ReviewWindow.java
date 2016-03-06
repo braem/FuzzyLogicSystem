@@ -114,47 +114,51 @@ public class ReviewWindow extends JFrame {
 		ArrayList<AnswerValue> studentNAnswers = userAttempt.getNormalAnswers();
 		ArrayList<AnswerValue> studentBAnswers = userAttempt.getBonusAnswers();
 		String[] titles = {"Question", "Answer", "Attempted Answer", "Correct?", "isBonus"};
-		Object[][] tableContents = new Object[5][normalQuestions.size()+bonusQuestions.size()];
-		for(int i=0; i<tableContents.length; i++) {//row
-			for(int j=0; j<tableContents[i].length; j++) {//col
+		Object[][] tableContentsOops = new Object[5][normalQuestions.size()+bonusQuestions.size()];
+		for(int i=0; i<tableContentsOops.length; i++) {//row
+			for(int m=0; m<tableContentsOops[i].length; m++) {//col
 				if(i==0) {
-					tableContents[i][j] = j+1;
+					tableContentsOops[i][m] = m+1;
 				}
 				else if(i==1) {
-					if(j >= normalKey.size())
-						tableContents[i][j] = bonusKey.get(j-normalKey.size());
+					if(m >= normalKey.size())
+						tableContentsOops[i][m] = bonusKey.get(m-normalKey.size());
 					else
-						tableContents[i][j] = normalKey.get(j);
+						tableContentsOops[i][m] = normalKey.get(m);
 				}
 				else if(i==2) {
-					if(j >= normalKey.size())
-						tableContents[i][j] = studentBAnswers.get(j-normalKey.size());
+					if(m >= normalKey.size())
+						tableContentsOops[i][m] = studentBAnswers.get(m-normalKey.size());
 					else
-						tableContents[i][j] = studentNAnswers.get(j);
+						tableContentsOops[i][m] = studentNAnswers.get(m);
 				}
 				else if(i==3) {
-					if(j >= normalKey.size())
-						if(normalKey.get(j).equals(studentNAnswers.get(j)))
-							tableContents[i][j] = "✓";
+					if(m >= normalKey.size())
+						if(normalKey.get(m).equals(studentNAnswers.get(m)))
+							tableContentsOops[i][m] = "✓";
 						else
-							tableContents[i][j] = "x";
+							tableContentsOops[i][m] = "x";
 					else
 						if(bonusKey.size() > 0)
 						{
-						   if(bonusKey.get(j).equals(studentBAnswers.get(j)))
-	                     tableContents[i][j] = "✓";
+						   if(bonusKey.get(m).equals(studentBAnswers.get(m)))
+	                     tableContentsOops[i][m] = "✓";
 	                  else
-	                     tableContents[i][j] = "x";
+	                     tableContentsOops[i][m] = "x";
 						}
 				}
 				else {
-					if(j >= normalKey.size())
-						tableContents[i][j] = "Bonus";
+					if(m >= normalKey.size())
+						tableContentsOops[i][m] = "Bonus";
 					else
-						tableContents[i][j] = "";
+						tableContentsOops[i][m] = "";
 				}
 			}
 		}
+		Object[][] tableContents = new Object[normalQuestions.size()+bonusQuestions.size()][5];
+		for(int i=0; i<tableContentsOops.length; i++)//row
+			for(int j=0; j<tableContentsOops[i].length; j++)//col
+				tableContents[j][i] = tableContentsOops[i][j];
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		table.setBackground(Color.WHITE);
