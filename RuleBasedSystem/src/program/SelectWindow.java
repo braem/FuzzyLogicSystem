@@ -16,7 +16,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
 import java.awt.List;
 
 public class SelectWindow extends JFrame {
@@ -35,6 +34,7 @@ public class SelectWindow extends JFrame {
 	private JLabel lblSelectAGoal;
 	private JLabel lblSelectATest;
 	private List prereqList;
+	private static List todoList = new List();
 	private ArrayList<LearningPlan> learningPlans;
 
 	/**
@@ -62,16 +62,23 @@ public class SelectWindow extends JFrame {
 		ArrayList<PreReq> prereqs = plan.getPreReqs();
 		ArrayList<Goal> goalsNeeded = new ArrayList<Goal>();
 		ArrayList<Goal> goalsNotMet = new ArrayList<Goal>();
-		for(PreReq prereq : prereqs) {
-			if(prereq.getGoal().equals(goal)) {
+		for(PreReq prereq : prereqs)
+			if(prereq.getGoal().equals(goal))
 				goalsNeeded.add(prereq.getPreReq());
-			}
-		}
-		for(Goal g : goalsNeeded) {
+		for(Goal g : goalsNeeded)
 			if(!g.isSatisfied())
 				goalsNotMet.add(g);
-		}
 		return goalsNotMet;
+	}
+	
+	public ArrayList<Goal> getGoalsToDo() {
+		ArrayList<Goal> goalsToDo = new ArrayList<Goal>();
+		
+		return goalsToDo;
+	}
+	
+	public static void addGoalToTodoList(Goal goal) {
+		todoList.add(""+goal);
 	}
 
 	/**
@@ -86,19 +93,20 @@ public class SelectWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//load the learning plans
-		learningPlans = FileIO.loadLearningPlans();
+		//load learning plan(s)
+		LearningPlan userPlan = user.getLearningPlan();
+		if(userPlan == null)
+			learningPlans = FileIO.loadLearningPlans();
+		else {
+			learningPlans = new ArrayList<LearningPlan>();
+			learningPlans.add(userPlan);
+		}
 		
 		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
 		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectALearning.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSelectALearning.setBounds(10, 11, 235, 22);
 		contentPane.add(lblSelectALearning);
-		
-		learningPlanCB = new JComboBox<LearningPlan>();
-		learningPlanCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		learningPlanCB.setBounds(10, 44, 235, 22);
-		contentPane.add(learningPlanCB);
 		
 		btnBack = new JButton("back");
 		btnBack.addActionListener(new ActionListener() {
@@ -123,12 +131,13 @@ public class SelectWindow extends JFrame {
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnStart.setBounds(255, 107, 128, 28);
+		btnStart.setBounds(255, 92, 128, 41);
 		contentPane.add(btnStart);
 		
 		goalCB = new JComboBox<Goal>();
 		goalCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
+		    	todoList.removeAll();
 		    	testCB.removeAllItems();
 		    	prereqList.removeAll();
 		    	btnStart.setEnabled(false);
@@ -173,17 +182,6 @@ public class SelectWindow extends JFrame {
 		lblSelectATest.setBounds(10, 77, 235, 22);
 		contentPane.add(lblSelectATest);
 		
-		//fill the comboboxes
-		if(user.getLearningPlan() != null) {
-			learningPlanCB.addItem(user.getLearningPlan());
-			learningPlanCB.setSelectedIndex(0);
-		}
-		else
-			for(LearningPlan plan : learningPlans)
-				learningPlanCB.addItem(plan);
-		
-		btnStart.setEnabled(false);
-		
 		prereqList = new List();
 		prereqList.setEnabled(false);
 		prereqList.setBounds(255, 172, 235, 89);
@@ -201,23 +199,37 @@ public class SelectWindow extends JFrame {
 		lblToDoList.setBounds(10, 142, 235, 22);
 		contentPane.add(lblToDoList);
 		
-		List todoList = new List();
 		todoList.setEnabled(false);
 		todoList.setBounds(10, 172, 235, 89);
 		contentPane.add(todoList);
 		
+		learningPlanCB = new JComboBox<LearningPlan>();
 		learningPlanCB.addActionListener (new ActionListener () {
-         public void actionPerformed(ActionEvent e) {
-           goalCB.removeAllItems();
-             testCB.removeAllItems();
-             prereqList.removeAll();
-           btnStart.setEnabled(false);
-             LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
-             if(plan == null) return;
-             for(Goal goal : plan.getGoals())
-              goalCB.addItem(goal);
-         }
-     });
-     
+		    public void actionPerformed(ActionEvent e) {
+		    	todoList.removeAll();
+		    	goalCB.removeAllItems();
+	            testCB.removeAllItems();
+	            prereqList.removeAll();
+	            btnStart.setEnabled(false);
+	            LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+	            if(plan == null) return;
+	            for(Goal goal : plan.getGoals())
+	            	goalCB.addItem(goal);
+		    }
+		});
+		learningPlanCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		learningPlanCB.setBounds(10, 44, 235, 22);
+		contentPane.add(learningPlanCB);
+		
+		//fill the comboboxes
+		if(user.getLearningPlan() != null) {
+			learningPlanCB.addItem(user.getLearningPlan());
+			learningPlanCB.setSelectedIndex(0);
+		}
+		else
+			for(LearningPlan plan : learningPlans)
+				learningPlanCB.addItem(plan);
+		
+		btnStart.setEnabled(false);
 	}
 }

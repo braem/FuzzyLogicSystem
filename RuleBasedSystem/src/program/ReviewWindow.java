@@ -12,6 +12,7 @@ import structures.Marker;
 import structures.Question;
 import structures.Test;
 import structures.User;
+import system.InferenceEngine;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -74,11 +75,19 @@ public class ReviewWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		boolean bestGradeOnThisTest = false;
+		
 		//GRADE
 		double percentGrade = Marker.mark(test.getAnswerKey(), userAttempt);
 		String letterGrade = Marker.getLetterGrade(percentGrade);
-		test.setStudentAttempt(userAttempt);
-		test.setStudentGrade(percentGrade);
+		if(test.getStudentGrade() < percentGrade) {
+			test.setStudentAttempt(userAttempt);
+			test.setStudentGrade(percentGrade);
+			bestGradeOnThisTest = true;
+			/*InferenceEngine iE = new InferenceEngine();
+			iE.init(user.getLearningPlan());
+			iE.inferenceCycle();*/
+		}
 		FileIO.writeUser(user); //write user to .ser
 		
 		JLabel lblPercent = new JLabel("Percent:");
