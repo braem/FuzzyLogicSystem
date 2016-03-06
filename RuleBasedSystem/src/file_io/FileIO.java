@@ -33,6 +33,22 @@ public class FileIO
 		return learningPlans;
 	}
 	
+	public static User loadUser(String firstName, String lastName) {
+		ArrayList<String> fileNamesInFolder = getFileNamesInDir();
+		User user = new User(firstName, lastName);
+		for(String usernameStr : fileNamesInFolder) {
+			if(usernameStr.equals(user.getUserName()+".ser")) {
+				try {
+					FileInputStream fis = new FileInputStream(usernameStr);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					user = (User) ois.readObject();
+					ois.close();
+				} catch (IOException e) {} catch (ClassNotFoundException e) {}
+			}
+		}
+		return user;
+	}
+	
 	private static ArrayList<String> getFileNamesInDir() {
 		File folder = new File(CURRENT_DIRECTORY);
 		File[] listOfFiles = folder.listFiles();
@@ -43,6 +59,19 @@ public class FileIO
 			}
 		}
 		return fileNamesInFolder;
+	}
+	
+	public static void writeUser(User user) {
+		try {
+			FileOutputStream fos = new FileOutputStream(user.getUserName()+".ser");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(user);
+			oos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void writeLearningPlan(LearningPlan learningPlan) {

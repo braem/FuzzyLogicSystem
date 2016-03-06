@@ -12,6 +12,7 @@ import structures.AnswerValue;
 import structures.Attempt;
 import structures.Question;
 import structures.Test;
+import structures.User;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class TestWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TestWindow frame = new TestWindow(null);
+					TestWindow frame = new TestWindow(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,7 +75,8 @@ public class TestWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TestWindow(Test test) {
+	public TestWindow(Test test, User user) {
+		setTitle(test.getTestName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 373, 335);
 		contentPane = new JPanel();
@@ -152,7 +154,7 @@ public class TestWindow extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Attempt attempt = new Attempt(normalAnswers, bonusAnswers);
-				ReviewWindow window = new ReviewWindow(test, attempt);
+				ReviewWindow window = new ReviewWindow(test, attempt, user);
 				thisFrame.dispose();
 				window.enable();
 			}

@@ -23,6 +23,8 @@ public class Test implements Antecedent, Consequent, Serializable
 	private ArrayList<Question> bonusQuestions;
 	private Attempt answerKey;
 	private boolean satisfied = false;
+	private Attempt studentAttempt;
+	private double studentGrade;
 
 	public Test()
 	{
@@ -48,8 +50,8 @@ public class Test implements Antecedent, Consequent, Serializable
 	
 	public boolean isPassed()
 	{//TODO
-		double mark = 0.0;
-		return mark > passingGrade;
+		double mark = Marker.mark(answerKey, studentAttempt);
+		return mark >= passingGrade;
 	}
 	
 	@Override
@@ -99,6 +101,22 @@ public class Test implements Antecedent, Consequent, Serializable
 
 	public void setAnswerKey(Attempt answerKey) {
 		this.answerKey = answerKey;
+	}
+
+	public Attempt getStudentAttempt() {
+		return studentAttempt;
+	}
+
+	public void setStudentAttempt(Attempt studentAttempt) {
+		this.studentAttempt = studentAttempt;
+	}
+
+	public double getStudentGrade() {
+		return studentGrade;
+	}
+
+	public void setStudentGrade(double studentGrade) {
+		this.studentGrade = studentGrade;
 	}
 
 }

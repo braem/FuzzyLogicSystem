@@ -7,7 +7,13 @@ import structures.LearningPlan;
 
 public class KnowledgeBase {
 	private ArrayList<Rule> rules;
+	private String name;
 	
+	
+	public KnowledgeBase()
+	{
+		rules = new ArrayList<Rule>();
+	}
 	
 	public KnowledgeBase(ArrayList<Rule> r)
 	{
@@ -17,6 +23,21 @@ public class KnowledgeBase {
 	public void setRules(ArrayList<Rule> r)
 	{
 		rules = r;
+	}
+
+	public void setName(String n)
+	{
+		name = n;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public String toString()
+	{
+		return name;
 	}
 	
 	public ArrayList<Rule> getRules()

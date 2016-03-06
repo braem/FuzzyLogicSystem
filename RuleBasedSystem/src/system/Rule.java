@@ -1,6 +1,6 @@
 package system;
 
-public class Rule{
+public class Rule implements Antecedent, Consequent{
 
 	private Antecedent theLeft;
 	private Consequent theRight;
@@ -42,5 +42,22 @@ public class Rule{
 		theRight.setSatisfied(theLeft.testAntecedent());
 	}
 
+	@Override
+	public void setSatisfied(boolean arg) {
+		// TODO Auto-generated method stub
+		theRight.setSatisfied(arg);
+	}
+
+	@Override
+	public boolean isSatisfied() {
+		// TODO Auto-generated method stub
+		return theRight.isSatisfied();
+	}
+
+	@Override
+	public boolean testAntecedent() {
+		return theLeft.testAntecedent();
+	}
+	
 
 }

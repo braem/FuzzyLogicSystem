@@ -58,6 +58,7 @@ public class SelectWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public SelectWindow(User user) {
+		setTitle(user.getUserName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 577, 234);
 		contentPane = new JPanel();
@@ -104,9 +105,11 @@ public class SelectWindow extends JFrame {
 		btnStart = new JButton("Start Test");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TestWindow window = new TestWindow((Test)testCB.getSelectedItem());
-				thisFrame.dispose();
-				window.enable();
+				if((Test)testCB.getSelectedItem() != null) {
+					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user);
+					thisFrame.dispose();
+					window.enable();
+				}
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -150,7 +153,12 @@ public class SelectWindow extends JFrame {
 		contentPane.add(lblSelectATest);
 		
 		//fill the comboboxes
-		for(LearningPlan plan : learningPlans)
-			learningPlanCB.addItem(plan);
+		if(user.getLearningPlan() != null) {
+			learningPlanCB.addItem(user.getLearningPlan());
+			learningPlanCB.setSelectedIndex(0);
+		}
+		else
+			for(LearningPlan plan : learningPlans)
+				learningPlanCB.addItem(plan);
 	}
 }

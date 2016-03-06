@@ -1,14 +1,30 @@
 package program;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import structures.AnswerValue;
 import structures.Attempt;
+import structures.Marker;
+import structures.Question;
 import structures.Test;
+import structures.User;
+
+import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ReviewWindow extends JFrame {
 
@@ -18,6 +34,10 @@ public class ReviewWindow extends JFrame {
 	private static final long serialVersionUID = -1202080739655736067L;
 	private JPanel contentPane;
 	private JFrame thisFrame = this;
+	private JTextField percentTF;
+	private JTextField gradeTF;
+	private JTable table;
+	private JButton btnTakeAnotherTest;
 
 	/**
 	 * Launch the application.
@@ -26,7 +46,7 @@ public class ReviewWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReviewWindow frame = new ReviewWindow(null, null);
+					ReviewWindow frame = new ReviewWindow(null, null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,13 +62,123 @@ public class ReviewWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReviewWindow(Test test, Attempt userAttempt) {
+	public ReviewWindow(Test test, Attempt userAttempt, User user) {
+		setTitle(test.getTestName()+" Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 348, 479);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		//GRADE
+		double percentGrade = Marker.mark(test.getAnswerKey(), userAttempt);
+		String letterGrade = Marker.getLetterGrade(percentGrade);
+		test.setStudentAttempt(userAttempt);
+		test.setStudentGrade(percentGrade);
+		
+		JLabel lblPercent = new JLabel("Percent:");
+		lblPercent.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPercent.setBounds(10, 11, 60, 23);
+		contentPane.add(lblPercent);
+		
+		JLabel lblGrade = new JLabel("Grade:");
+		lblGrade.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblGrade.setBounds(157, 11, 51, 23);
+		contentPane.add(lblGrade);
+		
+		percentTF = new JTextField();
+		percentTF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		percentTF.setEditable(false);
+		percentTF.setColumns(10);
+		percentTF.setBounds(80, 11, 67, 23);
+		percentTF.setText(""+percentGrade);
+		contentPane.add(percentTF);
+		
+		gradeTF = new JTextField();
+		gradeTF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		gradeTF.setEditable(false);
+		gradeTF.setColumns(10);
+		gradeTF.setBounds(218, 11, 67, 23);
+		gradeTF.setText(letterGrade);
+		contentPane.add(gradeTF);
+		
+		ArrayList<Question> normalQuestions = test.getNormalQuestions();
+		ArrayList<Question> bonusQuestions = test.getBonusQuestions();
+		ArrayList<AnswerValue> normalKey = test.getAnswerKey().getNormalAnswers();
+		ArrayList<AnswerValue> bonusKey = test.getAnswerKey().getBonusAnswers();
+		ArrayList<AnswerValue> studentNAnswers = userAttempt.getNormalAnswers();
+		ArrayList<AnswerValue> studentBAnswers = userAttempt.getBonusAnswers();
+		String[] titles = {"Question", "Answer", "Attempted Answer", "Correct?", "isBonus"};
+		Object[][] tableContents = new Object[5][normalQuestions.size()+bonusQuestions.size()];
+		for(int i=0; i<tableContents.length; i++) {//row
+			for(int j=0; j<tableContents[i].length; j++) {//col
+				if(i==0) {
+					tableContents[i][j] = j+1;
+				}
+				else if(i==1) {
+					if(j >= normalKey.size())
+						tableContents[i][j] = bonusKey.get(j-normalKey.size());
+					else
+						tableContents[i][j] = normalKey.get(j);
+				}
+				else if(i==2) {
+					if(j >= normalKey.size())
+						tableContents[i][j] = studentBAnswers.get(j-normalKey.size());
+					else
+						tableContents[i][j] = studentNAnswers.get(j);
+				}
+				else if(i==3) {
+					if(j >= normalKey.size())
+						if(normalKey.get(j).equals(studentNAnswers.get(j)))
+							tableContents[i][j] = "✓";
+						else
+							tableContents[i][j] = "x";
+					else
+						if(bonusKey.get(j).equals(studentBAnswers.get(j)))
+							tableContents[i][j] = "✓";
+						else
+							tableContents[i][j] = "x";
+				}
+				else {
+					if(j >= normalKey.size())
+						tableContents[i][j] = "Bonus";
+					else
+						tableContents[i][j] = "";
+				}
+			}
+		}
+		table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		table.setBackground(Color.WHITE);
+		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table.setModel(new DefaultTableModel(tableContents, titles) {
+			private static final long serialVersionUID = -1842128243407165869L;
+			Class[] columnTypes = new Class[] {
+				Integer.class, AnswerValue.class, AnswerValue.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		table.getColumnModel().getColumn(0).setPreferredWidth(35);
+		table.getColumnModel().getColumn(1).setPreferredWidth(35);
+		table.getColumnModel().getColumn(2).setPreferredWidth(35);
+		table.getColumnModel().getColumn(3).setPreferredWidth(35);
+		table.getColumnModel().getColumn(4).setPreferredWidth(60);
+		table.setBounds(10, 45, 280, 329);
+		contentPane.add(table);
+		
+		btnTakeAnotherTest = new JButton("Take Another Test");
+		btnTakeAnotherTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelectWindow window = new SelectWindow(user);
+				thisFrame.dispose();
+				window.enable();
+			}
+		});
+		btnTakeAnotherTest.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnTakeAnotherTest.setBounds(10, 385, 275, 23);
+		contentPane.add(btnTakeAnotherTest);
 	}
-
 }

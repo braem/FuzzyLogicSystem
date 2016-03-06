@@ -38,4 +38,28 @@ public class Marker
 		}
 		return ((double)mark/(double)maxScore)*100.0;
 	}
+	
+	public static String getLetterGrade(double percent) {
+		if(percent >= 90.0)
+			return "A+";
+		else if(percent >= 85.0)
+			return "A";
+		else if(percent >= 80.0)
+			return "A-";
+		else if(percent >= 76.0)
+			return "B+";
+		else if(percent >= 72.0)
+			return "B";
+		else if(percent >= 68.0)
+			return "B-";
+		else if(percent >= 64.0)
+			return "C+";
+		else if(percent >= 60.0)
+			return "C";
+		else if(percent >= 55.0)
+			return "C-";
+		else if(percent >= 50.0)
+			return "D";
+		else return "F";
+	}
 }

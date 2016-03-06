@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import file_io.FileIO;
 import structures.User;
 
 import javax.swing.JLabel;
@@ -70,7 +71,7 @@ public class LoginWindow extends JFrame {
 			lblInvalidName.setVisible(true);
 			return;
 		}
-		User user = new User(firstName, lastName);
+		User user = FileIO.loadUser(firstName, lastName);
 		SelectWindow window = new SelectWindow(user);
 		thisFrame.dispose();
 		window.enable();
