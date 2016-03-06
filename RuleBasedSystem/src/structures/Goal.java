@@ -31,7 +31,6 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		setTests(new ArrayList<Test>());
 		setSatisfied(false);
 		setName(g);
-		
 	}
 	
 	public Goal(User s, ArrayList<Test> t, boolean c, String g)
@@ -109,6 +108,16 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return equal;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Goal)) return false;
+		Goal goal = (Goal)obj;
+		if(!name.equals(goal.getName())) return false;
+		if(!tests.equals(goal.getTests())) return false;
+		return true;
+	}
+	
+	@Override
 	public String toString()
 	{
 		return name;

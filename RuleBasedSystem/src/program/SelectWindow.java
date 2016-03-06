@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import java.awt.List;
 
 public class SelectWindow extends JFrame {
 
@@ -32,6 +34,7 @@ public class SelectWindow extends JFrame {
 	private JComboBox<Test> testCB;
 	private JLabel lblSelectAGoal;
 	private JLabel lblSelectATest;
+	private List prereqList;
 	private ArrayList<LearningPlan> learningPlans;
 
 	/**
@@ -53,6 +56,23 @@ public class SelectWindow extends JFrame {
 	public void enable() {
 		this.setVisible(true);
 	}
+	
+	public ArrayList<Goal> goalsNotMet(Goal goal) {
+		LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+		ArrayList<PreReq> prereqs = plan.getPreReqs();
+		ArrayList<Goal> goalsNeeded = new ArrayList<Goal>();
+		ArrayList<Goal> goalsNotMet = new ArrayList<Goal>();
+		for(PreReq prereq : prereqs) {
+			if(prereq.getGoal().equals(goal)) {
+				goalsNeeded.add(prereq.getPreReq());
+			}
+		}
+		for(Goal g : goalsNeeded) {
+			if(!g.isSatisfied())
+				goalsNotMet.add(g);
+		}
+		return goalsNotMet;
+	}
 
 	/**
 	 * Create the frame.
@@ -60,7 +80,7 @@ public class SelectWindow extends JFrame {
 	public SelectWindow(User user) {
 		setTitle(user.getUserName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 577, 234);
+		setBounds(100, 100, 798, 210);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,10 +98,12 @@ public class SelectWindow extends JFrame {
 		learningPlanCB = new JComboBox<LearningPlan>();
 		learningPlanCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
+		    	goalCB.removeAllItems();
+		        testCB.removeAllItems();
+		        prereqList.removeAll();
+		    	btnStart.setEnabled(false);
 		        LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
 		        if(plan == null) return;
-		        goalCB.removeAllItems();
-		        testCB.removeAllItems();
 		        for(Goal goal : plan.getGoals())
 		        	goalCB.addItem(goal);
 		    }
@@ -119,15 +141,26 @@ public class SelectWindow extends JFrame {
 		goalCB = new JComboBox<Goal>();
 		goalCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
+		    	testCB.removeAllItems();
+		    	prereqList.removeAll();
+		    	btnStart.setEnabled(false);
 		        Goal goal = (Goal)goalCB.getSelectedItem();
 		        if(goal == null) return;
-		        testCB.removeAllItems();
-		        for(Test test : goal.getTests())
-		        	testCB.addItem(test);
+		        //get the prereqs not met
+		        ArrayList<Goal> goalsNotMet = goalsNotMet(goal);
+		        if(goalsNotMet.isEmpty()) { //all prereqs met
+		        	btnStart.setEnabled(true);
+			        for(Test test : goal.getTests())
+			        	testCB.addItem(test);
+		        }
+		        else { //write the prereqs to the list
+		        	for(Goal g : goalsNotMet)
+		        		prereqList.add(""+g);
+		        }
 		    }
 		});
 		goalCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		goalCB.setBounds(10, 110, 235, 22);
+		goalCB.setBounds(255, 44, 235, 22);
 		contentPane.add(goalCB);
 		
 		testCB = new JComboBox<Test>();
@@ -137,19 +170,19 @@ public class SelectWindow extends JFrame {
 		    }
 		});
 		testCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		testCB.setBounds(255, 44, 235, 22);
+		testCB.setBounds(10, 109, 235, 22);
 		contentPane.add(testCB);
 		
 		lblSelectAGoal = new JLabel("Select a Goal");
 		lblSelectAGoal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectAGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSelectAGoal.setBounds(10, 77, 235, 22);
+		lblSelectAGoal.setBounds(255, 11, 235, 22);
 		contentPane.add(lblSelectAGoal);
 		
 		lblSelectATest = new JLabel("Select a Test");
 		lblSelectATest.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectATest.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSelectATest.setBounds(255, 11, 235, 22);
+		lblSelectATest.setBounds(10, 77, 235, 22);
 		contentPane.add(lblSelectATest);
 		
 		//fill the comboboxes
@@ -160,5 +193,18 @@ public class SelectWindow extends JFrame {
 		else
 			for(LearningPlan plan : learningPlans)
 				learningPlanCB.addItem(plan);
+		
+		btnStart.setEnabled(false);
+		
+		prereqList = new List();
+		prereqList.setEnabled(false);
+		prereqList.setBounds(496, 44, 235, 89);
+		contentPane.add(prereqList);
+		
+		JLabel lblPrereqs = new JLabel("Prequisites");
+		lblPrereqs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPrereqs.setBounds(496, 11, 235, 22);
+		contentPane.add(lblPrereqs);
 	}
 }

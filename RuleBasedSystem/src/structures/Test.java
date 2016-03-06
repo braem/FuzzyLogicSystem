@@ -118,5 +118,13 @@ public class Test implements Antecedent, Consequent, Serializable
 	public void setStudentGrade(double studentGrade) {
 		this.studentGrade = studentGrade;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Test)) return false;
+		Test test = (Test)obj;
+		if(!testName.equals(test.getTestName())) return false;
+		return true;
+	}
 
 }

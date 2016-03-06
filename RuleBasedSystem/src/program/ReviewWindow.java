@@ -20,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import file_io.FileIO;
+
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -76,6 +79,7 @@ public class ReviewWindow extends JFrame {
 		String letterGrade = Marker.getLetterGrade(percentGrade);
 		test.setStudentAttempt(userAttempt);
 		test.setStudentGrade(percentGrade);
+		FileIO.writeUser(user); //write user to .ser
 		
 		JLabel lblPercent = new JLabel("Percent:");
 		lblPercent.setFont(new Font("Tahoma", Font.PLAIN, 14));
