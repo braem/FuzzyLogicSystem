@@ -6,6 +6,23 @@ import program.ToDoWindow;
 import structures.Goal;
 import structures.LearningPlan;
 
+
+/*The inference engine performs basic inferences based on rules of the form
+ * Antecedent -> Consequent 
+ * OR
+ * ComplexAntecedent -> Consequent
+ * where, in logical terms, ComplexAntecedent is effectively
+ * Antecedent1 AND Antecedent2 AND...
+ * This limits the complexity of the rules, but for the intended application their expressive
+ * power is more than sufficient.
+ * 
+ * 
+ *The engine is designed to be initialized using a User's LearningPlan instance,
+ *creating the necessary rules and hypotheses from the state of the plan,
+ *performing the indicated inferences, and updating the state of the plan and of
+ *the ToDoWindow.  Since the state of the plans is not maintained internally,
+ *once a cycle is complete the engine can be disposed of, simplifying application logic.
+ */
 public class InferenceEngine
 {
 	private WorkingMemory memory;
@@ -27,6 +44,10 @@ public class InferenceEngine
 		know.rulesFromPlan(lp);
 	}
 	
+	/*Inference proceeds using the backward chaining approach.
+	 * This was deemed best because the goalstate is known ahead of time.
+	 * Specifically, the user must complete all Goals in the LearningPlan provided on initialization.
+	 */
 	public void inferenceCycle()
 	{
 		ArrayList<Rule> wmRules = memory.getRules();
@@ -108,8 +129,8 @@ public class InferenceEngine
 
 							//Satisfied goals on the consequent side should be removed from the to do list.
 							//Unsatisfied goals on the consequent side should be added to to do list if they aren't already there.
-							if(r.isSatisfied()) ToDoWindow.removeGoal((Goal) goal);
-							else if(!ToDoWindow.hasGoal(goal)) ToDoWindow.addGoal(goal);
+							if(r.isSatisfied() && ToDoWindow.hasGoal(goal)) ToDoWindow.removeGoal((Goal) goal);
+							else if(!r.isSatisfied() && !ToDoWindow.hasGoal(goal)) ToDoWindow.addGoal(goal);
 						
 						}
 
