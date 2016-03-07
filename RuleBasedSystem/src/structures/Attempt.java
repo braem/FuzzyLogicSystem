@@ -11,14 +11,11 @@ import java.util.ArrayList;
  */
 public class Attempt implements Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1037934762325930610L;
 	private ArrayList<AnswerValue> normalAnswers;
 	private ArrayList<AnswerValue> bonusAnswers;
 	
-	/*
+	/**
 	 * Creates an Attempt with empty answer lists
 	 */
 	public Attempt() {
@@ -26,7 +23,7 @@ public class Attempt implements Serializable
 		bonusAnswers = new ArrayList<AnswerValue>();
 	}
 	
-	/*
+	/**
 	 * Creates an Attempt with only normal answers
 	 * 
 	 * @param normalAnswers   The list of answers.
@@ -37,7 +34,7 @@ public class Attempt implements Serializable
 		
 	}
 	
-	/*
+	/**
 	 * Creates an Attempt with both normal and bonus answers
 	 * 
 	 * @param normalAnswers   The list of normal answers.
@@ -48,21 +45,21 @@ public class Attempt implements Serializable
 		this.bonusAnswers = bonusAnswers;
 	}
 	
-	/*
+	/**
 	 * Returns the list of normal answers.
 	 * 
 	 * @return    The list of normal answers.
 	 */
 	public ArrayList<AnswerValue> getNormalAnswers() { return normalAnswers; }
 	
-	/*
+	/**
 	 * Returns the list of bonus answers.
 	 * 
 	 * @return    The list of bonus answers.
 	 */
 	public ArrayList<AnswerValue> getBonusAnswers() { return bonusAnswers; }
 	
-	/*
+	/**
 	 * Returns the lists of answers as String.
 	 * 
 	 * @return    String version of the lists of answers.

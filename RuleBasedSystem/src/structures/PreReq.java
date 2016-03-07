@@ -7,18 +7,16 @@ import java.io.Serializable;
  * Intended to be used by LearningPlan.
  * 
  * @author Breamen
+ * @version 1.0
  */
 public class PreReq implements Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4882200394636263490L;
 	private Goal prereq;
 	private Goal goal;
 	private String name;
 	
-	/*
+	/**
 	 * Creates a PreReq with the specified goals and name.
 	 * 
 	 * @param prereq       Goal that is to be the prereq.
@@ -31,7 +29,7 @@ public class PreReq implements Serializable
 		this.setName(n);
 	}
 	
-	/*
+	/**
 	 * Returns the prereq goal.
 	 * 
 	 * @return    The goal that represent the prereq.
@@ -40,7 +38,7 @@ public class PreReq implements Serializable
 		return prereq;
 	}
 	
-	/*
+	/**
 	 * Sets the prereq goal.
 	 * 
 	 * @param prereq       The new goal to be used as the prereq.
@@ -49,7 +47,7 @@ public class PreReq implements Serializable
 		this.prereq = prereq;
 	}
 	
-	/*
+	/**
 	 * Returns the goal that has a prereq.
 	 * 
 	 * @return          The goal that has a prereq.
@@ -58,7 +56,7 @@ public class PreReq implements Serializable
 		return goal;
 	}
 	
-	/*
+	/**
 	 * Sets the goal that has a prereq.
 	 * 
 	 * @param test      The new goal that has a prereq.
@@ -67,7 +65,7 @@ public class PreReq implements Serializable
 		this.goal = test;
 	}
 	
-	/*
+	/**
 	 * Sets the name of the prereq pair.
 	 * 
 	 * @param n         The new name of the prereq pair.
@@ -77,7 +75,7 @@ public class PreReq implements Serializable
 		name = n;
 	}
 	
-	/*
+	/**
 	 * Returns the name of the prereq pair.
 	 * 
 	 * @return          The name of the prereq pair.
@@ -87,7 +85,7 @@ public class PreReq implements Serializable
 		return name;
 	}
 	
-	/*
+	/**
 	 * Checks if a PreReq is equal to this one.
 	 * 
 	 * @param pr        The PreReq to be compared to this one.
@@ -99,7 +97,7 @@ public class PreReq implements Serializable
 		return this.getGoal().equals(pr.getGoal()) && this.getPreReq().equals(pr.getPreReq());
 	}
 	
-	/*
+	/**
 	 * Returns the name of the prereq pair.
 	 * 
 	 * @return       The name of the prereq pair.

@@ -11,14 +11,11 @@ import system.Consequent;
  * It contains a list of questions, a list of bonus questions, and an answer key
  * It can also store a users answers and grade.
  * 
- * @author braemen
+ * @author Braemen
  * @version 1.0
  */
 public class Test implements Antecedent, Consequent, Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4250849022572701526L;
 	private static final double passingGrade = 50.0;
 	private String testName;
@@ -29,7 +26,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
 	
-	/*
+	/**
 	 * Creates an empty Test.
 	 * Not recommended to be used.
 	 */
@@ -40,7 +37,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		bonusQuestions = null;
 	}
 	
-	/*
+	/**
 	 * Creates a Test with normal and bonus questions.
 	 * 
 	 * @param testName           The title of the test.
@@ -55,7 +52,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.answerKey = answerKey;
 	}
 
-	/*
+	/**
 	 * Creates a Test with only normal questions.
 	 * 
 	 * @param testName           The title of the test.
@@ -69,7 +66,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.answerKey = answerKey;
 	}
 	
-	/*
+	/**
 	 * Checks if the test has been passed.
 	 * 
 	 * @return <code>true</code> if the test has a passing grade.
@@ -80,7 +77,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return studentGrade >= passingGrade;
 	}
 	
-	/*
+	/**
 	 * Returns the title of the test.
 	 * Overwrites the standard toString method.
 	 * 
@@ -91,7 +88,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return testName;
 	}
 	
-	/*
+	/**
 	 * Returns the title of the test.
 	 * 
 	 * @return    String of the tests name.
@@ -100,7 +97,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return testName;
 	}
 	
-	/*
+	/**
 	 * Returns the list of the normal questions.
 	 * 
 	 * @return    The list of normal questions.
@@ -109,7 +106,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return normalQuestions;
 	}
 	
-	/*
+	/**
 	 * Sets a new list of normal questions.
 	 * 
 	 * @param normalQuestions     The new list of normal questions.
@@ -118,7 +115,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.normalQuestions = normalQuestions;
 	}
 	
-	/*
+	/**
 	 * Returns the list of bonus questions.
 	 * 
 	 * @return       The list of bonus questions.
@@ -127,7 +124,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return bonusQuestions;
 	}
 	
-	/*
+	/**
 	 * Sets a new list of bonus questions
 	 * 
 	 * @param bonusQuestions     The new list of bonus questions.
@@ -136,7 +133,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.bonusQuestions = bonusQuestions;
 	}
 	
-	/*
+	/**
 	 * Returns whether or not the test has a passing grade.
 	 * 
 	 * @return       <code>true</code> if test has a passing grade.
@@ -148,7 +145,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return this.isPassed();
 	}
 	
-	/*
+	/**
 	 * Returns whether or not the test has been satisfied.
 	 * 
 	 * @return       <code>true</code> if the test is satisfied.
@@ -160,7 +157,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return satisfied;
 	}
 	
-	/*
+	/**
 	 * Sets whether or not the test it satisfied.
 	 * 
 	 * @param arg       The new satisfied state
@@ -171,7 +168,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		satisfied = arg;
 	}
 	
-	/*
+	/**
 	 * Returns the answer key.
 	 * 
 	 * @return    The Attempt that contains the answer key.
@@ -180,7 +177,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return answerKey;
 	}
 	
-	/*
+	/**
 	 * Sets the new answer key.
 	 * 
 	 * @param answerKey       The new answer key.
@@ -189,7 +186,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.answerKey = answerKey;
 	}
 	
-	/*
+	/**
 	 * Returns the set of answers from the users attempt.
 	 * 
 	 * @return    The users last attempt.
@@ -198,7 +195,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return studentAttempt;
 	}
 	
-	/*
+	/**
 	 * Sets the user's attempt
 	 * 
 	 * @param studentAttempt     The new user attempt.
@@ -207,7 +204,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.studentAttempt = studentAttempt;
 	}
 	
-	/*
+	/**
 	 * Returns the user's grade.
 	 * 
 	 * @return    The user's grade.
@@ -216,7 +213,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		return studentGrade;
 	}
 	
-	/*
+	/**
 	 * Sets the user's grade.
 	 * 
 	 * @param studentGrade    The new grade.
@@ -225,7 +222,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.studentGrade = studentGrade;
 	}
 	
-	/*
+	/**
 	 * Checks if an object is the same as this test.
 	 * 
 	 * @param obj    The object being compared.

@@ -34,7 +34,7 @@ public class Rule implements Antecedent, Consequent{
 	/**
 	 * Returns this Rule's Antecedent
 	 * 
-	 * @return theLeft	The Antecedent of this Rule.
+	 * @return       The Antecedent of this Rule.
 	 */
 	public Antecedent getAntecedent() {
 		return theLeft;
@@ -52,7 +52,7 @@ public class Rule implements Antecedent, Consequent{
 	/**
 	 * Returns this Rule's Consequent
 	 * 
-	 * @return theRight	The Consequent of this Rule.
+	 * @return       The Consequent of this Rule.
 	 */
 	public Consequent getConsequent() {
 		return theRight;
@@ -100,7 +100,7 @@ public class Rule implements Antecedent, Consequent{
 	/**
 	 * Overridden from the Consequent interface.
 	 * Returns the value of the satisfied variable
-	 * @return	satisfied		A boolean variable representing the truth value of this consequent.
+	 * @return		A boolean variable representing the truth value of this consequent.
 	 */
 	@Override
 	public boolean isSatisfied() {

@@ -1,9 +1,19 @@
 package structures;
 
+/**
+ * Marks tests based on an attempt.
+ * @author Breamen
+ * @version 1.0
+ */
 public class Marker
 {
-	/* returns percent value */
-	public static double mark(Attempt answerKey, Attempt studentAttempt) {
+	/**
+	 * Calculates the percentage of correct answers to a test.
+	 * @param answerKey          The answer key for the test.
+	 * @param studentAttempt     The user's attempted answers.
+	 * @return                   The mark the user got on the test.
+	 */
+   public static double mark(Attempt answerKey, Attempt studentAttempt) {
 		int maxScore = answerKey.getNormalAnswers().size();
 		int numOfBonus = answerKey.getBonusAnswers().size();
 		int mark = 0;
@@ -22,7 +32,13 @@ public class Marker
 		return ((double)mark/(double)maxScore)*100.0;
 	}
 	
-	public static double mark(Test test, Attempt studentAttempt) {
+   /**
+    * Calculates the percentage of correct answers to a test.
+    * @param test               The test that is being marked.
+    * @param studentAttempt     The user's attempted answers.
+    * @return                   The mark the user got on the test.
+    */
+   public static double mark(Test test, Attempt studentAttempt) {
 		int maxScore = test.getNormalQuestions().size();
 		int numOfBonus = test.getBonusQuestions().size();
 		int mark = 0;
@@ -39,6 +55,11 @@ public class Marker
 		return ((double)mark/(double)maxScore)*100.0;
 	}
 	
+   /**
+    * The letter grade based on the percentage grade.
+    * @param percent    The percentage grade to be converted.
+    * @return           The letter grade.
+    */
 	public static String getLetterGrade(double percent) {
 		if(percent >= 90.0)
 			return "A+";

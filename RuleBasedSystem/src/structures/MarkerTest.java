@@ -6,16 +6,27 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+/**
+ * A class to test the Marker class
+ * @author Breamen
+ * @version 1.0
+ */
 public class MarkerTest {
 
-	@Test
+	/**
+	 * A test.
+	 */
+   @Test
 	public void perfectScoreTest1() {
 		ArrayList<AnswerValue> exampleKey = new ArrayList<AnswerValue>();
 		exampleKey.add(AnswerValue.A); exampleKey.add(AnswerValue.E);
 		exampleKey.add(AnswerValue.B); exampleKey.add(AnswerValue.B);
 		assertTrue(Marker.mark(new Attempt(exampleKey), new Attempt(exampleKey)) == 100.0);
 	}
-
+   
+   /**
+    * A test.
+    */
 	@Test
 	public void perfectScoreTest2() {
 		Question q1 = new Question("Q1", AnswerValue.G, false);

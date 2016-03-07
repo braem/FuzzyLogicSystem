@@ -47,7 +47,7 @@ public class WorkingMemory {
 	/**
 	 * Sets rules to the provided ArrayList of Rules.
 	 * 
-	 * @param	r	An ArrayList of Rules.
+	 * @param r      	An ArrayList of Rules.
 	 */
 	public void setRules(ArrayList<Rule> r)
 	{
@@ -57,7 +57,7 @@ public class WorkingMemory {
 	/**
 	 * Sets the name of this WorkingMemory to the provided String.
 	 * 
-	 * @param	n	A String
+	 * @param n	        A String
 	 */
 	public void setName(String n)
 	{
@@ -67,7 +67,7 @@ public class WorkingMemory {
 	/**
 	 * Returns the name of this WorkingMemory
 	 * 
-	 * @return name		A String
+	 * @return          Name of the working memory
 	 */
 	public String getName()
 	{
@@ -78,7 +78,7 @@ public class WorkingMemory {
 	/**
 	 * Returns the list of hypotheses maintained by this WorkingMemory
 	 * 
-	 * @return hypotheses	An ArrayList<T> where T implements the Consequent interface.
+	 * @return          An ArrayList<T> where T implements the Consequent interface.
 	 */
 	public ArrayList<Consequent> getHypotheses()
 	{
@@ -88,7 +88,7 @@ public class WorkingMemory {
 	/**
 	 * Returns the list of Rules maintained by this WorkingMemory
 	 * 
-	 * @return rules	An ArrayList of Rules.
+	 * @return       An ArrayList of Rules.
 	 */
 	public ArrayList<Rule> getRules()
 	{
@@ -98,7 +98,7 @@ public class WorkingMemory {
 	/**
 	 * Adds a Consequent to the list of hypotheses maintained by this WorkingMemory if it is not already present.
 	 * @param  c		A Consequent
-	 * @return rules	An ArrayList of Rules
+	 * @return       An ArrayList of Rules
 	 */
 	public void addHypothesis(Consequent c)
 	{
@@ -109,8 +109,8 @@ public class WorkingMemory {
 	 * Determines if a Consequent is already a member of this WorkingMemory's hypotheses.
 	 * 
 	 * @param  c					A Consequent
-	 * @return <code>true</code> 	if the Consequent exists in hypotheses
-	 *         <code>false</code> 	otherwise
+	 * @return          <code>true</code> if the Consequent exists in hypotheses
+	 *                  <code>false</code> otherwise
 	 */
 	public boolean contains(Consequent c)
 	{
@@ -121,8 +121,8 @@ public class WorkingMemory {
 	 * Determines if a Rule is already a member of this WorkingMemory's rules.
 	 * 
 	 * @param  c					A Rule
-	 * @return <code>true</code> 	if the Rule exists in hypotheses
-	 *         <code>false</code> 	otherwise
+	 * @return          <code>true</code> if the Rule exists in hypotheses
+	 *                  <code>false</code> otherwise
 	 */
 	public boolean contains(Rule r)
 	{
@@ -133,7 +133,7 @@ public class WorkingMemory {
 	 * Returns the name of this WorkingMemory
 	 * Overrides the toString() method inherited from Object.
 	 * 
-	 * @return 	name	A String
+	 * @return 	 The name of working memory
 	 */
 	public String toString()
 	{

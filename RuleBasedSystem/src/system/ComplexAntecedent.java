@@ -41,7 +41,7 @@ public class ComplexAntecedent implements Antecedent{
 	
 	/**
 	 *	Returns the list of antecedents.
-	 *	@return antecedents 	The list of Antecedents in this ComplexAntecedent. 
+	 *	@return       The list of Antecedents in this ComplexAntecedent. 
 	 */
 	public ArrayList<? extends Antecedent> getAntecedents()
 	{

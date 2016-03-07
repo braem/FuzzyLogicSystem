@@ -11,12 +11,10 @@ import system.Consequent;
  * Intended to be used by LearningPlan.
  * 
  * @author Breamen
+ * @version 1.0
  */
 public class Goal implements Consequent, Antecedent, Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7884557923175830060L;
 	private ArrayList<Test> tests;
 	private boolean satisfied;
@@ -34,7 +32,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		name = null;
 	}
 	
-	/*
+	/**
 	 * Creates a goal with the specified user and title.
 	 * 
 	 * @param s      The user the goal is assigned to.
@@ -48,7 +46,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		setName(g);
 	}
 	
-	/*
+	/**
 	 * Creates a goal with the specified user, title, and list of tests.
 	 * It also allows specification on whether it is satisfied.
 	 * 
@@ -65,7 +63,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		setName(g);
 	}
 	
-	/*
+	/**
 	 * Sets the user the goal is assigned to.
 	 * 
 	 * @param s      The users the goal is assigned to.
@@ -75,7 +73,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		user = s;
 	}
 	
-	/*
+	/**
 	 * Sets the list of tests.
 	 * 
 	 * @param tests     The new list of tests.
@@ -84,7 +82,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		this.tests = tests;
 	}
 	
-	/*
+	/**
 	 * Sets the title of the goal.
 	 * 
 	 * @param g      The new title of the goal.
@@ -94,7 +92,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		name = g;
 	}
 	
-	/*
+	/**
 	 * Sets whether the goal is satisfied.
 	 * 
 	 * @param arg       The new satisfied state.
@@ -104,7 +102,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		satisfied = arg;
 	}
 	
-	/*
+	/**
 	 * Returns the list of tests.
 	 * 
 	 * @return    The list of tests.
@@ -114,7 +112,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return tests;
 	}
 	
-	/*
+	/**
 	 * Returns the users assigned to the goal.
 	 * 
 	 * @return       The user assigned to the goal.
@@ -124,7 +122,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return user;
 	}
 	
-	/*
+	/**
 	 * Returns the title of the goal.
 	 * 
 	 * @return    The title of the goal.
@@ -134,7 +132,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return name;
 	}
 	
-	/*
+	/**
 	 * Returns whether the goal is satisfied.
 	 * 
 	 * @return       <code>true</code> if the goal is satisfied.
@@ -145,7 +143,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return satisfied;
 	}
 	
-	/*
+	/**
 	 * Returns whether the all the tests have been passed.
 	 * 
 	 * @return       <code>true</code> if all test have been passed.
@@ -162,7 +160,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return answer;
 	}
 	
-	/*
+	/**
 	 * Tests if two goals are equal.
 	 * 
 	 * @param g      The goal to be compared against this one.
@@ -184,7 +182,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return equal;
 	}
 	
-	/*
+	/**
 	 * Tests whether an object is equal to this goal.
 	 * 
 	 * @param obj       The object to be compared to this goal.
@@ -200,7 +198,7 @@ public class Goal implements Consequent, Antecedent, Serializable {
 		return true;
 	}
 	
-	/*
+	/**
 	 * Prints the title of this goal as a String.
 	 * 
 	 * @return       The title of this goal.

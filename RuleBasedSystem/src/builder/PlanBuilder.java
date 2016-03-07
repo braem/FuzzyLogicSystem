@@ -6,7 +6,7 @@ import file_io.FileIO ;
 import structures.*;
 
 /**
- * Builds learning plans.
+ * Builds learning plans. Dirty, but works.
  * 
  * @author Lukas Pihl
  * @version 1.0
