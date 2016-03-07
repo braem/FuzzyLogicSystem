@@ -7,6 +7,7 @@ import structures.*;
 
 /**
  * Builds learning plans. Dirty, but works.
+ * Built learning plans are saved to file in the working directory.
  * 
  * @author Lukas Pihl
  * @version 1.0

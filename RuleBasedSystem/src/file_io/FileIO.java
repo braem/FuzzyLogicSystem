@@ -12,13 +12,19 @@ import java.util.HashSet;
 
 import structures.*;
 
-/*
- * test
+/**
+ * Writes objects to files, and read objects from files.
+ * @author Rhys
+ * @version 1.0
  */
 public class FileIO
 {
 	private static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
 	
+	/**
+	 * Loads learning plans from files in the working directory.
+	 * @return    A list of the learning plans.
+	 */
 	public static HashSet<LearningPlan> loadLearningPlans() {
 		HashSet<LearningPlan> learningPlans = new HashSet<LearningPlan>();
 		ArrayList<String> fileNamesInFolder = getFileNamesInDir();
@@ -38,6 +44,12 @@ public class FileIO
 		return learningPlans;
 	}
 	
+	/**
+	 * Loads the specified User from a file.
+	 * @param firstName       First name of the user.
+	 * @param lastName        Last name of the user.
+	 * @return                The User loaded.
+	 */
 	public static User loadUser(String firstName, String lastName) {
 		ArrayList<String> fileNamesInFolder = getFileNamesInDir();
 		User user = new User(firstName, lastName);
@@ -54,6 +66,10 @@ public class FileIO
 		return user;
 	}
 	
+	/**
+	 * Gets the names of all the files in the working directory.
+	 * @return       List of filenames for the working directory.
+	 */
 	private static ArrayList<String> getFileNamesInDir() {
 		File folder = new File(CURRENT_DIRECTORY);
 		File[] listOfFiles = folder.listFiles();
@@ -66,6 +82,10 @@ public class FileIO
 		return fileNamesInFolder;
 	}
 	
+	/**
+	 * Writes a User to a file.
+	 * @param user      The User to be written.
+	 */
 	public static void writeUser(User user) {
 		try {
 			FileOutputStream fos = new FileOutputStream(user.getUserName()+".ser");
@@ -79,6 +99,10 @@ public class FileIO
 		}
 	}
 	
+	/**
+	 * Writes a learning plan to a file.
+	 * @param learningPlan    The learning plan to be written.
+	 */
 	public static void writeLearningPlan(LearningPlan learningPlan) {
 		try {
 			FileOutputStream fos = new FileOutputStream(learningPlan.getName()+".ser");
@@ -92,6 +116,11 @@ public class FileIO
 		}
 	}
 	
+	/**
+	 * Writes a list of learning plans to files.
+	 * Each entry in the list will be saved to a separate file.
+	 * @param learningPlans      The list of learning plans.
+	 */
 	public static void writeAllLearningPlans(ArrayList<LearningPlan> learningPlans) {
 		for(LearningPlan plan : learningPlans) {
 			writeLearningPlan(plan);
