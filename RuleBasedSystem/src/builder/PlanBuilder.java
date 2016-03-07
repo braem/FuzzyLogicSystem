@@ -136,36 +136,46 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n5 > x\n\n"
+            +"a) 5\tb) -5\tc) 6\td) 12\ne) 55\tf) 10\tg) 7";
+      nq.add(new Question(s, AnswerValue.B, false));
+      na.add(AnswerValue.B);
+      s = "Solve for x\n25 < x\n\n"
+            +"a) 9\tb) 25\tc) 387\td) 22\ne) -25\tf) 18\tg) 7";
+      nq.add(new Question(s, AnswerValue.C, false));
+      na.add(AnswerValue.C);
+      s = "Solve for x\n19 = x\n\n"
+            +"a) -19\tb) 22\tc) 5\td) 128\ne) 19\tf) -22\tg) 0";
+      nq.add(new Question(s, AnswerValue.E, false));
+      na.add(AnswerValue.E);
+      s = "Solve for x\n189 > x\n\n"
+            +"a) 189\tb) 188\tc) 191\td) 190\ne) 193\tf) 277\tg) 777";
+      nq.add(new Question(s, AnswerValue.B, false));
+      na.add(AnswerValue.B);
+      s = "Solve for x\n-77 < x\n\n"
+            +"a) 5\tb) -101\tc) -77\td) -80\ne) -79\tf) -200\tg) -150";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
+      s = "Solve for x\n999 = x\n\n"
+            +"a) -999\tb) 999\tc) -99\td) 99\ne) 9\tf) -9\tg) 0";
+      nq.add(new Question(s, AnswerValue.B, false));
+      na.add(AnswerValue.B);
+      s = "Solve for x\n-1 > x\n\n"
+            +"a) 1\tb) 0\tc) -1\td) -5\ne) 10\tf) 5\tg) 6";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n-89 > x\n\n"
+            +"a) -89\tb) -5\tc) 6\td) 12\ne) 55\tf) -90\tg) 7";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Solve for x\n111 = x\n\n"
+            +"a) -11\tb) -7\tc) 256\td) 88\ne) -55\tf) -10\tg) 111";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n-5 > x\n\n"
+            +"a) 5\tb) -5\tc) 6\td) 12\ne) 55\tf) 10\tg) -7";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
       a = new Attempt(na);
       t.add(new Test("Comparison", nq, a));
       
@@ -174,36 +184,46 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Round 127 to the nearest ten.\n\n"
+            + "a) 128\tb) 120\tc) 130\td) 100\ne) 200\tf) 127\tg) 125)";
+      nq.add(new Question(s, AnswerValue.C, false));
+      na.add(AnswerValue.C);
+      s = "Round 222 to the nearest hundred.\n\n"
+            + "a) 220\tb) 230\tc) 300\td) 350\ne) 200\tf) 222\tg) 225)";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Round 35 to the nearest ten.\n\n"
+            + "a) 35\tb) 30\tc) 33\td) 40\ne) -35\tf) 100\tg) 0)";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Round 257 to the nearest thousand.\n\n"
+            + "a) 1000\tb) 2000\tc) 250\td) 0\ne) 200\tf) 260\tg) 300)";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Round 12,589 to the nearest hundred.\n\n"
+            + "a) 13,000\tb) 12,590\nc) 12,000\td) 12,600\ne) 10,000\tf) 12,500\ng) 12,589)";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Round -256 to the nearest ten.\n\n"
+            + "a) 250\tb) -200\tc) -300\td) -250\ne) 260\tf) -260\tg) 300)";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Round 987 to the nearest thousand.\n\n"
+            + "a) 1000\tb) 900\tc) 0\td) 980\ne) 990\tf) 1250\tg) 777)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
+      s = "Round 95 to the nearest ten.\n\n"
+            + "a) 95\tb) 110\tc) 90\td) 100\ne) -100\tf) 98\tg) -90)";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Round 300 to the nearest ten.\n\n"
+            + "a) -300\tb) 290\tc) 310\td) 333\ne) 0\tf) 300\tg) 10)";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Round 247 to the nearest five.\n\n"
+            + "a) 250\tb) 247\tc) 300\td) 245\ne) 200\tf) 0\tg) 5)";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
       a = new Attempt(na);
       t.add(new Test("Rounding", nq, a));
       
@@ -265,36 +285,46 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 2\td) -2\ne) 11\tf) -11\tg) 0";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n3 - 5 = x\n\n"
+            +"a) 1\tb) -1\tc) 2\td) -2\ne) 0\tf) 8\tg) -8";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n87 - 32 = x\n\n"
+            +"a) 55\tb) -55\tc) 119\td) -119\ne) 8\tf) 17\tg) 0";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n-58 - 78 = x\n\n"
+            +"a) 136\tb) 58\tc) -78\td) -136\ne) 245\tf) 98\tg) 0";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n-77 - (-23) = x\n\n"
+            +"a) 36\tb) -47\tc) -68\td) -54\ne) -88\tf) -124\tg) 7";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\100 - 1 = x\n\n"
+            +"a) 100\tb) -1\tc) -100\td) -10\ne) -10\tf) 1\tg) 99";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n-100 - 100 = x\n\n"
+            +"a) 100\tb) -100\tc) 200\td) -200\ne) 1\tf) -10\tg) 0";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n777 - 0 = x\n\n"
+            +"a) 777\tb) 770\tc) 600\td) -777\ne) -5\tf) 20\tg) 0";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
+      s = "Solve for x\n0 - 548 = x\n\n"
+            +"a) 548\tb) 0\tc) -0\td) -10\ne) -548\tf) 777\tg) 0";
+      nq.add(new Question(s, AnswerValue.E, false));
+      na.add(AnswerValue.E);
+      s = "Solve for x\n0 - (-1) = x\n\n"
+            +"a) 0\tb) -1\tc) 1\td) 10\ne) -10\tf) 100\tg) 5";
+      nq.add(new Question(s, AnswerValue.C, false));
+      na.add(AnswerValue.C);
       a = new Attempt(na);
       t.add(new Test("Subtraction", nq, a));
       
@@ -308,34 +338,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 * 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -346,34 +386,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 / 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -384,34 +434,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1^1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -427,34 +487,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x\n1 + 1 * 1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 0\td) 10\ne) -10\tf) 100\tg) 5";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -494,34 +564,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the least common\nmultiple.\n2 and 5\n\n"
+            +"a) 10\tb) 2\tc) 8\td) 5\ne) 19\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -532,34 +612,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the greatest common factor.\n33\n\n"
+            +"a) 11\tb) 3\tc) 33\td) 30\ne) 9\tf) 20\tg) 1";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -575,34 +665,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Determine the lowest factor.\n2/4\n\n"
+            +"a) 1/2\tb) 1/1\tc) 1/4\td) 2/2\ne) 1/8\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -613,34 +713,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Correct the imporoper fraction.\n37/4\n\n"
+            +"a) 9+1/4\tb) 8+1/2\tc) 4+1/4\td) 3/2\ne) 8+1/7\tf) 4/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -652,7 +762,7 @@ public class PlanBuilder
       //GOAL 3
       t = new ArrayList<Test>();
       
-      //Test 3-1
+      //Test 3-1 
       nq = new ArrayList<Question>();
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
