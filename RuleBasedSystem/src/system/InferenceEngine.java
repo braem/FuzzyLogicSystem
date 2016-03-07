@@ -32,12 +32,21 @@ public class InferenceEngine
 	private KnowledgeBase know;
 	private Rule selectedRule;
 	
+	
+	/*
+	 * Creates a new InferenceEngine.
+	 * */
 	public InferenceEngine()
 	{
 		memory = new WorkingMemory();
 		know = new KnowledgeBase();
 	}
 	
+	/*
+	 * initializes the InferenceEngine using the provided LearningPlan instance.
+	 * 
+	 * @param lp	A learning plan used to initialize the InferenceEngine
+	 * */
 	public void init(LearningPlan lp)
 	{
 		memory = new WorkingMemory();
@@ -47,7 +56,9 @@ public class InferenceEngine
 		know.rulesFromPlan(lp);
 	}
 	
-	/*Inference proceeds using the backward chaining approach.
+	/*
+	 * Performs a single inference cycle through all hypotheses and rules.
+	 * Inference proceeds using the backward chaining approach.
 	 * This was deemed best because the goalstate is known ahead of time.
 	 * Specifically, the user must complete all Goals in the LearningPlan provided on initialization.
 	 */

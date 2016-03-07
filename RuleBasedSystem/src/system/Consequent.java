@@ -2,8 +2,6 @@ package system;
 
 /**
  * @author Rhys
- * */
-
 /*
  * This interface provides a method setSatisfied(boolean) intended to set the state of a 
  * boolean variable within the implementing class.  Java doesn't allow for non-static
@@ -11,6 +9,9 @@ package system;
  * 
  * isSatisfied is meant to return the value of the aforementioned boolean variable.
  * */
+
+
+
 public interface Consequent {
 	
 	public void setSatisfied(boolean arg);
