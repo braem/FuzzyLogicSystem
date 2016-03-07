@@ -8,9 +8,9 @@ import structures.LearningPlan;
 
 /**
  * The inference engine performs basic inferences based on rules of the form
- * Antecedent -> Consequent 
+ * Antecedent -&#62; Consequent 
  * OR
- * ComplexAntecedent -> Consequent
+ * ComplexAntecedent -&#62; Consequent
  * where, in logical terms, ComplexAntecedent is effectively
  * Antecedent1 AND Antecedent2 AND...
  * This limits the complexity of the rules, but for the intended application their expressive

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * An antecedent comprised of multiple conjunctively (logical AND) joined antecedents.
  * 
  * @author Rhys
- * @verion 1.0 
+ * @version 1.0 
  **/
 
 public class ComplexAntecedent implements Antecedent{
@@ -22,7 +22,7 @@ public class ComplexAntecedent implements Antecedent{
 	}
 	
 	/**
-	 *	Creates a ComplexAntecedent from an ArrayList<T> where T implements the Antecedent interface
+	 *	Creates a ComplexAntecedent from an ArrayList&#60;T&#62; where T implements the Antecedent interface
 	 *	@param a	A list of Antecedents. 
 	 */
 	public ComplexAntecedent(ArrayList<? extends Antecedent> a)
@@ -31,7 +31,7 @@ public class ComplexAntecedent implements Antecedent{
 	}
 	
 	/**
-	 *	Sets antecedents to a given ArrayList<T> where T implments the Antecedent interface.
+	 *	Sets antecedents to a given ArrayList&#60;T&#62; where T implments the Antecedent interface.
 	 *	@param a	A list of Antecedents. 
 	 */
 	public void setAntecedents(ArrayList<? extends Antecedent> a)

@@ -1,7 +1,7 @@
 package system;
 
 /**
- * Representation for rules of the form Antecedent -> Consequent
+ * Representation for rules of the form Antecedent -&#62; Consequent
  * @author Rhys
  * @version 1.0 
  * */

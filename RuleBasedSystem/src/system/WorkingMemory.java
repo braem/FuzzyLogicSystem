@@ -24,7 +24,7 @@ public class WorkingMemory {
 	}
 	
 	/**
-	 *Creates a new working memory from a provided ArrayList<T> where T implements the Consequent interface.
+	 *Creates a new working memory from a provided ArrayList&#60;T&#62; where T implements the Consequent interface.
 	 *
 	 * @param	h	An ArrayList of Consequents.
 	 */
@@ -35,7 +35,7 @@ public class WorkingMemory {
 	}
 	
 	/**
-	 * Sets hypotheses to the provided ArrayList<T> where T implements the Consequent interface.
+	 * Sets hypotheses to the provided ArrayList&#60;T&#62; where T implements the Consequent interface.
 	 * 
 	 * @param	h	An ArrayList of Consequents.
 	 */
@@ -78,7 +78,7 @@ public class WorkingMemory {
 	/**
 	 * Returns the list of hypotheses maintained by this WorkingMemory
 	 * 
-	 * @return          An ArrayList<T> where T implements the Consequent interface.
+	 * @return          An ArrayList&#60;T&#62; where T implements the Consequent interface.
 	 */
 	public ArrayList<Consequent> getHypotheses()
 	{
@@ -98,7 +98,6 @@ public class WorkingMemory {
 	/**
 	 * Adds a Consequent to the list of hypotheses maintained by this WorkingMemory if it is not already present.
 	 * @param  c		A Consequent
-	 * @return       An ArrayList of Rules
 	 */
 	public void addHypothesis(Consequent c)
 	{
@@ -120,7 +119,7 @@ public class WorkingMemory {
 	/**
 	 * Determines if a Rule is already a member of this WorkingMemory's rules.
 	 * 
-	 * @param  c					A Rule
+	 * @param  r					A Rule
 	 * @return          <code>true</code> if the Rule exists in hypotheses
 	 *                  <code>false</code> otherwise
 	 */

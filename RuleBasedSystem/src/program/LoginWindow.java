@@ -21,7 +21,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * Window to authenticate the user & load all their info
+ * Window to authenticate the user and load all their info
  * 
  * @author Braemen
  * @version 1.0
