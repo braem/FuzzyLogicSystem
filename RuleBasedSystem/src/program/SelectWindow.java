@@ -46,9 +46,7 @@ public class SelectWindow extends JFrame {
 	private List prereqList;
 	private HashSet<LearningPlan> learningPlans;
 
-	/**
-	 * Launch the application.
-	 */
+	/* Test launch the window */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,11 +60,13 @@ public class SelectWindow extends JFrame {
 		});
 	}
 	
+	//enable this frame
 	public void enable() {
 		this.setVisible(true);
 	}
 	
-	public ArrayList<Goal> goalsNotMet(Goal goal) {
+	//gets all the goals that are not met
+	private ArrayList<Goal> goalsNotMet(Goal goal) {
 		LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
 		ArrayList<PreReq> prereqs = plan.getPreReqs();
 		ArrayList<Goal> goalsNeeded = new ArrayList<Goal>();
@@ -78,12 +78,6 @@ public class SelectWindow extends JFrame {
 			if(!g.isSatisfied())
 				goalsNotMet.add(g);
 		return goalsNotMet;
-	}
-	
-	public ArrayList<Goal> getGoalsToDo() {
-		ArrayList<Goal> goalsToDo = new ArrayList<Goal>();
-		
-		return goalsToDo;
 	}
 
 	/**
@@ -129,7 +123,6 @@ public class SelectWindow extends JFrame {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if((Test)testCB.getSelectedItem() != null) {
-					user.setLearningPlan(learningPlans);
 					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user, (LearningPlan)learningPlanCB.getSelectedItem());
 					thisFrame.dispose();
 					window.enable();
@@ -220,6 +213,7 @@ public class SelectWindow extends JFrame {
 		
 		for(LearningPlan plan : learningPlans)
 			learningPlanCB.addItem(plan);
+		user.setLearningPlan(learningPlans);
 		
 		btnStart.setEnabled(false);
 	}
