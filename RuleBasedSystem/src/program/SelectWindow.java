@@ -93,14 +93,8 @@ public class SelectWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//load learning plan(s)
-		LearningPlan userPlan = user.getLearningPlan();
-		if(userPlan == null)
-			learningPlans = FileIO.loadLearningPlans();
-		else {
-			learningPlans = new ArrayList<LearningPlan>();
-			learningPlans.add(userPlan);
-		}
+		//load learning plans
+		learningPlans = FileIO.loadLearningPlans();
 		
 		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
 		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,6 +118,7 @@ public class SelectWindow extends JFrame {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if((Test)testCB.getSelectedItem() != null) {
+					user.setLearningPlan((LearningPlan)learningPlanCB.getSelectedItem());
 					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user);
 					thisFrame.dispose();
 					window.enable();

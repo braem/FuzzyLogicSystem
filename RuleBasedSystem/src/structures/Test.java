@@ -24,7 +24,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private Attempt answerKey;
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
-	private double studentGrade;
+	private double studentGrade = 0.0;
 
 	public Test()
 	{
@@ -50,8 +50,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	
 	public boolean isPassed()
 	{//TODO
-		double mark = Marker.mark(answerKey, studentAttempt);
-		return mark >= passingGrade;
+		return studentGrade >= passingGrade;
 	}
 	
 	@Override
