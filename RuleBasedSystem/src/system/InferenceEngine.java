@@ -6,6 +6,9 @@ import program.ToDoWindow;
 import structures.Goal;
 import structures.LearningPlan;
 
+/**
+ * @author Rhys
+ * */
 
 /*The inference engine performs basic inferences based on rules of the form
  * Antecedent -> Consequent 
