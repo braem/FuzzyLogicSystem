@@ -7,10 +7,7 @@ import structures.Goal;
 import structures.LearningPlan;
 
 /**
- * @author Rhys
- * */
-
-/*The inference engine performs basic inferences based on rules of the form
+ * The inference engine performs basic inferences based on rules of the form
  * Antecedent -> Consequent 
  * OR
  * ComplexAntecedent -> Consequent
@@ -25,7 +22,10 @@ import structures.LearningPlan;
  *performing the indicated inferences, and updating the state of the plan and of
  *the ToDoWindow.  Since the state of the plans is not maintained internally,
  *once a cycle is complete the engine can be disposed of, simplifying application logic.
- */
+ *
+ * @author Rhys
+ * @version 1.0
+ * */
 public class InferenceEngine
 {
 	private WorkingMemory memory;
@@ -33,7 +33,7 @@ public class InferenceEngine
 	private Rule selectedRule;
 	
 	
-	/*
+	/**
 	 * Creates a new InferenceEngine.
 	 * */
 	public InferenceEngine()
@@ -42,7 +42,7 @@ public class InferenceEngine
 		know = new KnowledgeBase();
 	}
 	
-	/*
+	/**
 	 * initializes the InferenceEngine using the provided LearningPlan instance.
 	 * 
 	 * @param lp	A learning plan used to initialize the InferenceEngine
@@ -56,7 +56,7 @@ public class InferenceEngine
 		know.rulesFromPlan(lp);
 	}
 	
-	/*
+	/**
 	 * Performs a single inference cycle through all hypotheses and rules.
 	 * Inference proceeds using the backward chaining approach.
 	 * This was deemed best because the goalstate is known ahead of time.

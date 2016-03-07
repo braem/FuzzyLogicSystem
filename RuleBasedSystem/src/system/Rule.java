@@ -1,17 +1,16 @@
 package system;
 
 /**
+ * Representation for rules of the form Antecedent -> Consequent
  * @author Rhys
- * */
-/*
- * Representation for rules of the form Antecedent -> Consequent 
+ * @version 1.0 
  * */
 public class Rule implements Antecedent, Consequent{
 
 	private Antecedent theLeft;
 	private Consequent theRight;
 	
-	/*
+	/**
 	 * Creates an empty Rule.  Not recommended.
 	 */
 	public Rule()
@@ -20,7 +19,7 @@ public class Rule implements Antecedent, Consequent{
 		theRight=null;
 	}
 	
-	/*
+	/**
 	 * Creates a rule from a given Antecedent and Consequent
 	 * 
 	 * @param	a	An object implementing the Antecedent interface
@@ -32,7 +31,7 @@ public class Rule implements Antecedent, Consequent{
 		setConsequent(c);
 	}
 	
-	/*
+	/**
 	 * Returns this Rule's Antecedent
 	 * 
 	 * @return theLeft	The Antecedent of this Rule.
@@ -41,7 +40,7 @@ public class Rule implements Antecedent, Consequent{
 		return theLeft;
 	}
 	
-	/*
+	/**
 	 * Sets this Rule's Antecedent to the one provided.
 	 * 
 	 * @param theLeft	The provided Antecedent of this Rule.
@@ -50,7 +49,7 @@ public class Rule implements Antecedent, Consequent{
 		this.theLeft = theLeft;
 	}
 	
-	/*
+	/**
 	 * Returns this Rule's Consequent
 	 * 
 	 * @return theRight	The Consequent of this Rule.
@@ -59,7 +58,7 @@ public class Rule implements Antecedent, Consequent{
 		return theRight;
 	}
 	
-	/*
+	/**
 	 * Sets this Rule's Consequent to the one provided.
 	 * 
 	 * @param theRight	The provided Consequent of this Rule.
@@ -68,7 +67,7 @@ public class Rule implements Antecedent, Consequent{
 		this.theRight = theRight;
 	}
 	
-	/*
+	/**
 	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
 	 * */
 	public void evaluate()
@@ -76,7 +75,7 @@ public class Rule implements Antecedent, Consequent{
 		theRight.setSatisfied(theLeft.testAntecedent());
 	}
 	
-	/*
+	/**
 	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
 	 * Returns the value of the consequent (and antecedent).
 	 * @return	<code>true</code> if the Antecedent is true
@@ -88,7 +87,7 @@ public class Rule implements Antecedent, Consequent{
 		return theLeft.testAntecedent();
 	}
 
-	/* 
+	/**
 	 * Overridden from the Consequent interface.
 	 * Sets the satisfied variable to the boolean value provided.
 	 * @param	arg		A boolean argument.
@@ -98,7 +97,7 @@ public class Rule implements Antecedent, Consequent{
 		theRight.setSatisfied(arg);
 	}
 
-	/* 
+	/**
 	 * Overridden from the Consequent interface.
 	 * Returns the value of the satisfied variable
 	 * @return	satisfied		A boolean variable representing the truth value of this consequent.
@@ -108,7 +107,7 @@ public class Rule implements Antecedent, Consequent{
 		return theRight.isSatisfied();
 	}
 
-	/* 
+	/**
 	 * Overridden from the Antecedent interface.
 	 * Returns the value obtained by testing this Rule's Antecedent.
 	 * @return	<code>true</code> if the Antecedent is true

@@ -3,10 +3,10 @@ package system;
 import java.util.ArrayList;
 
 /**
- * @author Rhys
- * */
-/*
  * A place to hold hypotheses and rules for use by the InferenceEngine.
+ * 
+ * @author Rhys
+ * @version 1.0
  */
 
 public class WorkingMemory {
@@ -14,7 +14,7 @@ public class WorkingMemory {
 	ArrayList<Rule> rules;
 	String name;
 
-	/*
+	/**
 	 * Creates a new working memory.
 	 */
 	public WorkingMemory()
@@ -23,7 +23,7 @@ public class WorkingMemory {
 		setRules( new ArrayList<Rule>() );
 	}
 	
-	/*
+	/**
 	 *Creates a new working memory from a provided ArrayList<T> where T implements the Consequent interface.
 	 *
 	 * @param	h	An ArrayList of Consequents.
@@ -34,7 +34,7 @@ public class WorkingMemory {
 		setRules( new ArrayList<Rule>() );
 	}
 	
-	/*
+	/**
 	 * Sets hypotheses to the provided ArrayList<T> where T implements the Consequent interface.
 	 * 
 	 * @param	h	An ArrayList of Consequents.
@@ -44,7 +44,7 @@ public class WorkingMemory {
 		hypotheses = h;
 	}
 	
-	/*
+	/**
 	 * Sets rules to the provided ArrayList of Rules.
 	 * 
 	 * @param	r	An ArrayList of Rules.
@@ -54,7 +54,7 @@ public class WorkingMemory {
 		rules = r;
 	}
 	
-	/*
+	/**
 	 * Sets the name of this WorkingMemory to the provided String.
 	 * 
 	 * @param	n	A String
@@ -64,7 +64,7 @@ public class WorkingMemory {
 		name = n;
 	}
 	
-	/*
+	/**
 	 * Returns the name of this WorkingMemory
 	 * 
 	 * @return name		A String
@@ -75,7 +75,7 @@ public class WorkingMemory {
 	}
 	
 	
-	/*
+	/**
 	 * Returns the list of hypotheses maintained by this WorkingMemory
 	 * 
 	 * @return hypotheses	An ArrayList<T> where T implements the Consequent interface.
@@ -85,7 +85,7 @@ public class WorkingMemory {
 		return hypotheses;
 	}
 	
-	/*
+	/**
 	 * Returns the list of Rules maintained by this WorkingMemory
 	 * 
 	 * @return rules	An ArrayList of Rules.
@@ -95,7 +95,7 @@ public class WorkingMemory {
 		return rules;
 	}
 	
-	/*
+	/**
 	 * Adds a Consequent to the list of hypotheses maintained by this WorkingMemory if it is not already present.
 	 * @param  c		A Consequent
 	 * @return rules	An ArrayList of Rules
@@ -105,7 +105,7 @@ public class WorkingMemory {
 		if(!hypotheses.contains(c)) hypotheses.add(c);
 	}
 	
-	/*
+	/**
 	 * Determines if a Consequent is already a member of this WorkingMemory's hypotheses.
 	 * 
 	 * @param  c					A Consequent
@@ -117,7 +117,7 @@ public class WorkingMemory {
 		return hypotheses.contains(c);
 	}
 	
-	/*
+	/**
 	 * Determines if a Rule is already a member of this WorkingMemory's rules.
 	 * 
 	 * @param  c					A Rule
@@ -129,7 +129,7 @@ public class WorkingMemory {
 		return rules.contains(r);
 	}
 	
-	/*
+	/**
 	 * Returns the name of this WorkingMemory
 	 * Overrides the toString() method inherited from Object.
 	 * 

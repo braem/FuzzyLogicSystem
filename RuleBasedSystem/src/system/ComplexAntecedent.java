@@ -2,21 +2,18 @@ package system;
 
 import java.util.ArrayList;
 
-import structures.Goal;
-
 /**
- *@author Rhys 
  * An antecedent comprised of multiple conjunctively (logical AND) joined antecedents.
+ * 
+ * @author Rhys
+ * @verion 1.0 
  **/
 
-/*
- * 
- * */
 public class ComplexAntecedent implements Antecedent{
 	
 	private ArrayList<? extends Antecedent> antecedents;
 	
-	/*
+	/**
 	 * Creates an empty ComplexAntecedent.  Not recommended.
 	 */
 	public ComplexAntecedent()
@@ -24,7 +21,7 @@ public class ComplexAntecedent implements Antecedent{
 		antecedents = null;
 	}
 	
-	/*
+	/**
 	 *	Creates a ComplexAntecedent from an ArrayList<T> where T implements the Antecedent interface
 	 *	@param a	A list of Antecedents. 
 	 */
@@ -33,7 +30,7 @@ public class ComplexAntecedent implements Antecedent{
 		setAntecedents(a);
 	}
 	
-	/*
+	/**
 	 *	Sets antecedents to a given ArrayList<T> where T implments the Antecedent interface.
 	 *	@param a	A list of Antecedents. 
 	 */
@@ -42,7 +39,7 @@ public class ComplexAntecedent implements Antecedent{
 		antecedents = a;
 	}
 	
-	/*
+	/**
 	 *	Returns the list of antecedents.
 	 *	@return antecedents 	The list of Antecedents in this ComplexAntecedent. 
 	 */
@@ -51,7 +48,7 @@ public class ComplexAntecedent implements Antecedent{
 		return antecedents;
 	}
 	
-	/*
+	/**
 	 * From Antecedent interface.  Tests the Antecedents that make up this ComplexAntecedent.
 	 * @return <code>true</code> if all Antecedents are true.
 	 *         <code>false</code> if not all Antecedents are true.
@@ -61,9 +58,9 @@ public class ComplexAntecedent implements Antecedent{
 		return testAntecedents();
 	}
 	
-	/*
+	/**
 	 * Tests the Antecedents that make up this ComplexAntecedent.
-	 *@return <code>true</code> if all Antecedents are true.
+	 * @return <code>true</code> if all Antecedents are true.
 	 *        <code>false</code> if not all Antecedents are true.
 	 */
 	public boolean testAntecedents()
@@ -77,6 +74,4 @@ public class ComplexAntecedent implements Antecedent{
 		
 		return answer;
 	}
-
-	
 }
