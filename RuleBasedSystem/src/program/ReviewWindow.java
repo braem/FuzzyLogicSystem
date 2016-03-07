@@ -124,17 +124,10 @@ public class ReviewWindow extends JFrame {
 					else
 						tableContentsOops[i][m] = studentNAnswers.get(m);
 				else if(i==3)
-					if(m >= normalKey.size())
-						if(normalKey.get(m).equals(studentNAnswers.get(m)))
-							tableContentsOops[i][m] = "✓";
-						else
-							tableContentsOops[i][m] = "x";
+					if(normalKey.get(m).equals(studentNAnswers.get(m)))
+						tableContentsOops[i][m] = 'o';
 					else
-						if(bonusKey.size() > 0)
-							if(bonusKey.get(m).equals(studentBAnswers.get(m)))
-								tableContentsOops[i][m] = "✓";
-							else
-								tableContentsOops[i][m] = "x";
+						tableContentsOops[i][m] = 'x';
 				else
 					if(m >= normalKey.size())
 						tableContentsOops[i][m] = "Bonus";
@@ -152,7 +145,7 @@ public class ReviewWindow extends JFrame {
 		table.setModel(new DefaultTableModel(tableContents, titles) {
 			private static final long serialVersionUID = -1842128243407165869L;
 			Class[] columnTypes = new Class[] {
-				Integer.class, AnswerValue.class, AnswerValue.class, String.class, String.class
+				Integer.class, AnswerValue.class, AnswerValue.class, Character.class, String.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
