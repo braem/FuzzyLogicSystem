@@ -213,7 +213,8 @@ public class SelectWindow extends JFrame {
 		
 		for(LearningPlan plan : learningPlans)
 			learningPlanCB.addItem(plan);
-		user.setLearningPlan(learningPlans);
+		if(user.getLearningPlan() == null)
+			user.setLearningPlan(learningPlans);
 		
 		btnStart.setEnabled(false);
 	}
