@@ -50,88 +50,69 @@ public class InferenceEngine
 						
 						r.evaluate();// check conditions of R
 						
-						if(r.isSatisfied())//If R is satisfied, then the antecedents must be true, and so can be added as facts to working memory.
+						if(r.getAntecedent() instanceof ComplexAntecedent)//If the antecedent is complex, deal with individual antecedents separately.
 						{
-							
-							if(r.getAntecedent() instanceof ComplexAntecedent)//If the antecedent is complex, add individual antecedents separately.
+							ComplexAntecedent compAnt = (ComplexAntecedent) r.getAntecedent();
+							for(Antecedent ant : compAnt.getAntecedents())
 							{
-								ComplexAntecedent compAnt = (ComplexAntecedent) r.getAntecedent();
-								for(Antecedent ant : compAnt.getAntecedents())
-								{
-									if(!hyps.contains((Consequent) ant)) hyps.add((Consequent) ant);
-									if(ant instanceof Goal)
-									{ //ToDo List holds unsatisfied goals, so remove satisfied goal from list.
-									 try{ ToDoWindow.removeGoal((Goal) ant);}
-									catch(Exception e){}
-									}
-								}
-							}
-							else
-							{
-								Antecedent ant = r.getAntecedent();
 								if(!hyps.contains((Consequent) ant)) hyps.add((Consequent) ant);
-								hyps.add((Consequent) ant);
 								if(ant instanceof Goal)
-								{ //ToDo List holds unsatisfied goals, so remove satisfied goal from list.
-								 try{ ToDoWindow.removeGoal((Goal) ant);}
-								catch(Exception e){}
-								}
-							}
-							
-							//Since the antecedents are satisfied, the consequent is also satisfied, so it can be added as a fact.
-							Consequent cons = r.getConsequent();
-							if(!hyps.contains(cons))hyps.add(r.getConsequent());
-						}
-						else//Since this rule has not been satisfied ...
-						{
-							if(r.getAntecedent() instanceof ComplexAntecedent)//If the antecedent is complex, add individual antecedents separately.
-							{
-								ComplexAntecedent compAnt = (ComplexAntecedent) r.getAntecedent();
-								for(Antecedent ant : compAnt.getAntecedents())
-								{
-//									if(!ant.testAntecedent())
-//									{
-										//Add antecedent to hypotheses
-										
-									if(!hyps.contains((Consequent) ant)) hyps.add((Consequent) ant);
-										
-										//Add antecedent to to-do list
-										
-										//ToDo List holds unsatisfied goals, so add unsatisfied goal to list, but don't duplicate goals.
-										if(ant instanceof Goal && !ToDoWindow.hasGoal((Goal)ant))
-										{ //ToDo List holds unsatisfied goals, so add unsatisfied goal to list.
-										 try{ ToDoWindow.addGoal((Goal) ant);}
-										catch(Exception e){}
-										}
-									//}
-									  
-								}
-							}
-							else
-							{
-								Antecedent ant = r.getAntecedent();
-//								if(!ant.testAntecedent())
-//								{
-									//Add antecedent to hypotheses
-										
-									if(!hyps.contains((Consequent) ant)) hyps.add((Consequent) ant);
-									
-									//Add antecedent to to-do list
-									
-									//ToDo List holds unsatisfied goals, so add unsatisfied goal to list, but don't duplicate goals.
-									
-									if(ant instanceof Goal && !ToDoWindow.hasGoal((Goal) ant))
-									{ //ToDo List holds unsatisfied goals, so add unsatisfied goal to list.
-									 try{ ToDoWindow.addGoal((Goal) ant);}
-									catch(Exception e){}
+								{ 
+									Goal goal = (Goal) ant;
+
+									if(goal.isSatisfied() && ToDoWindow.hasGoal(goal))//If goal is satisfied try to remove it from the todoList.
+									{
+										 try{ ToDoWindow.removeGoal(goal);}
+											catch(Exception e){System.out.println(e);}
+											
 									}
-								//}
+									else if(!goal.isSatisfied() && !ToDoWindow.hasGoal(goal))//If the goal is unsatisfied, add it to todoList.
+									{
+										 try{ ToDoWindow.addGoal(goal);}
+										 catch(Exception e){System.out.println(e);}
+									}
+								}
+									
+
 							}
-							
-							//Also need to add the consequent to the toDoList if it's a Goal.
-							Consequent cons = r.getConsequent();
-							if(cons instanceof Goal && !ToDoWindow.hasGoal((Goal) cons)) ToDoWindow.addGoal((Goal)cons);
 						}
+						else
+						{
+							Antecedent ant = r.getAntecedent();
+							if(!hyps.contains((Consequent) ant)) hyps.add((Consequent) ant);
+							hyps.add((Consequent) ant);
+							
+							if(ant instanceof Goal)
+							{ 
+								Goal goal = (Goal) ant;
+
+									if(goal.isSatisfied() && ToDoWindow.hasGoal(goal))//If goal is satisfied try to remove it from the todoList.
+									{
+										 try{ ToDoWindow.removeGoal(goal);}
+											catch(Exception e){System.out.println(e);}
+											
+									}
+									else if(!goal.isSatisfied() && !ToDoWindow.hasGoal(goal))//If the goal is unsatisfied, add it to todoList.
+									{
+										 try{ ToDoWindow.addGoal(goal);}
+										 catch(Exception e){System.out.println(e);}
+									}
+							
+							}
+						}
+						
+						
+						if(r.getConsequent() instanceof Goal)
+						{
+							Goal goal = (Goal) r.getConsequent();
+
+							//Satisfied goals on the consequent side should be removed from the to do list.
+							//Unsatisfied goals on the consequent side should be added to to do list if they aren't already there.
+							if(r.isSatisfied()) ToDoWindow.removeGoal((Goal) goal);
+							else if(!ToDoWindow.hasGoal(goal)) ToDoWindow.addGoal(goal);
+						
+						}
+
 
 					}
 				}

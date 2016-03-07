@@ -1,6 +1,4 @@
-/system/
-/structures/
-/program/
 /file_io/
-/org/
-/builder/
+/program/
+/structures/
+/system/
