@@ -164,8 +164,8 @@ public class TestWindow extends JFrame
 						progressBar.setValue(progressBar.getValue()+1);
 					normalAnswers.set(q-1, ans);
 				}
-				//go to the next question
-				if(questionSelectCB.getSelectedIndex() != questionSelectCB.getMaximumRowCount()+1)
+				//go to the next question				
+				if(questionSelectCB.getSelectedIndex() != questionSelectCB.getItemCount() - 1)//questionSelectCB.getMaximumRowCount()+1)
 					questionSelectCB.setSelectedIndex(questionSelectCB.getSelectedIndex()+1);
 			}
 		});
