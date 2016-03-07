@@ -21,6 +21,13 @@ import java.util.HashSet;
 import java.awt.event.ActionEvent;
 import java.awt.List;
 
+
+/**
+ * 
+ * @author braem
+ *
+ * Window for selecting a learning plan, goal and test to do
+ */
 public class SelectWindow extends JFrame {
 
 	/**
