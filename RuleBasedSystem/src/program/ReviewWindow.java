@@ -35,12 +35,13 @@ import java.awt.event.ActionEvent;
  * 
  * @author braem
  *
+ * Window for the user to review their mark on the test they just took
+ * Shows each question and the correct answer
+ * 
+ * Also where the marking takes place
  */
-public class ReviewWindow extends JFrame {
-
-	/**
-	 * 
-	 */
+public class ReviewWindow extends JFrame
+{
 	private static final long serialVersionUID = -1202080739655736067L;
 	private JFrame thisFrame = this;
 	private JTextField percentTF;
@@ -62,6 +63,7 @@ public class ReviewWindow extends JFrame {
 		});
 	}
 	
+	//enable this window
 	public void enable() {
 		this.setVisible(true);
 	}
@@ -82,7 +84,7 @@ public class ReviewWindow extends JFrame {
 	}
 	
 	private void setup(JPanel contentPane, Test test, Attempt userAttempt, User user, LearningPlan currentPlan) {
-		boolean bestGradeOnThisTest = false;
+		boolean bestGradeOnThisTest = false; //potential future use
 		
 		//grade this test
 		double percentGrade = Marker.mark(test.getAnswerKey(), userAttempt);
@@ -107,29 +109,35 @@ public class ReviewWindow extends JFrame {
 		String[] titles = {"Question", "Answer", "Attempted Answer", "Correct", "isBonus"}; //column titles
 		Object[][] tableContentsOops = new Object[5][normalQuestions.size()+bonusQuestions.size()];
 		for(int i=0; i<tableContentsOops.length; i++)//row
-			for(int m=0; m<tableContentsOops[i].length; m++)//col
+			for(int j=0; j<tableContentsOops[i].length; j++)//col
 				if(i==0)
-					tableContentsOops[i][m] = m+1;
+					tableContentsOops[i][j] = j+1;
 				else if(i==1)
-					if(m >= normalKey.size())
-						tableContentsOops[i][m] = bonusKey.get(m-normalKey.size());
+					if(j >= normalKey.size())
+						tableContentsOops[i][j] = bonusKey.get(j-normalKey.size());
 					else
-						tableContentsOops[i][m] = normalKey.get(m);
+						tableContentsOops[i][j] = normalKey.get(j);
 				else if(i==2)
-					if(m >= normalKey.size())
-						tableContentsOops[i][m] = studentBAnswers.get(m-normalKey.size());
+					if(j >= normalKey.size())
+						tableContentsOops[i][j] = studentBAnswers.get(j-normalKey.size());
 					else
-						tableContentsOops[i][m] = studentNAnswers.get(m);
+						tableContentsOops[i][j] = studentNAnswers.get(j);
 				else if(i==4)
-					if(m >= normalKey.size())
-						tableContentsOops[i][m] = new String("Bonus");
+					if(j >= normalKey.size())
+						tableContentsOops[i][j] = new String("Bonus");
 					else
-						tableContentsOops[i][m] = new String("");
+						tableContentsOops[i][j] = new String("");
 				else
-					if(normalKey.get(m) == studentNAnswers.get(m))
-						tableContentsOops[i][m] = new Character('o');
+					if(j >= normalKey.size())
+						if(bonusKey.get(j) == studentBAnswers.get(j))
+							tableContentsOops[i][j] = new Character('o');
+						else
+							tableContentsOops[i][j] = new Character('x');
 					else
-						tableContentsOops[i][m] = new Character('x');
+						if(normalKey.get(j) == studentNAnswers.get(j))
+							tableContentsOops[i][j] = new Character('o');
+						else
+							tableContentsOops[i][j] = new Character('x');
 		Object[][] tableContents = new Object[normalQuestions.size()+bonusQuestions.size()][5];
 		//just switching rows/columns
 		for(int i=0; i<tableContentsOops.length; i++)//row

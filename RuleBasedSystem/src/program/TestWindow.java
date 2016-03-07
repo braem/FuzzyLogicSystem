@@ -29,6 +29,11 @@ import java.awt.event.ActionEvent;
  * 
  * @author braem
  *
+ * Window for taking a test
+ * Consists of a drop down menu for students answer,
+ * drop down menu for current question, a lock button to lock the
+ * answer to the question, and a progress bar on how far complete 
+ * the test is
  */
 public class TestWindow extends JFrame
 {
