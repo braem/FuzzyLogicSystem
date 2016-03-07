@@ -5,9 +5,19 @@ import java.util.ArrayList ;
 import file_io.FileIO ;
 import structures.*;
 
+/**
+ * Builds learning plans.
+ * 
+ * @author Lukas Pihl
+ * @version 1.0
+ */
 public class PlanBuilder
 {
-   
+   /**
+    * Main method.
+    * 
+    * @param args       List of arguments. Not used.
+    */
    public static void main(String[] args)
    {
       buildPlan1();
@@ -16,6 +26,10 @@ public class PlanBuilder
       buildPlan4();
    }
    
+   /**
+    * Builds Integer Plan
+    */
+   @SuppressWarnings("unused")
    private static void buildPlan1()
    {
       ArrayList<Question> nq;
@@ -540,6 +554,10 @@ public class PlanBuilder
       FileIO.writeLearningPlan(p);
    }
    
+   /**
+    * Builds Fraction plan
+    */
+   @SuppressWarnings("unused")
    private static void buildPlan2()
    {
       ArrayList<Question> nq;
@@ -1118,6 +1136,10 @@ public class PlanBuilder
       FileIO.writeLearningPlan(p);
    }
    
+   /**
+    * Builds Decimal Plan
+    */
+   @SuppressWarnings("unused")
    private static void buildPlan3()
    {
       ArrayList<Question> nq;
@@ -1593,6 +1615,10 @@ public class PlanBuilder
       FileIO.writeLearningPlan(p);
    }
    
+   /**
+    * Builds Testing Plan
+    */
+   @SuppressWarnings("unused")
    private static void buildPlan4()
    {
       ArrayList<Question> nq;
