@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.awt.event.ActionEvent;
 import java.awt.List;
 
@@ -36,7 +37,7 @@ public class SelectWindow extends JFrame {
 	private JLabel lblSelectAGoal;
 	private JLabel lblSelectATest;
 	private List prereqList;
-	private ArrayList<LearningPlan> learningPlans;
+	private HashSet<LearningPlan> learningPlans;
 
 	/**
 	 * Launch the application.
@@ -121,8 +122,8 @@ public class SelectWindow extends JFrame {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if((Test)testCB.getSelectedItem() != null) {
-					user.setLearningPlan((LearningPlan)learningPlanCB.getSelectedItem());
-					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user);
+					user.setLearningPlan(learningPlans);
+					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user, (LearningPlan)learningPlanCB.getSelectedItem());
 					thisFrame.dispose();
 					window.enable();
 				}
@@ -210,14 +211,8 @@ public class SelectWindow extends JFrame {
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
 		
-		//fill the comboboxes
-		if(user.getLearningPlan() != null) {
-			learningPlanCB.addItem(user.getLearningPlan());
-			learningPlanCB.setSelectedIndex(0);
-		}
-		else
-			for(LearningPlan plan : learningPlans)
-				learningPlanCB.addItem(plan);
+		for(LearningPlan plan : learningPlans)
+			learningPlanCB.addItem(plan);
 		
 		btnStart.setEnabled(false);
 	}

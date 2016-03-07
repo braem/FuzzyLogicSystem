@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import structures.*;
 
@@ -18,8 +19,8 @@ public class FileIO
 {
 	private static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
 	
-	public static ArrayList<LearningPlan> loadLearningPlans() {
-		ArrayList<LearningPlan> learningPlans = new ArrayList<LearningPlan>();
+	public static HashSet<LearningPlan> loadLearningPlans() {
+		HashSet<LearningPlan> learningPlans = new HashSet<LearningPlan>();
 		ArrayList<String> fileNamesInFolder = getFileNamesInDir();
 		for(String learningPlanStr : fileNamesInFolder) {
 			try {

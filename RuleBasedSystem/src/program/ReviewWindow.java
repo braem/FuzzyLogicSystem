@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import structures.AnswerValue;
 import structures.Attempt;
+import structures.LearningPlan;
 import structures.Marker;
 import structures.Question;
 import structures.Test;
@@ -50,7 +51,7 @@ public class ReviewWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReviewWindow frame = new ReviewWindow(null, null, null);
+					ReviewWindow frame = new ReviewWindow(null, null, null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +67,7 @@ public class ReviewWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReviewWindow(Test test, Attempt userAttempt, User user) {
+	public ReviewWindow(Test test, Attempt userAttempt, User user, LearningPlan currentPlan) {
 		setTitle(test.getTestName()+" Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 348, 479);
@@ -83,7 +84,7 @@ public class ReviewWindow extends JFrame {
 		if(test.getStudentGrade() < percentGrade) {
 			bestGradeOnThisTest = true;
 			InferenceEngine iE = new InferenceEngine();
-			iE.init(user.getLearningPlan());
+			iE.init(currentPlan);
 			iE.inferenceCycle();
 			test.setStudentAttempt(userAttempt);
 			test.setStudentGrade(percentGrade);
