@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import structures.Goal;
 import structures.LearningPlan;
 
+/**
+ * @author Rhys
+ * */
+
+/*
+ * The KnowledgeBase stores Rules for use by an InferenceEngine.
+ * */
+
 public class KnowledgeBase {
 	private ArrayList<Rule> rules;
 	private String name;
@@ -45,6 +53,12 @@ public class KnowledgeBase {
 		return rules;
 	}
 	
+	/*
+	 * This method allows the KnowledgeBase to create a rule based representation of the state
+	 * of a user's current learning plan on demand.  It is assumed that if you want a new knowledge
+	 * base with only one plan in it, then you will use a new InferenceEngine.  Otherwise, plans
+	 * stack in the knowledge base.
+	 */
 	public void rulesFromPlan(LearningPlan plan)
 	{
 		
