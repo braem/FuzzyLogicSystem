@@ -94,6 +94,15 @@ public class SelectWindow extends JFrame {
 		
 		InferenceEngine iE = new InferenceEngine();
 		
+		//load learning plans
+		if(user.getLearningPlan() == null) {
+			learningPlans = FileIO.loadLearningPlans();
+			user.setLearningPlan(learningPlans);
+		}
+		else {
+			learningPlans = user.getLearningPlan();
+		}
+		
 		//create todo list
 		ToDoWindow w = new ToDoWindow();
 		w.enable();
@@ -208,15 +217,8 @@ public class SelectWindow extends JFrame {
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
 		
-		//load learning plans
-		if(user.getLearningPlan() == null) {
-			learningPlans = FileIO.loadLearningPlans();
-			user.setLearningPlan(learningPlans);
-		}
-		else {
-			learningPlans = user.getLearningPlan();
-		}
-		
+		for(LearningPlan plan : learningPlans) 
+			learningPlanCB.addItem(plan);
 		btnStart.setEnabled(false);
 	}
 }
