@@ -25,11 +25,13 @@ import javax.swing.JProgressBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TestWindow extends JFrame {
-
-	/**
-	 * 
-	 */
+/**
+ * 
+ * @author braem
+ *
+ */
+public class TestWindow extends JFrame
+{
 	private static final long serialVersionUID = -3174576884030367218L;
 	private JPanel contentPane;
 	private JFrame thisFrame = this;
@@ -43,9 +45,7 @@ public class TestWindow extends JFrame {
 	private JProgressBar progressBar;
 	private JButton btnSubmit;
 	
-	/**
-	 * Launch the application.
-	 */
+	/* test the window */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,10 +59,12 @@ public class TestWindow extends JFrame {
 		});
 	}
 	
+	//enable this window
 	public void enable() {
 		this.setVisible(true);
 	}
 	
+	//get the corresponding question from the integer
 	private Question intToQuestion(int q) {
 		Question question;
 		try {
@@ -84,21 +86,26 @@ public class TestWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		//get the questions
 		normalQuestions = test.getNormalQuestions();
 		bonusQuestions = test.getBonusQuestions();
 		bonusAnswers = new ArrayList<AnswerValue>();
 		normalAnswers = new ArrayList<AnswerValue>();
+		//ensure capacity
 		for(int i=0; i<normalQuestions.size(); i++)
 			normalAnswers.add(null);
 		for(int i=0; i<bonusAnswers.size(); i++)
 			bonusAnswers.add(null);
 		
+		//text area for the questions to go in
 		questionTA = new JTextArea();
 		questionTA.setLineWrap(true);
 		questionTA.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		questionTA.setBounds(15, 16, 295, 160);
 		contentPane.add(questionTA);
 		
+		//drop down menu for the multiple choice answer
 		answerCB = new JComboBox<AnswerValue>();
 		answerCB.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		answerCB.setBounds(15, 192, 56, 26);
@@ -106,6 +113,7 @@ public class TestWindow extends JFrame {
 		for(AnswerValue ansVal : AnswerValue.values())
 			answerCB.addItem(ansVal);
 		
+		//select which question you want to do
 		questionSelectCB = new JComboBox<Integer>();
 		questionSelectCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
@@ -116,25 +124,28 @@ public class TestWindow extends JFrame {
 		questionSelectCB.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		questionSelectCB.setBounds(254, 192, 56, 26);
 		contentPane.add(questionSelectCB);
+		//add question numbers
 		for(int i=1; i<=normalQuestions.size()+bonusQuestions.size(); i++) 
 			questionSelectCB.addItem(i);
 		
 		JButton btnLockAnswer = new JButton("Lock Answer");
 		btnLockAnswer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//get selected question integer
 				int q = (Integer)questionSelectCB.getSelectedItem();
+				//get answer to question
 				AnswerValue ans = (AnswerValue)answerCB.getSelectedItem();
 				if(q > normalQuestions.size()) {
 					bonusAnswers.set(normalQuestions.size()-q-1, ans);
 				}
 				else {
+					//increment progressbar on normal question answers
 					if(normalAnswers.get(q-1) == null)
 						progressBar.setValue(progressBar.getValue()+1);
 					normalAnswers.set(q-1, ans);
 				}
-				if(questionSelectCB.getSelectedIndex() == questionSelectCB.getMaximumRowCount()+1)
-					questionSelectCB.setSelectedIndex(0);
-				else 
+				//go to the next question
+				if(questionSelectCB.getSelectedIndex() != questionSelectCB.getMaximumRowCount()+1)
 					questionSelectCB.setSelectedIndex(questionSelectCB.getSelectedIndex()+1);
 			}
 		});
@@ -142,8 +153,8 @@ public class TestWindow extends JFrame {
 		btnLockAnswer.setBounds(86, 191, 153, 29);
 		contentPane.add(btnLockAnswer);
 		
+		//progress bar for test completion
 		progressBar = new JProgressBar();
-		
 		progressBar.setBounds(15, 229, 295, 14);
 		progressBar.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent evt) {
@@ -155,6 +166,7 @@ public class TestWindow extends JFrame {
 		progressBar.setMinimum(0);
 		progressBar.setMaximum(normalQuestions.size());
 		
+		//submit the test for review (marking)
 		btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

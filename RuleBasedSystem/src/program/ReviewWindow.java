@@ -17,7 +17,6 @@ import system.InferenceEngine;
 
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -49,9 +48,7 @@ public class ReviewWindow extends JFrame {
 	private JTable table;
 	private JButton btnTakeAnotherTest;
 
-	/**
-	 * Launch the application.
-	 */
+	/* test the window */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

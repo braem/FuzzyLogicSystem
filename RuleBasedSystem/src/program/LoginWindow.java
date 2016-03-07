@@ -20,11 +20,14 @@ import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class LoginWindow extends JFrame {
-
-	/**
-	 * 
-	 */
+/**
+ * 
+ * @author braem
+ *
+ * Window to authenticate the user & load all their info
+ */
+public class LoginWindow extends JFrame 
+{
 	private static final long serialVersionUID = -5552083409696846055L;
 	private JFrame thisFrame = this;
 	private JPanel contentPane;
@@ -32,9 +35,7 @@ public class LoginWindow extends JFrame {
 	private JTextField lastNameTF;
 	private JLabel lblInvalidName;
 
-	/**
-	 * Launch the application.
-	 */
+	/* test the window */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,13 +49,16 @@ public class LoginWindow extends JFrame {
 		});
 	}
 
+	//enable this window
 	public void enable() {
 		this.setVisible(true);
 	}
 	
+	//login
 	private void login() {
 		String firstName = null;
 		String lastName = null;
+		//restrict firstname
 		if(firstNameTF.getText().matches("[A-Z][a-z]+")) {
 			lblInvalidName.setVisible(false);
 			firstName = firstNameTF.getText();
@@ -63,6 +67,7 @@ public class LoginWindow extends JFrame {
 			lblInvalidName.setVisible(true);
 			return;
 		}
+		//restrict lastname
 		if(lastNameTF.getText().matches("[A-Z][a-z]+")) {	
 			lblInvalidName.setVisible(false);
 			lastName = lastNameTF.getText();
@@ -88,6 +93,8 @@ public class LoginWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		//responds on enter key & attempts login
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -96,16 +103,17 @@ public class LoginWindow extends JFrame {
 			}
 		});
 		
+		//labels
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblFirstName.setBounds(10, 11, 81, 17);
 		contentPane.add(lblFirstName);
-		
 		JLabel lblLastName = new JLabel("Last Name:");
 		lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblLastName.setBounds(10, 39, 81, 17);
 		contentPane.add(lblLastName);
 		
+		//first name text field
 		firstNameTF = new JTextField();
 		firstNameTF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		firstNameTF.setBounds(101, 11, 122, 20);
@@ -113,18 +121,19 @@ public class LoginWindow extends JFrame {
 		firstNameTF.setColumns(10);
 		firstNameTF.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent arg0) {
+			public void keyPressed(KeyEvent arg0) { //respond on enter key
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
 					login();
 			}
 		});
 		
+		//last name text field
 		lastNameTF = new JTextField();
 		lastNameTF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lastNameTF.setBounds(101, 39, 122, 20);
 		contentPane.add(lastNameTF);
 		lastNameTF.setColumns(10);
-		lastNameTF.addKeyListener(new KeyAdapter() {
+		lastNameTF.addKeyListener(new KeyAdapter() { //respond on enter key
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
@@ -132,13 +141,14 @@ public class LoginWindow extends JFrame {
 			}
 		});
 		
+		//login button
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				login();
 			}
 		});
-		btnLogin.addKeyListener(new KeyAdapter() {
+		btnLogin.addKeyListener(new KeyAdapter() { //respond on enter key
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
@@ -149,6 +159,7 @@ public class LoginWindow extends JFrame {
 		btnLogin.setBounds(76, 67, 89, 32);
 		contentPane.add(btnLogin);
 		
+		//error label
 		lblInvalidName = new JLabel("invalid name");
 		lblInvalidName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInvalidName.setForeground(Color.RED);
