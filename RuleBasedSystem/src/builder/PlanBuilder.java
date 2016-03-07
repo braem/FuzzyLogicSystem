@@ -1644,11 +1644,57 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "Test 1\nAnswer A";
+      s = "Round 127 to the nearest ten.\n\n"
+            + "a) 128\tb) 120\tc) 130\td) 100\ne) 200\tf) 127\tg) 125)";
+      nq.add(new Question(s, AnswerValue.C, false));
+      na.add(AnswerValue.C);
+      s = "Round 222 to the nearest hundred.\n\n"
+            + "a) 220\tb) 230\tc) 300\td) 350\ne) 200\tf) 222\tg) 225)";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Solve for x\n|4| = x\n\n"
+            +"a) 0\tb) 1\tc) -4\td) -1\ne) 5\tf) 3\tg) 4";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n|-5| = x\n\n"
+            +"a) 0\tb) 1\tc) -4\td) -1\ne) 5\tf) 3\tg) 4";
+      nq.add(new Question(s, AnswerValue.E, false));
+      na.add(AnswerValue.E);
+      s = "Solve for x\n-|3| = x\n\n"
+            +"a) 3\tb) 1\tc) -3\td) -1\ne) 0\tf) -4\tg) 4";
+      nq.add(new Question(s, AnswerValue.C, false));
+      na.add(AnswerValue.C);
+      a = new Attempt(na);
+      t.add(new Test("Test 1-1", nq, a));
+      
+      //Test 1-2
+      nq = new ArrayList<Question>();
+      bq = new ArrayList<Question>();
+      na = new ArrayList<AnswerValue>();
+      ba = new ArrayList<AnswerValue>();
+      s = "Solve for x\n1 + 1 = x\n\n"
+            +"a) 2\tb) 3\tc) 11\td) 0\ne) 1\tf) 7\tg) 10";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
+      s = "Solve for x\n21 + 13 = x\n\n"
+            +"a) 55\tb) 8\tc) 2113\td) 34\ne) 33\tf) 43\tg) 39";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n987 + 1 + 126 = x\n\n"
+            +"a) 1,280\tb) 1,124\nc) 988\t\td) 1,111\ne) 860\t\tf) 1,114\ng) 1278";
+      nq.add(new Question(s, AnswerValue.F, false));
+      na.add(AnswerValue.F);
+      s = "Solve for x\n12,752 + 578 + 98 = x\n\n"
+            +"a) 13,512\tb) 13,428\nc) 13,330\td) 12,076\ne) 15,978\tf) 13,131\ng) 13,031";
+      nq.add(new Question(s, AnswerValue.B, false));
+      na.add(AnswerValue.B);
+      s = "Solve for x\n5 + 55 + 555 + 5,555 + 55,555 = x\n\n"
+            +"a) 50,000\tb) 60,000\nc) 65,432\td) 55,555\ne) 61,725\tf) -5\ng) 555,555";
+      nq.add(new Question(s, AnswerValue.E, false));
+      na.add(AnswerValue.E);
       a = new Attempt(na);
-      t.add(new Test("Test 1", nq, a));
+      t.add(new Test("Test 1-2", nq, a));
+      
       
       g.add(new Goal(null, t, false, "Goal 1"));
       
@@ -1660,11 +1706,29 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "Test 2\nAnswer B";
-      nq.add(new Question(s, AnswerValue.B, false));
-      na.add(AnswerValue.B);
+      s = "Solve for x\n1 - 1 = x\n\n"
+            +"a) 1\tb) -1\tc) 2\td) -2\ne) 11\tf) -11\tg) 0";
+      nq.add(new Question(s, AnswerValue.G, false));
+      na.add(AnswerValue.G);
+      s = "Solve for x\n3 - 5 = x\n\n"
+            +"a) 1\tb) -1\tc) 2\td) -2\ne) 0\tf) 8\tg) -8";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n87 - 32 = x\n\n"
+            +"a) 55\tb) -55\tc) 119\td) -119\ne) 8\tf) 17\tg) 0";
+      nq.add(new Question(s, AnswerValue.A, false));
+      na.add(AnswerValue.A);
+      s = "Solve for x\n-58 - 78 = x\n\n"
+            +"a) 136\tb) 58\tc) -78\td) -136\ne) 245\tf) 98\tg) 0";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      s = "Solve for x\n-77 - (-23) = x\n\n"
+            +"a) 36\tb) -47\tc) -68\td) -54\ne) -88\tf) -124\tg) 7";
+      nq.add(new Question(s, AnswerValue.D, false));
+      na.add(AnswerValue.D);
+      
       a = new Attempt(na);
-      t.add(new Test("Test 2", nq, a));
+      t.add(new Test("Test 2-1", nq, a));
       
       g.add(new Goal(null, t, false, "Goal 2"));
       pr.add(new PreReq(g.get(0), g.get(1), "PREREQ STRING TEST"));
