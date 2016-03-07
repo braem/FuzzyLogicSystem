@@ -27,22 +27,19 @@ import java.awt.List;
  * @author braem
  *
  * Window for selecting a learning plan, goal and test to do
+ * Opens a todo list window of goals to be completed
+ * Shows prereqs for goals not met
+ * Allows a test to be started only when all prereqs are met
  */
-public class SelectWindow extends JFrame {
-
-	/**
-	 * 
-	 */
+public class SelectWindow extends JFrame
+{
 	private static final long serialVersionUID = -8807127458602336380L;
 	private JPanel contentPane;
 	private JFrame thisFrame = this;
 	private JComboBox<LearningPlan> learningPlanCB;
-	private JButton btnBack;
 	private JButton btnStart;
 	private JComboBox<Goal> goalCB;
 	private JComboBox<Test> testCB;
-	private JLabel lblSelectAGoal;
-	private JLabel lblSelectATest;
 	private List prereqList;
 	private HashSet<LearningPlan> learningPlans;
 
@@ -91,7 +88,12 @@ public class SelectWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//set up this JFrame window
+		setup(contentPane, user);
+	}
+	
+	private void setup(JPanel contentPane, User user) {
+		//create the inference engine
 		InferenceEngine iE = new InferenceEngine();
 		
 		//load learning plans
@@ -99,35 +101,18 @@ public class SelectWindow extends JFrame {
 			learningPlans = FileIO.loadLearningPlans();
 			user.setLearningPlan(learningPlans);
 		}
-		else {
+		else
 			learningPlans = user.getLearningPlan();
-		}
 		
-		//create todo list
+		//create & show todo list in another window
 		ToDoWindow w = new ToDoWindow();
 		w.enable();
 		
-		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
-		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSelectALearning.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSelectALearning.setBounds(10, 11, 235, 22);
-		contentPane.add(lblSelectALearning);
-		
-		btnBack = new JButton("back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LoginWindow window = new LoginWindow();
-				thisFrame.dispose();
-				window.enable();
-			}
-		});
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnBack.setBounds(393, 107, 97, 26);
-		contentPane.add(btnBack);
-		
+		//button to start taking a test selected
 		btnStart = new JButton("Start Test");
-		btnStart.addActionListener(new ActionListener() {
+		btnStart.addActionListener(new ActionListener() {//button is enabled & clicked
 			public void actionPerformed(ActionEvent e) {
+				//start the test selected
 				if((Test)testCB.getSelectedItem() != null) {
 					TestWindow window = new TestWindow((Test)testCB.getSelectedItem(), user, (LearningPlan)learningPlanCB.getSelectedItem());
 					thisFrame.dispose();
@@ -139,77 +124,61 @@ public class SelectWindow extends JFrame {
 		btnStart.setBounds(255, 92, 128, 41);
 		contentPane.add(btnStart);
 		
+		//combox for goals
 		goalCB = new JComboBox<Goal>();
-		goalCB.addActionListener (new ActionListener () {
+		goalCB.addActionListener (new ActionListener () { //a new selection is made
 		    public void actionPerformed(ActionEvent e) {
+		    	//new goal selection is made -> reset the tests prereqs and disable start button
 		    	testCB.removeAllItems();
 		    	prereqList.removeAll();
 		    	btnStart.setEnabled(false);
+		    	//get the newly selected goal
 		        Goal goal = (Goal)goalCB.getSelectedItem();
 		        if(goal == null) return;
 		        //get the prereqs not met
 		        ArrayList<Goal> goalsNotMet = goalsNotMet(goal);
 		        if(goalsNotMet.isEmpty()) { //all prereqs met
-		        	btnStart.setEnabled(true);
+		        	btnStart.setEnabled(true); //can start a test
 			        for(Test test : goal.getTests())
 			        	testCB.addItem(test);
 		        }
-		        else { //write the prereqs to the list
+		        else //write the prereqs needed to the list
 		        	for(Goal g : goalsNotMet)
 		        		prereqList.add(""+g);
-		        }
 		    }
 		});
 		goalCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		goalCB.setBounds(255, 44, 235, 22);
 		contentPane.add(goalCB);
 		
+		//combox for tests
 		testCB = new JComboBox<Test>();
-		testCB.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        
-		    }
-		});
 		testCB.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		testCB.setBounds(10, 109, 235, 22);
 		contentPane.add(testCB);
 		
-		lblSelectAGoal = new JLabel("Select a Goal");
-		lblSelectAGoal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSelectAGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSelectAGoal.setBounds(255, 11, 235, 22);
-		contentPane.add(lblSelectAGoal);
-		
-		lblSelectATest = new JLabel("Select a Test");
-		lblSelectATest.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSelectATest.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSelectATest.setBounds(10, 77, 235, 22);
-		contentPane.add(lblSelectATest);
-		
+		//list of prereqs needed to be satisfied before starting a certain goal's tests
 		prereqList = new List();
 		prereqList.setEnabled(false);
 		prereqList.setBounds(496, 44, 235, 89);
 		contentPane.add(prereqList);
 		
-		JLabel lblPrereqs = new JLabel("Prequisites");
-		lblPrereqs.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPrereqs.setBounds(496, 11, 235, 22);
-		contentPane.add(lblPrereqs);
-		
+		//combox for learning plans
 		learningPlanCB = new JComboBox<LearningPlan>();
 		learningPlanCB.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
+		    public void actionPerformed(ActionEvent e) { //a new selection is made
+		    	//new plan is selected, so remove everything
 		    	goalCB.removeAllItems();
 	            testCB.removeAllItems();
 	            prereqList.removeAll();
 	            ToDoWindow.removeAllGoals();
 	            btnStart.setEnabled(false);
+	            //get the newly selected plan, init the inference engine on it & run a cycle
 	            LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+	            if(plan == null) return;
 	            iE.init(plan);
 	    		iE.inferenceCycle();
-	            if(plan == null) return;
-	            for(Goal goal : plan.getGoals())
+	            for(Goal goal : plan.getGoals()) //add this plan's goals
 	            	goalCB.addItem(goal);
 		    }
 		});
@@ -217,8 +186,45 @@ public class SelectWindow extends JFrame {
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
 		
+		//add learning plans to the combobox
 		for(LearningPlan plan : learningPlans) 
 			learningPlanCB.addItem(plan);
 		btnStart.setEnabled(false);
+		
+		
+		//labels
+		JLabel lblPrereqs = new JLabel("Prequisites");
+		lblPrereqs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPrereqs.setBounds(496, 11, 235, 22);
+		contentPane.add(lblPrereqs);
+		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
+		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectALearning.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSelectALearning.setBounds(10, 11, 235, 22);
+		contentPane.add(lblSelectALearning);
+		JLabel lblSelectAGoal = new JLabel("Select a Goal");
+		lblSelectAGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectAGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSelectAGoal.setBounds(255, 11, 235, 22);
+		contentPane.add(lblSelectAGoal);
+		JLabel lblSelectATest = new JLabel("Select a Test");
+		lblSelectATest.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectATest.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSelectATest.setBounds(10, 77, 235, 22);
+		contentPane.add(lblSelectATest);
+		
+		//simple back button to go back to login screen
+		JButton btnBack = new JButton("back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginWindow window = new LoginWindow();
+				thisFrame.dispose();
+				window.enable();
+			}
+		});
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBack.setBounds(393, 107, 97, 26);
+		contentPane.add(btnBack);
 	}
 }

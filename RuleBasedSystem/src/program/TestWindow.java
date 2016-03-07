@@ -132,6 +132,7 @@ public class TestWindow extends JFrame {
 						progressBar.setValue(progressBar.getValue()+1);
 					normalAnswers.set(q-1, ans);
 				}
+				
 			}
 		});
 		btnLockAnswer.setFont(new Font("Tahoma", Font.PLAIN, 14));

@@ -12,7 +12,8 @@ public class Question implements Serializable
 	private AnswerValue answer;
 	
 	public Question(String question, AnswerValue answer, boolean isBonus) {
-		if(isBonus)
+		this.question = "";
+	   if(isBonus)
 			this.question = "-Bonus-\n";
 		this.question += question;
 		this.answer = answer;
