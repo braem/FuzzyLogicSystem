@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Contains the answers to a test.
  * Intended to be used by Test.
  * 
- * @author Breamen
+ * @author Braemen
  * @version 1.0
  */
 public class Attempt implements Serializable

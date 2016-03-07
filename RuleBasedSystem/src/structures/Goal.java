@@ -10,7 +10,7 @@ import system.Consequent;
  * A set of tests that need to be completed.
  * Intended to be used by LearningPlan.
  * 
- * @author Breamen
+ * @author Rhys
  * @version 1.0
  */
 public class Goal implements Consequent, Antecedent, Serializable {

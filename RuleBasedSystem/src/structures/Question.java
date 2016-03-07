@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A question to be used by Test.
  * 
- * @author Breamen
+ * @author Braemen
  * @version 1.0
  */
 public class Question implements Serializable

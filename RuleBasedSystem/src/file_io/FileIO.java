@@ -14,7 +14,7 @@ import structures.*;
 
 /**
  * Writes objects to files, and read objects from files.
- * @author Rhys
+ * @author Braemen
  * @version 1.0
  */
 public class FileIO

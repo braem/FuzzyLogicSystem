@@ -6,7 +6,7 @@ import java.util.HashSet;
 /**
  * Contains the information needed by a user.
  * 
- * @author Breamen
+ * @author Braemen
  * @version 1.0
  */
 public class User implements Serializable {

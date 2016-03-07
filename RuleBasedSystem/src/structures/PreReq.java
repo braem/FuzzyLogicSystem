@@ -6,7 +6,7 @@ import java.io.Serializable;
  * A pair of goals, one being the prerequisite of the other.
  * Intended to be used by LearningPlan.
  * 
- * @author Breamen
+ * @author Rhys
  * @version 1.0
  */
 public class PreReq implements Serializable

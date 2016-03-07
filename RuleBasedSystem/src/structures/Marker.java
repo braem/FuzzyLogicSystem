@@ -2,7 +2,7 @@ package structures;
 
 /**
  * Marks tests based on an attempt.
- * @author Breamen
+ * @author Braemen
  * @version 1.0
  */
 public class Marker
