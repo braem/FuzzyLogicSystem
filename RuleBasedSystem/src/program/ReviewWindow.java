@@ -81,12 +81,12 @@ public class ReviewWindow extends JFrame {
 		double percentGrade = Marker.mark(test.getAnswerKey(), userAttempt);
 		String letterGrade = Marker.getLetterGrade(percentGrade);
 		if(test.getStudentGrade() < percentGrade) {
-			test.setStudentAttempt(userAttempt);
-			test.setStudentGrade(percentGrade);
 			bestGradeOnThisTest = true;
 			InferenceEngine iE = new InferenceEngine();
 			iE.init(user.getLearningPlan());
 			iE.inferenceCycle();
+			test.setStudentAttempt(userAttempt);
+			test.setStudentGrade(percentGrade);
 		}
 		FileIO.writeUser(user); //write user to .ser
 		
