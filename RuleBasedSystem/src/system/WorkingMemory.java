@@ -2,6 +2,13 @@ package system;
 
 import java.util.ArrayList;
 
+/**
+ * @author Rhys
+ * */
+/*
+ * A place to hold hypotheses and rules for use by the InferenceEngine.
+ */
+
 public class WorkingMemory {
 	ArrayList<Consequent> hypotheses;
 	ArrayList<Rule> rules;

@@ -1,5 +1,11 @@
 package system;
 
+/**
+ * @author Rhys
+ * */
+/*
+ * Representation for rules of the form Antecedent -> Consequent 
+ * */
 public class Rule implements Antecedent, Consequent{
 
 	private Antecedent theLeft;
@@ -17,13 +23,6 @@ public class Rule implements Antecedent, Consequent{
 		setConsequent(c);
 	}
 	
-	
-	public boolean test()
-	{
-		theRight.setSatisfied(theLeft.testAntecedent());
-		return theLeft.testAntecedent();
-	}
-	
 	public Antecedent getAntecedent() {
 		return theLeft;
 	}
@@ -37,20 +36,31 @@ public class Rule implements Antecedent, Consequent{
 		this.theRight = theRight;
 	}
 	
+	/*
+	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
+	 * */
 	public void evaluate()
 	{
 		theRight.setSatisfied(theLeft.testAntecedent());
 	}
+	
+	/*
+	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
+	 * Returns the value of the consequent (and antecedent).
+	 * */
+	public boolean test()
+	{
+		theRight.setSatisfied(theLeft.testAntecedent());
+		return theLeft.testAntecedent();
+	}
 
 	@Override
 	public void setSatisfied(boolean arg) {
-		// TODO Auto-generated method stub
 		theRight.setSatisfied(arg);
 	}
 
 	@Override
 	public boolean isSatisfied() {
-		// TODO Auto-generated method stub
 		return theRight.isSatisfied();
 	}
 
