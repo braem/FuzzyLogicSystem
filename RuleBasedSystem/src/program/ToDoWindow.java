@@ -47,6 +47,19 @@ public class ToDoWindow extends JFrame {
 		list.removeAll();
 	}
 	
+	public static boolean hasGoal(Goal g)
+	{
+		String[] items = list.getItems();
+		boolean hasGoal = false;
+		
+		for(String item : items)
+		{
+			hasGoal |= item.equals(g.toString());
+		}
+		
+		return hasGoal;
+	}
+	
 	public void enable() {
 		this.setVisible(true);
 	}
