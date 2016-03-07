@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import structures.Goal;
 
+/**
+ *@author Rhys 
+ **/
+
+/*
+ * An antecedent comprised of multiple conjunctively joined antecedents.
+ * */
 public class ComplexAntecedent implements Antecedent{
 	
 	private ArrayList<? extends Antecedent> antecedents;
@@ -27,12 +34,18 @@ public class ComplexAntecedent implements Antecedent{
 	{
 		return antecedents;
 	}
-
+	
+	/*
+	 * From Antecedent interface.  Tests the Antecedents that make up this ComplexAntecedent.
+	 */
 	public boolean testAntecedent()
 	{
 		return testAntecedents();
 	}
 	
+	/*
+	 * Tests the Antecedents that make up this ComplexAntecedent.
+	 */
 	public boolean testAntecedents()
 	{
 		boolean answer = true;
