@@ -23,13 +23,13 @@ import java.awt.List;
 
 
 /**
- * 
- * @author braem
- *
  * Window for selecting a learning plan, goal and test to do
  * Opens a todo list window of goals to be completed
  * Shows prereqs for goals not met
  * Allows a test to be started only when all prereqs are met
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class SelectWindow extends JFrame
 {
@@ -43,7 +43,11 @@ public class SelectWindow extends JFrame
 	private List prereqList;
 	private HashSet<LearningPlan> learningPlans;
 
-	/* Test launch the window */
+	/**
+	 * Test launch the window
+	 * 
+	 * @param args      List of arguments. Not used.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -57,12 +61,19 @@ public class SelectWindow extends JFrame
 		});
 	}
 	
-	//enable this frame
+	/**
+	 * enable this frame
+	 */
 	public void enable() {
 		this.setVisible(true);
 	}
 	
-	//gets all the goals that are not met
+	/**
+	 * Gets all the goals that are not met.
+	 * 
+	 * @param goal      The goal being checked.
+	 * @return          The list of goals not met.
+	 */
 	private ArrayList<Goal> goalsNotMet(Goal goal) {
 		LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
 		ArrayList<PreReq> prereqs = plan.getPreReqs();
@@ -79,6 +90,8 @@ public class SelectWindow extends JFrame
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param user      The current user.
 	 */
 	public SelectWindow(User user) {
 		setTitle(user.getUserName());
@@ -92,6 +105,12 @@ public class SelectWindow extends JFrame
 		setup(contentPane, user);
 	}
 	
+	/**
+	 * Setup for the current window
+	 * 
+	 * @param contentPane     The JPanel to use.
+	 * @param user            The current user.
+	 */
 	private void setup(JPanel contentPane, User user) {
 		//create the inference engine
 		InferenceEngine iE = new InferenceEngine();

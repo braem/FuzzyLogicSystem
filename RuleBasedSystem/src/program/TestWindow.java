@@ -26,14 +26,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * 
- * @author braem
- *
  * Window for taking a test
  * Consists of a drop down menu for students answer,
  * drop down menu for current question, a lock button to lock the
  * answer to the question, and a progress bar on how far complete 
  * the test is
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class TestWindow extends JFrame
 {
@@ -50,7 +50,11 @@ public class TestWindow extends JFrame
 	private JProgressBar progressBar;
 	private JButton btnSubmit;
 	
-	/* test the window */
+	/** 
+	 * Test the window.
+	 * 
+	 * @param args      List of arguments. Not used.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -64,12 +68,19 @@ public class TestWindow extends JFrame
 		});
 	}
 	
-	//enable this window
+	/**
+	 * Enable this window
+	 */
 	public void enable() {
 		this.setVisible(true);
 	}
 	
-	//get the corresponding question from the integer
+	/**
+	 * Get the corresponding question from the integer
+	 * 
+	 * @param q      Integer that specifies the question.
+	 * @return       The Question be being specified.
+	 */
 	private Question intToQuestion(int q) {
 		Question question;
 		try {
@@ -82,6 +93,10 @@ public class TestWindow extends JFrame
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param test            The test to use.
+	 * @param user            The user taking the test.
+	 * @param currentPlan     The current learning plan.
 	 */
 	public TestWindow(Test test, User user, LearningPlan currentPlan) {
 		setTitle(test.getTestName());

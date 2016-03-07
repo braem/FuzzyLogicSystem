@@ -21,10 +21,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * 
- * @author braem
- *
  * Window to authenticate the user & load all their info
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class LoginWindow extends JFrame 
 {
@@ -35,7 +35,11 @@ public class LoginWindow extends JFrame
 	private JTextField lastNameTF;
 	private JLabel lblInvalidName;
 
-	/* test the window */
+	/**
+	 * Tests the window
+	 * 
+	 * @param args      List of arguments. Not used.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -49,12 +53,16 @@ public class LoginWindow extends JFrame
 		});
 	}
 
-	//enable this window
+	/**
+	 * Enables this window.
+	 */
 	public void enable() {
 		this.setVisible(true);
 	}
 	
-	//login
+	/**
+	 * Controls login attempts.
+	 */
 	private void login() {
 		String firstName = null;
 		String lastName = null;

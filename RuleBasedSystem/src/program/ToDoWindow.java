@@ -11,12 +11,12 @@ import structures.Goal;
 import java.awt.List;
 
 /**
- * 
- * @author braem
- *
  * Static Window for the todo list
  * Shows the user the list of goals left they need to meet
  * Manipulated by the inference engine
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class ToDoWindow extends JFrame
 {
@@ -24,7 +24,11 @@ public class ToDoWindow extends JFrame
 	private static JPanel contentPane = new JPanel();
 	private static List list = new List();
 
-	/* test the window */
+	/**
+	 *  Test the window
+	 *  
+	 *  @param args     A list of arguments. Not used.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,18 +42,38 @@ public class ToDoWindow extends JFrame
 		});
 	}
 	
-	/* methods to add/remove goals from the todolist */
+	/**
+	 * Adds goal to the todo list
+	 * 
+	 * @param goal      Goal to be added.
+	 */
 	public static void addGoal(Goal goal) {
 		list.add(""+goal);
 	}
+	
+	/**
+	 * Removes goal from the todo list
+	 * 
+	 * @param goal      Goal to be removed.
+	 */
 	public static void removeGoal(Goal goal) {
 		list.remove(""+goal);
 	}
+	
+	/**
+	 * Removes all goals from the todo list.
+	 */
 	public static void removeAllGoals() {
 		list.removeAll();
 	}
 	
-	//check if a goal is in the list
+	/**
+	 * check if a goal is in the list
+	 * 
+	 * @param g      Goal to that may be in the list.
+	 * @return       <code>true</code> if the goal is in the list.
+	 *               <code>false</code> otherwise.
+	 */
 	public static boolean hasGoal(Goal g)
 	{
 		String[] items = list.getItems();
@@ -63,7 +87,9 @@ public class ToDoWindow extends JFrame
 		return hasGoal;
 	}
 	
-	//enable this window
+	/**
+	 * Enable this window
+	 */
 	public void enable() {
 		this.setVisible(true);
 	}

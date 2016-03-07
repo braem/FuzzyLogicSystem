@@ -1,15 +1,20 @@
 package program;
 
 /**
- * 
- * @author braem
- *
  * Where the program begins (where the .jar starts from)
  * Creates the login window
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class Program
 {
-	public static void main(String[] args) {
+	/**
+	 * Main method. Starts the program.
+	 * 
+	 * @param args      List of arguments. Not used.
+	 */
+   public static void main(String[] args) {
 		LoginWindow window = new LoginWindow();
 		window.enable();
 	}

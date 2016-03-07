@@ -32,13 +32,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * 
- * @author braem
- *
  * Window for the user to review their mark on the test they just took
  * Shows each question and the correct answer
  * 
  * Also where the marking takes place
+ * 
+ * @author Braemen
+ * @version 1.0
  */
 public class ReviewWindow extends JFrame
 {
@@ -49,7 +49,11 @@ public class ReviewWindow extends JFrame
 	private JTable table;
 	private JButton btnTakeAnotherTest;
 
-	/* test the window */
+	/**
+	 * To test the window
+	 * 
+	 * @param args      List of arguments. Not used.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,13 +67,20 @@ public class ReviewWindow extends JFrame
 		});
 	}
 	
-	//enable this window
+	/**
+	 * Enables this window.
+	 */
 	public void enable() {
 		this.setVisible(true);
 	}
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param test         The test to use.
+	 * @param userAttempt  The user's attempt.
+	 * @param user         The user.
+	 * @param currentPlan  The current learning plan.
 	 */
 	public ReviewWindow(Test test, Attempt userAttempt, User user, LearningPlan currentPlan) {
 		setTitle(test.getTestName()+" Review");
@@ -83,6 +94,15 @@ public class ReviewWindow extends JFrame
 		setup(contentPane, test, userAttempt, user, currentPlan);
 	}
 	
+	/**
+	 * Setup for the window.
+	 * 
+	 * @param contentPane     JPanel to use.
+	 * @param test            The current test.
+	 * @param userAttempt     The user's attempt.
+	 * @param user            The current user.
+	 * @param currentPlan     The current learning plan.
+	 */
 	private void setup(JPanel contentPane, Test test, Attempt userAttempt, User user, LearningPlan currentPlan) {
 		boolean bestGradeOnThisTest = false; //potential future use
 		
