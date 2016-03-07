@@ -98,9 +98,6 @@ public class SelectWindow extends JFrame {
 		ToDoWindow w = new ToDoWindow();
 		w.enable();
 		
-		//load learning plans
-		learningPlans = FileIO.loadLearningPlans();
-		
 		JLabel lblSelectALearning = new JLabel("Select a Learning Plan");
 		lblSelectALearning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectALearning.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -211,10 +208,14 @@ public class SelectWindow extends JFrame {
 		learningPlanCB.setBounds(10, 44, 235, 22);
 		contentPane.add(learningPlanCB);
 		
-		for(LearningPlan plan : learningPlans)
-			learningPlanCB.addItem(plan);
-		if(user.getLearningPlan() == null)
+		//load learning plans
+		if(user.getLearningPlan() == null) {
+			learningPlans = FileIO.loadLearningPlans();
 			user.setLearningPlan(learningPlans);
+		}
+		else {
+			learningPlans = user.getLearningPlan();
+		}
 		
 		btnStart.setEnabled(false);
 	}
