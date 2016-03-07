@@ -10,18 +10,21 @@ import structures.Goal;
 
 import java.awt.List;
 
-public class ToDoWindow extends JFrame {
-
-	/**
-	 * 
-	 */
+/**
+ * 
+ * @author braem
+ *
+ * Static Window for the todo list
+ * Shows the user the list of goals left they need to meet
+ * Manipulated by the inference engine
+ */
+public class ToDoWindow extends JFrame
+{
 	private static final long serialVersionUID = -2757328134366382669L;
 	private static JPanel contentPane = new JPanel();
 	private static List list = new List();
 
-	/**
-	 * Launch the application.
-	 */
+	/* test the window */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,18 +38,18 @@ public class ToDoWindow extends JFrame {
 		});
 	}
 	
+	/* methods to add/remove goals from the todolist */
 	public static void addGoal(Goal goal) {
 		list.add(""+goal);
 	}
-	
 	public static void removeGoal(Goal goal) {
 		list.remove(""+goal);
 	}
-	
 	public static void removeAllGoals() {
 		list.removeAll();
 	}
 	
+	//check if a goal is in the list
 	public static boolean hasGoal(Goal g)
 	{
 		String[] items = list.getItems();
@@ -60,6 +63,7 @@ public class ToDoWindow extends JFrame {
 		return hasGoal;
 	}
 	
+	//enable this window
 	public void enable() {
 		this.setVisible(true);
 	}
