@@ -17,6 +17,7 @@ import system.InferenceEngine;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -42,7 +43,6 @@ public class ReviewWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -1202080739655736067L;
-	private JPanel contentPane;
 	private JFrame thisFrame = this;
 	private JTextField percentTF;
 	private JTextField gradeTF;
@@ -76,7 +76,7 @@ public class ReviewWindow extends JFrame {
 		setTitle(test.getTestName()+" Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 348, 479);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -107,7 +107,7 @@ public class ReviewWindow extends JFrame {
 		ArrayList<AnswerValue> bonusKey = test.getAnswerKey().getBonusAnswers();
 		ArrayList<AnswerValue> studentNAnswers = userAttempt.getNormalAnswers();
 		ArrayList<AnswerValue> studentBAnswers = userAttempt.getBonusAnswers();
-		String[] titles = {"Question", "Answer", "Attempted Answer", "Correct?", "isBonus"};
+		String[] titles = {"Question", "Answer", "Attempted Answer", "Correct", "isBonus"}; //column titles
 		Object[][] tableContentsOops = new Object[5][normalQuestions.size()+bonusQuestions.size()];
 		for(int i=0; i<tableContentsOops.length; i++)//row
 			for(int m=0; m<tableContentsOops[i].length; m++)//col
@@ -123,16 +123,16 @@ public class ReviewWindow extends JFrame {
 						tableContentsOops[i][m] = studentBAnswers.get(m-normalKey.size());
 					else
 						tableContentsOops[i][m] = studentNAnswers.get(m);
-				else if(i==3)
-					if(normalKey.get(m).equals(studentNAnswers.get(m)))
-						tableContentsOops[i][m] = 'o';
-					else
-						tableContentsOops[i][m] = 'x';
-				else
+				else if(i==4)
 					if(m >= normalKey.size())
-						tableContentsOops[i][m] = "Bonus";
+						tableContentsOops[i][m] = new String("Bonus");
 					else
-						tableContentsOops[i][m] = "";
+						tableContentsOops[i][m] = new String("");
+				else
+					if(normalKey.get(m) == studentNAnswers.get(m))
+						tableContentsOops[i][m] = new Character('o');
+					else
+						tableContentsOops[i][m] = new Character('x');
 		Object[][] tableContents = new Object[normalQuestions.size()+bonusQuestions.size()][5];
 		//just switching rows/columns
 		for(int i=0; i<tableContentsOops.length; i++)//row
@@ -157,7 +157,9 @@ public class ReviewWindow extends JFrame {
 		table.getColumnModel().getColumn(3).setPreferredWidth(35);
 		table.getColumnModel().getColumn(4).setPreferredWidth(60);
 		table.setBounds(10, 45, 280, 329);
+		table.setEnabled(false);
 		contentPane.add(table);
+		
 		
 		btnTakeAnotherTest = new JButton("Take Another Test");
 		btnTakeAnotherTest.addActionListener(new ActionListener() {

@@ -132,7 +132,10 @@ public class TestWindow extends JFrame {
 						progressBar.setValue(progressBar.getValue()+1);
 					normalAnswers.set(q-1, ans);
 				}
-				
+				if(questionSelectCB.getSelectedIndex() == questionSelectCB.getMaximumRowCount()+1)
+					questionSelectCB.setSelectedIndex(0);
+				else 
+					questionSelectCB.setSelectedIndex(questionSelectCB.getSelectedIndex()+1);
 			}
 		});
 		btnLockAnswer.setFont(new Font("Tahoma", Font.PLAIN, 14));
