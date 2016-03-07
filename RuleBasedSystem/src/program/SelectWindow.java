@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import file_io.FileIO;
 import structures.*;
+import system.InferenceEngine;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -34,7 +36,6 @@ public class SelectWindow extends JFrame {
 	private JLabel lblSelectAGoal;
 	private JLabel lblSelectATest;
 	private List prereqList;
-	private static List todoList = new List();
 	private ArrayList<LearningPlan> learningPlans;
 
 	/**
@@ -76,10 +77,6 @@ public class SelectWindow extends JFrame {
 		
 		return goalsToDo;
 	}
-	
-	public static void addGoalToTodoList(Goal goal) {
-		todoList.add(""+goal);
-	}
 
 	/**
 	 * Create the frame.
@@ -87,11 +84,17 @@ public class SelectWindow extends JFrame {
 	public SelectWindow(User user) {
 		setTitle(user.getUserName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 339);
+		setBounds(100, 100, 792, 217);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		InferenceEngine iE = new InferenceEngine();
+		
+		//create todo list
+		ToDoWindow w = new ToDoWindow();
+		w.enable();
 		
 		//load learning plans
 		learningPlans = FileIO.loadLearningPlans();
@@ -132,7 +135,6 @@ public class SelectWindow extends JFrame {
 		goalCB = new JComboBox<Goal>();
 		goalCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
-		    	todoList.removeAll();
 		    	testCB.removeAllItems();
 		    	prereqList.removeAll();
 		    	btnStart.setEnabled(false);
@@ -179,34 +181,26 @@ public class SelectWindow extends JFrame {
 		
 		prereqList = new List();
 		prereqList.setEnabled(false);
-		prereqList.setBounds(255, 172, 235, 89);
+		prereqList.setBounds(496, 44, 235, 89);
 		contentPane.add(prereqList);
 		
 		JLabel lblPrereqs = new JLabel("Prequisites");
 		lblPrereqs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrereqs.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPrereqs.setBounds(255, 142, 235, 22);
+		lblPrereqs.setBounds(496, 11, 235, 22);
 		contentPane.add(lblPrereqs);
-		
-		JLabel lblToDoList = new JLabel("To Do");
-		lblToDoList.setHorizontalAlignment(SwingConstants.CENTER);
-		lblToDoList.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblToDoList.setBounds(10, 142, 235, 22);
-		contentPane.add(lblToDoList);
-		
-		todoList.setEnabled(false);
-		todoList.setBounds(10, 172, 235, 89);
-		contentPane.add(todoList);
 		
 		learningPlanCB = new JComboBox<LearningPlan>();
 		learningPlanCB.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
-		    	todoList.removeAll();
 		    	goalCB.removeAllItems();
 	            testCB.removeAllItems();
 	            prereqList.removeAll();
+	            ToDoWindow.removeAllGoals();
 	            btnStart.setEnabled(false);
 	            LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
+	            iE.init(plan);
+	    		iE.inferenceCycle();
 	            if(plan == null) return;
 	            for(Goal goal : plan.getGoals())
 	            	goalCB.addItem(goal);
