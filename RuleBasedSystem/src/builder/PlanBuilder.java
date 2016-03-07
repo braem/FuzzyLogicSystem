@@ -767,34 +767,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 * 2/3 = x\n\n"
+            +"a) 1/3\tb) 2/6\tc) 3/5\td) 2/5\ne) 3/2\tf) 3/6\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -805,34 +815,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 / 2/3 = x\n\n"
+            +"a) 3/2\tb) 6/4\tc) 2/6\td) 1/3\ne) 6/2\tf) 1/2\tg) 1/3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -843,34 +863,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n2^(-2) = x\n\n"
+            +"a) 1/4\tb) 1/2\tc) 4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -887,34 +917,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 + 1/2 = x\n\n"
+            +"a) 1\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -925,34 +965,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 - 1/2 = x\n\n"
+            +"a) 0\tb) 1/2\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -969,34 +1019,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 = x\n\n"
+            +"a) 2/4\tb) 4/6\tc) 3/4\td) 1/3\ne) 1/8\tf) 2/3\tg) 1/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1007,34 +1067,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1/2 < x\n\n"
+            +"a) 1/3\tb) 4/6\tc) 3/4\td) 1/2\ne) 7/8\tf) 2/3\tg) 3/6";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1072,34 +1142,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 = x\n\n"
+            +"a) 1.3\tb) 1.1\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1110,34 +1190,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 - 0.1 = x\n\n"
+            +"a) 1.1\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1153,34 +1243,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 * 0.1 = x\n\n"
+            +"a) 0.12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1191,34 +1291,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 / 0.1 = x\n\n"
+            +"a) 12\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1234,34 +1344,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n1.2 + 0.1 * 0.1 - 0.01 = x\n\n"
+            +"a) 1.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1279,34 +1399,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Solve for x.\n6.2 < x\n\n"
+            +"a) 7.2\tb) 1.3\tc) 1.0\td) 0.1\ne) 0\tf) 2.4\tg) 4.3";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1317,34 +1447,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Round to 3 decimal places.\n1.23547 < x\n\n"
+            +"a) 1.235\tb) 1.2\tc) 1.23\td) 1\ne) 1.2354\tf)1.23547 \ng) 1.236";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1355,34 +1495,44 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to scientific notation.\n0.0012 < x\n\n"
+            +"a) 1.2*10^(-3)\tb) 1.2*10^3\nc) 1.23\td) 1.2\ne) 1.2*10^(-2)\tf) 1.2*10\ng) 1.2*10^(-5)";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
@@ -1393,76 +1543,48 @@ public class PlanBuilder
       bq = new ArrayList<Question>();
       na = new ArrayList<AnswerValue>();
       ba = new ArrayList<AnswerValue>();
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
-      s = "A";
+      s = "Convert to decimal\n1/2 < x\n\n"
+            +"a) 0.5\tb) 0.2\tc) 1.0\td) 0.1\ne) 0\tf) 2.1\tg) 1.2";
       nq.add(new Question(s, AnswerValue.A, false));
       na.add(AnswerValue.A);
       a = new Attempt(na);
       t.add(new Test("Converting Fractions", nq, a));
-      
-      //Test 4-5
-      nq = new ArrayList<Question>();
-      bq = new ArrayList<Question>();
-      na = new ArrayList<AnswerValue>();
-      ba = new ArrayList<AnswerValue>();
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      s = "A";
-      nq.add(new Question(s, AnswerValue.A, false));
-      na.add(AnswerValue.A);
-      a = new Attempt(na);
-      t.add(new Test("Rational & Irrational", nq, a));
       
       g.add(new Goal(null, t, false, "Properties of Real Numbers"));
       
