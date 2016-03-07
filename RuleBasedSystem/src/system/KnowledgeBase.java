@@ -56,11 +56,13 @@ public class KnowledgeBase {
 		
 		//Next, create all the individual goal rules: Test1 AND Test2 AND ... AND Testn --> Goal<whichever goal it is>
 		
-		ComplexAntecedent goalAnt = new ComplexAntecedent();
-		Rule goalRule = new Rule();
+		ComplexAntecedent goalAnt;
+		Rule goalRule;
 		
 		for(Goal goal : plan.getGoals())
 		{
+			goalRule = new Rule();
+			goalAnt = new ComplexAntecedent();
 			goalAnt.setAntecedents(goal.getTests());
 			goalRule.setAntecedent(goalAnt);
 			goalRule.setConsequent(goal);
