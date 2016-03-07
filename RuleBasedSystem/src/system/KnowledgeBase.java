@@ -5,49 +5,78 @@ import java.util.ArrayList;
 import structures.Goal;
 import structures.LearningPlan;
 
-/**
- * @author Rhys
- * */
-
 /*
  * The KnowledgeBase stores Rules for use by an InferenceEngine.
+ * 
+ * @author Rhys
  * */
-
 public class KnowledgeBase {
 	private ArrayList<Rule> rules;
 	private String name;
 	
-	
+	/*
+	 * Creates a KnowledgeBase with an empty rule list.
+	 */
 	public KnowledgeBase()
 	{
 		rules = new ArrayList<Rule>();
 	}
 	
+	/*
+	 * Creates a KnowledgeBase with the specified rule list.
+	 * 
+	 * @param r      The rule list.
+	 */
 	public KnowledgeBase(ArrayList<Rule> r)
 	{
 		setRules(r);
 	}
 	
+	/*
+	 * Sets a new rule list.
+	 * 
+	 * @param r      The new rule list.
+	 */
 	public void setRules(ArrayList<Rule> r)
 	{
 		rules = r;
 	}
-
+	
+	/*
+	 * Sets the name of the knowledge base.
+	 * 
+	 * @param n      The new name.
+	 */
 	public void setName(String n)
 	{
 		name = n;
 	}
 	
+	/*
+	 * Returns the name of the knowledge base
+	 * 
+	 * @return       The name of the knowledge base.
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
+	/*
+	 * Returns the name of the knowledge base.
+	 * 
+	 * @return       The name of the knowledge base.
+	 */
 	public String toString()
 	{
 		return name;
 	}
 	
+	/*
+	 * Returns the list of rules.
+	 * 
+	 * @return       The list of rules.
+	 */
 	public ArrayList<Rule> getRules()
 	{
 		return rules;
@@ -58,6 +87,8 @@ public class KnowledgeBase {
 	 * of a user's current learning plan on demand.  It is assumed that if you want a new knowledge
 	 * base with only one plan in it, then you will use a new InferenceEngine.  Otherwise, plans
 	 * stack in the knowledge base.
+	 * 
+	 * @param plan      The learning plan to get the rules from.
 	 */
 	public void rulesFromPlan(LearningPlan plan)
 	{
