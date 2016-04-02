@@ -153,6 +153,26 @@ public class LinguisticVariable {
 	}
 	
 	/**
+	 * Returns the FuzzyTrapezoid with the name provided.  Returns null if no fuzzy set with that name exists.
+	 * @param name A String giving the name of the desired FuzzyTrapezoid
+	 * @return	retSet A FuzzyTrapezoid with the name provided, if it exists.  Otherwise, null.
+	 */
+	public FuzzyTrapezoid getFuzzySet(String name)
+	{
+		FuzzyTrapezoid retSet = null;
+		
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			if(ft.getName().equals(name)) 
+			{
+				retSet=ft;
+			}
+		}
+		
+		return retSet;
+	}
+	
+	/**
 	 * Overrides the Object toString method.  Returns the name of this LinguisticVariable.
 	 */
 	public String toString()
