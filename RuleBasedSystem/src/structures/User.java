@@ -1,7 +1,13 @@
 package structures;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+
+import system.FuzzyTrapezoid;
+import system.InvalidTrapezoidArgumentsException;
+import system.LinguisticVariable;
+import system.NonUniqueLinguisticVariableSetNamesException;
 
 /**
  * Contains the information needed by a user.
@@ -15,6 +21,8 @@ public class User implements Serializable {
 	private String lastName;
 	private HashSet<LearningPlan> plan;
 	
+	private ArrayList<LinguisticVariable> LVProfile;
+	
 	/**
 	 * Creates a new User with the specified first name, last name, and learning plan list.
 	 * 
@@ -26,6 +34,8 @@ public class User implements Serializable {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setLearningPlan(p);
+		
+		initLinguisticVariables();
 	}
 	
 	/**
@@ -37,7 +47,119 @@ public class User implements Serializable {
 	public User(String firstName, String lastName) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
+		
+		initLinguisticVariables();
 	}
+	
+	/**
+	 * Initializes this User's LinguisticVariable profile to default values upon construction.
+	 */
+	private void initLinguisticVariables()
+	{
+		initDifficulty();
+		
+		initSuccess();
+		
+		initLearning();		
+		
+	}
+	
+	/**
+	 * Initializes this User's Difficulty LinguisticVariable and adds it to the LVProfile.
+	 */
+	private void initDifficulty()
+	{
+		FuzzyTrapezoid diffEasy = null;
+		FuzzyTrapezoid diffMedium = null;
+		FuzzyTrapezoid diffHard = null;
+		LinguisticVariable difficulty = null;
+		
+		try{
+			diffEasy = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Easy");
+			diffMedium = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Medium");
+			diffHard = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Hard");
+			ArrayList<FuzzyTrapezoid> diffList = new ArrayList<>();
+			diffList.add(diffEasy);
+			diffList.add(diffMedium);
+			diffList.add(diffHard);
+			
+			difficulty = new LinguisticVariable(diffList);
+			difficulty.setName("Difficulty");
+		}catch(InvalidTrapezoidArgumentsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(NonUniqueLinguisticVariableSetNamesException e)
+		{
+			//Print an error to UI somehow.
+		}
+		
+		this.LVProfile.add(difficulty);
+	}
+	
+	/**
+	 * Initializes this User's Success LinguisticVariable and adds it to the LVProfile.
+	 */
+	private void initSuccess()
+	{
+		FuzzyTrapezoid succBad = null;
+		FuzzyTrapezoid succGood = null;
+		FuzzyTrapezoid succExcellent = null;
+		LinguisticVariable success = null;
+		
+		try{
+			succBad = new FuzzyTrapezoid(0.0, 0.0, 50.0, 55.0, 1.0, "Bad");
+			succGood = new FuzzyTrapezoid(55.0, 65.0, 75.0, 85.0, 1.0, "Good");
+			succExcellent = new FuzzyTrapezoid(75.0, 85.0, 100.0, 100.0, 1.0, "Excellent");
+			ArrayList<FuzzyTrapezoid> succList = new ArrayList<>();
+			succList.add(succBad);
+			succList.add(succGood);
+			succList.add(succExcellent);
+			
+			success = new LinguisticVariable(succList);
+			success.setName("Difficulty");
+		}catch(InvalidTrapezoidArgumentsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(NonUniqueLinguisticVariableSetNamesException e)
+		{
+			//Print an error to UI somehow.
+		}
+		
+		this.LVProfile.add(success);
+	}
+	
+	/**
+	 * Initializes this User's Success LinguisticVariable and adds it to the LVProfile.
+	 */
+	private void initLearning()
+	{
+		FuzzyTrapezoid learnBad = null;
+		FuzzyTrapezoid learnGood = null;
+		FuzzyTrapezoid learnExcellent = null;
+		LinguisticVariable learning = null;
+		
+		try{
+			learnBad = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Bad");
+			learnGood = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Good");
+			learnExcellent = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Excellent");
+			ArrayList<FuzzyTrapezoid> learnList = new ArrayList<>();
+			learnList.add(learnBad);
+			learnList.add(learnGood);
+			learnList.add(learnExcellent);
+			
+			learning = new LinguisticVariable(learnList);
+			learning.setName("Difficulty");
+		}catch(InvalidTrapezoidArgumentsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(NonUniqueLinguisticVariableSetNamesException e)
+		{
+			//Print an error to UI somehow.
+		}
+		
+		this.LVProfile.add(learning);
+	}
+	
 	
 	/**
 	 * Returns the user's full name.

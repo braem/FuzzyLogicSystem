@@ -90,6 +90,33 @@ public class LinguisticVariable {
 	}
 	
 	/**
+	 * Adds a fuzzy set to this linguistic variable if it's name is not the same as another fuzzy set.
+	 * Returns true if successful, false if unsuccessful.
+	 * @param ft A FuzzyTrapezoid representing a fuzzy membership function.
+	 * @return	<code>true</code>  if ft added successfully
+	 *          <code>false</code> if ft not added successfully
+	 */
+	public boolean addFuzzySet(FuzzyTrapezoid ft)
+	{
+		boolean nonUniqueSetName = false;
+		for(FuzzyTrapezoid set : fuzzySets)
+		{
+			if(set.getName().equals(ft.getName()))
+			{
+				nonUniqueSetName = true;
+				break;
+			}
+		}
+		
+		if(!nonUniqueSetName)
+		{
+			fuzzySets.add(ft);
+		}
+		
+		return nonUniqueSetName;
+	}
+	
+	/**
 	 * Overrides the Object toString method.  Returns the name of this LinguisticVariable.
 	 */
 	public String toString()
