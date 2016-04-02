@@ -176,25 +176,66 @@ public class LinguisticVariable implements Serializable {
 	
 	/**
 	 * Returns the FuzzyTrapezoid among this LinguisticVariable's fuzzy sets which gives the greatest
-	 * membership value to the input.
+	 * membership value to the input, or null if the input is outside the defined bounds of this LinguisticVariable's fuzzy sets.
 	 * @param input	 A double value.
 	 * @return	A FuzzyTrapezoid representing the fuzzy set to which the input has the greatest membership.
 	 */
 	public FuzzyTrapezoid greatestMembershipSet(double input)
 	{
-		double greatestMembership = -1.0; //Want to return a set, even if the greatest membership is zero.
+		//Check that input is within the domain of the LinguisticVariable.
+		double lowerBound = getLowerBound();
+		double upperBound = getUpperBound();
 		FuzzyTrapezoid retSet = null;
-		for(FuzzyTrapezoid ft : fuzzySets)
+		
+		if(lowerBound <= input && input <= upperBound)
 		{
-			double testMem = ft.getMembership(input);
-			if(testMem > greatestMembership) 
+			
+			double greatestMembership = -1.0; //If the greatest membership is 0, still want to return that set.
+			
+			for(FuzzyTrapezoid ft : fuzzySets)
 			{
-				greatestMembership = testMem;
-				retSet = ft;
+				double testMem = ft.getMembership(input);
+				if(testMem > greatestMembership) 
+				{
+					greatestMembership = testMem;
+					retSet = ft;
+				}
 			}
 		}
 		
 		return retSet;
+	}
+	
+	/**
+	 * Returns the minimum value for which this LinguisticVariable is defined.
+	 * @return a double giving the minimum value for which this LinguisticVariable is defined.
+	 */
+	public double getLowerBound()
+	{
+		double minimum = fuzzySets.get(0).getLeftZero(); //Need a legitimate starting value.
+		
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			if(ft.getLeftZero() < minimum) minimum = ft.getLeftZero();
+		}
+		
+		return minimum;
+	}
+	
+	/**
+	 * Returns the maximum value for which this LinguisticVariable is defined.
+	 * @return A double giving the maximum value for which this LinguisticVariable is defined.
+	 */
+	public double getUpperBound()
+	{
+		double maximum = fuzzySets.get(0).getLeftZero(); //Need a legitimate starting value.
+		
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			if(ft.getLeftZero() > maximum) maximum = ft.getLeftZero();
+		}
+		
+		return maximum;
 	}
 	
 	/**
