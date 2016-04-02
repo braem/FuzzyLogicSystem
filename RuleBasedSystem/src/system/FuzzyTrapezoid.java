@@ -1,6 +1,10 @@
 package system;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 
 /**
  * For this project, FuzzyValue represents a (possibly degenerate) trapezoidal fuzzy membership function.
@@ -8,7 +12,7 @@ import java.io.Serializable;
  * @author Rhys
  * @version 1.0
  * */
-public class FuzzyTrapezoid implements Serializable{
+public class FuzzyTrapezoid implements Serializable, PiecewiseLinearFuzzySet{
 
 	private static final long serialVersionUID = -1762880494226392800L;
 	private double leftZero;
@@ -231,5 +235,72 @@ public class FuzzyTrapezoid implements Serializable{
 				ft.getRightZero() == this.getRightZero() &&
 				ft.getMaximum() == this.getMaximum();
 	}
+
+	/**
+	 * implemented from the PiecewiseLinearFuzzySet interface
+	 * @return an ArrayList<Point2D.Double> giving the end points of the line segments that make up
+	 * this fuzzy set's membership function.
+	 */
+	@Override
+	public ArrayList<Point2D.Double> getPoints() {
+		
+		ArrayList<Point2D.Double> points = new ArrayList<>();
+		
+		points.add(new Point2D.Double(leftZero, 0.0));
+		points.add(new Point2D.Double(leftHigh, maximum));
+		points.add(new Point2D.Double(rightHigh, maximum));
+		points.add(new Point2D.Double(rightZero, 0.0));
+		
+		return points;
+	}
+	
+	/**
+	 * Required by the PiecewiseLinearFuzzySet interface.  Not used.
+	 */
+	@Override
+	public void addPoint(Point2D.Double point){}
+
+	/**
+	 * Required by the PiecewiseLinearFuzzySet interface.  Not used.
+	 */
+	@Override
+	public void removePoint(Point2D.Double point){}		
+
+	/**
+	 * Required by the PiecewiseLinearFuzzySet interface. 
+	 * Moves the indicated point to a new location, if the point exists.
+	 * Otherwise does nothing.
+	 * @param oldP A Point2D.Double giving the point to be relocated.
+	 * @param newP A Point2D.Double giving the new location of the point.
+	 */
+	@Override
+	public void movePoint(Point2D.Double oldP, Point2D.Double newP) {
+		
+		double oldPoint = 0;
+		double oldX = oldP.getX();
+		double oldY = oldP.getY();
+		
+		if(oldX == leftZero && oldY == 0) 
+		{
+			leftZero = newP.getX();
+		}
+		else if(oldX == leftHigh && oldY == maximum)
+		{
+			leftHigh = newP.getX();
+			maximum = newP.getY();
+		}
+		else if(oldX == rightHigh && oldY == maximum)
+		{
+			rightHigh = newP.getX();
+			maximum = newP.getY();
+		}
+		if(oldX == rightZero && oldY == 0) 
+		{
+			rightZero = newP.getX();
+		}
+		
+	}
+	
+	
 
 }
