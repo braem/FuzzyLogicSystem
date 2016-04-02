@@ -21,7 +21,6 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private HashSet<LearningPlan> plan;
-	
 	private ArrayList<LinguisticVariable> LVProfile;
 	
 	/**
@@ -234,5 +233,35 @@ public class User implements Serializable {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	/**
+	 * Returns the LinguisticVariable profile of this user.
+	 * @return An ArrayList<LinguisticVariable> which gives the LinguisticVariable profile of this user.
+	 */
+	public ArrayList<LinguisticVariable> getLVProfile()
+	{
+		return LVProfile;
+	}
+	
+	/**
+	 * Returns the LinguisticVariable from this User's LVProfile with the name specified.
+	 * @param name A String specifying the name of the desired LinguisticVariable.
+	 * @return	The LinguisticVariable with the name specified.
+	 */
+	public LinguisticVariable getLinguisticVariable(String name)
+	{
+		LinguisticVariable retVar = null;
+		
+		for(LinguisticVariable var : LVProfile)
+		{
+			if(var.getName().equals(name)) 
+			{
+				retVar = var;
+				break;
+			}
+		}
+		
+		return retVar;
 	}
 }

@@ -1,5 +1,7 @@
 package structures;
 
+import system.FuzzyTrapezoid;
+
 /**
  * Marks tests based on an attempt.
  * @author Braemen
@@ -55,6 +57,17 @@ public class Marker
 		return ((double)mark/(double)maxScore)*100.0;
 	}
 	
+   /**
+    * Returns the FuzzyTrapezoid representing the Success fuzzy set to which this User's mark has greatest membership.
+    * @param student A User whose LVProfile is to be used for fuzzy grading.
+    * @param mark	The input crisp mark to be fuzzified.
+    * @return		A FuzzyTrapezoid representing the fuzzy value corresponding to the Student's test score.
+    */
+   public static FuzzyTrapezoid fuzzyMark(User student, double mark)
+   {
+	   return student.getLinguisticVariable("Success").greatestMembershipSet(mark);
+   }
+   
    /**
     * The letter grade based on the percentage grade.
     * @param percent    The percentage grade to be converted.
