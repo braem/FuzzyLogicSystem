@@ -13,7 +13,7 @@ public class Marker
 	 * @param studentAttempt     The user's attempted answers.
 	 * @return                   The mark the user got on the test.
 	 */
-   public static double mark(User student, Attempt answerKey, Attempt studentAttempt) {
+   public static double mark(Attempt answerKey, Attempt studentAttempt) {
 		int maxScore = answerKey.getNormalAnswers().size();
 		int numOfBonus = answerKey.getBonusAnswers().size();
 		int mark = 0;
@@ -38,7 +38,7 @@ public class Marker
     * @param studentAttempt     The user's attempted answers.
     * @return                   The mark the user got on the test.
     */
-   public static double mark(User student, Test test, Attempt studentAttempt) {
+   public static double mark(Test test, Attempt studentAttempt) {
 		int maxScore = test.getNormalQuestions().size();
 		int numOfBonus = test.getBonusQuestions().size();
 		int mark = 0;
