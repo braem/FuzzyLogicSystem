@@ -11,53 +11,53 @@ import java.util.EnumMap;
 
 public class LinguisticVariable {
 	
-	private ArrayList < Pair <String, FuzzyTrapezoid> > fuzzySets;
+	private ArrayList<FuzzyTrapezoid> fuzzySets;
 	
 	/**
 	 * Constructs an empty LinguisticVariable.
 	 */
 	public LinguisticVariable ()
 	{
-		fuzzySets = new ArrayList < Pair <String, FuzzyTrapezoid> >();
+		fuzzySets = new ArrayList<FuzzyTrapezoid> ();
 	}
 	
 	/**
 	 * Creates a new LingusiticVariable with the given named fuzzy sets.
-	 * @param sets An ArrayList of Pairs of Strings and FuzzyTrapezoids.
+	 * @param sets An ArrayList of FuzzyTrapezoids.
 	 * The Strings give the names of the FuzzyTrapezoids, and must be unique.
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 */
-	public LinguisticVariable(ArrayList < Pair <String, FuzzyTrapezoid> > sets) throws NonUniqueLinguisticVariableSetNamesException
+	public LinguisticVariable(ArrayList<FuzzyTrapezoid> sets) throws NonUniqueLinguisticVariableSetNamesException
 	{
 		setFuzzySets(sets);
 	}
 
 	/**
 	 * Returns the name, fuzzy set pairs contained within this LinguisticVariable.
-	 * @return An ArrayList of Pairs of Strings and FuzzyTrapezoids.
+	 * @return An ArrayList of FuzzyTrapezoids.
 	 * The Strings give the names of the FuzzyTrapezoids, and must be unique.
 	 */
-	public ArrayList<Pair<String, FuzzyTrapezoid>> getFuzzySets() {
+	public ArrayList<FuzzyTrapezoid> getFuzzySets() {
 		return fuzzySets;
 	}
 
 	/**
 	 * Sets the name, fuzzy sets pairs for this LinguisticVariable to those provided.
-	 * @param fuzzySets An ArrayList of Pairs of Strings and FuzzyTrapezoids.
+	 * @param fuzzySets An ArrayList of FuzzyTrapezoids.
 	 * The Strings give the names of the FuzzyTrapezoids, and must be unique.
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 */
-	public void setFuzzySets(ArrayList<Pair<String, FuzzyTrapezoid>> fuzzySets) throws NonUniqueLinguisticVariableSetNamesException
+	public void setFuzzySets(ArrayList<FuzzyTrapezoid> fuzzySets) throws NonUniqueLinguisticVariableSetNamesException
 	{
 		
 		boolean nonUniqueNames = false;
 		
-		for(Pair p : fuzzySets)
+		for(FuzzyTrapezoid p : fuzzySets)
 		{
 			if(nonUniqueNames) break;
-			for(Pair q : fuzzySets)
+			for(FuzzyTrapezoid q : fuzzySets)
 			{
-				if(p != q & p.getFirst().equals(q.getFirst()))
+				if(p != q & p.getName().equals(q.getName()))
 				{
 					nonUniqueNames = true;
 					break;
