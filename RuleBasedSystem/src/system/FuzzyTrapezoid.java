@@ -24,22 +24,38 @@ public class FuzzyTrapezoid {
 	 * @param P4 A double value representing the horizontal placement of the right-most zero of the membership function.
 	 * @param P5 A double value representing the vertical placement of the plateau at the top of the trapezoid.
 	 * @param n  A String giving the name of the fuzzy set.
-	 * @throws InvalidTrapezoidArgumentsException
+	 * @throws FuzzyTrapezoidInvalidPointsException
+	 * @throws FuzzyTrapezoidNegativeMaximumException
 	 */
 	
-	public FuzzyTrapezoid(double P1, double P2, double P3, double P4, double max, String n) throws InvalidTrapezoidArgumentsException
+	public FuzzyTrapezoid(double P1, double P2, double P3, double P4, double max, String n) throws FuzzyTrapezoidInvalidPointsException, FuzzyTrapezoidNegativeMaximumException
 	{
-		if(0 <= P1 && P1 <= P2 && P2 <= P3 && P3 <= P4)
+		if(verifyPoints(P1,P2,P3,P4))
 		{
-		setLeftZero(P1);
-		setLeftHigh(P2);
-		setRightHigh(P3);
-		setRightZero(P4);
-		setMaximum(max);
-		setName(n);
+			setLeftZero(P1);
+			setLeftHigh(P2);
+			setRightHigh(P3);
+			setRightZero(P4);
+			setMaximum(max);
+			setName(n);
 		}
-		else throw new InvalidTrapezoidArgumentsException();
+		else throw new FuzzyTrapezoidInvalidPointsException();
 		
+	}
+	
+	/**
+	 * Verifies that the arguments are ordered correctly.
+	 * @param P1 A double value representing the horizontal placement of the left-most zero of the membership function.
+	 * @param P2 A double value representing the horizontal placement of the left-most high-point of the membership function.
+	 * @param P3 A double value representing the horizontal placement of the right-most high-point of the membership function.
+	 * @param P4 A double value representing the horizontal placement of the right-most zero of the membership function.
+	 * @param max
+	 * @return	<code>true</code> if 0 <= P1 && P1 <= P2 && P2 <= P3 && P3 <= P4
+	 *          <code>false</code> otherwise
+	 */
+	private boolean verifyPoints(double P1, double P2, double P3, double P4)
+	{
+		return 0 <= P1 && P1 <= P2 && P2 <= P3 && P3 <= P4;
 	}
 
 	/**
@@ -67,10 +83,12 @@ public class FuzzyTrapezoid {
 	}
 
 	/**
-	 * Sets the left zero.
+	 * Sets the left zero to the specified value if it is consistent with a trapezoid.
+	 * Otherwise, does nothing.
 	 * @param leftZero  A double value representing the horizontal placement of the left-most zero of the membership function.
 	 */
 	public void setLeftZero(double leftZero) {
+		if(verifyPoints(leftZero, this.leftHigh, this.rightHigh, this.rightZero))
 		this.leftZero = leftZero;
 	}
 
@@ -83,10 +101,12 @@ public class FuzzyTrapezoid {
 	}
 
 	/**
-	 * Sets the horizontal position of the left high point.
+	 * Sets the horizontal position of the left high point to the specified value if it is consistent with a trapezoid.
+	 * Otherwise, does nothing.
 	 * @param leftHigh A double value representing the horizontal placement of the left-most high point of the membership function.
 	 */
 	public void setLeftHigh(double leftHigh) {
+		if(verifyPoints(this.leftZero, leftHigh, this.rightHigh, this.rightZero))
 		this.leftHigh = leftHigh;
 	}
 
@@ -99,15 +119,17 @@ public class FuzzyTrapezoid {
 	}
 
 	/**
-	 * Sets the horizontal position of the right high point.
+	 * Sets the horizontal position of the right high point to the specified value if it is consistent with a trapezoid.
+	 * Otherwise, does nothing.
 	 * @param rightHigh A double value representing the horizontal placement of the right-most high point of the membership function.
 	 */
 	public void setRightHigh(double rightHigh) {
+		if(verifyPoints(this.leftZero, this.leftHigh, rightHigh, this.rightZero))
 		this.rightHigh = rightHigh;
 	}
 
 	/**
-	 * Returns the horizontal position of the right zero.
+	 * Returns the horizontal position of the right zero
 	 * @return rightZero Returns a double value representing the horizontal placement of the right-most zero of the membership function.
 	 */
 	public double getRightZero() {
@@ -115,10 +137,12 @@ public class FuzzyTrapezoid {
 	}
 
 	/**
-	 * Sets the horizontal position of the right zero.
+	 * Sets the horizontal position of the right zero to the specified value if it is consistent with a trapezoid.
+	 * Otherwise, does nothing.
 	 * @param rightZero Returns a double value representing the horizontal placement of the right-most zero of the membership function.
 	 */
 	public void setRightZero(double rightZero) {
+		if(verifyPoints(this.leftZero, this.leftHigh, this.rightHigh, rightZero))
 		this.rightZero = rightZero;
 	}
 
@@ -134,8 +158,10 @@ public class FuzzyTrapezoid {
 	 * Sets the vertical position of the maximum.
 	 * @param maximum  A double value representing the vertical placement of the maximum of the membership function.
 	 */
-	public void setMaximum(double maximum) {
-		this.maximum = maximum;
+	public void setMaximum(double maximum) throws FuzzyTrapezoidNegativeMaximumException 
+	{
+		if(maximum >= 0) this.maximum = maximum;
+		else throw new FuzzyTrapezoidNegativeMaximumException() ;
 	}
 	
 	/**

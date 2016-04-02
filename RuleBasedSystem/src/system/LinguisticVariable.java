@@ -118,6 +118,7 @@ public class LinguisticVariable {
 	
 	/**
 	 * Removes from fuzzySets that set with name equal to the name argument.
+	 * If no matching set is found, nothing happens.
 	 * As names are required to be unique, only one set will be removed.
 	 * @param name a String giving the name of the fuzzy set to be removed.
 	 */
@@ -128,6 +129,24 @@ public class LinguisticVariable {
 			if(ft.getName().equals(name)) 
 			{
 				fuzzySets.remove(ft);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Removes from fuzzySets that set equal to the argument.
+	 * If no matching set is found, nothing happens.
+	 * As names are required to be unique, only one set will be removed.
+	 * @param name the FuzzyTrapezoid to be removed.
+	 */
+	public void removeFuzzySet(FuzzyTrapezoid remove)
+	{
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			if(ft.equals(remove)) 
+			{
+				fuzzySets.remove(remove);
 				break;
 			}
 		}
