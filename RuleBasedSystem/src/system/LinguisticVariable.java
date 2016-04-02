@@ -174,9 +174,27 @@ public class LinguisticVariable implements Serializable {
 		return retSet;
 	}
 	
-	public FuzzyTrapezoid greatestMembershipSet(double memValue)
+	/**
+	 * Returns the FuzzyTrapezoid among this LinguisticVariable's fuzzy sets which gives the greatest
+	 * membership value to the input.
+	 * @param input	 A double value.
+	 * @return	A FuzzyTrapezoid representing the fuzzy set to which the input has the greatest membership.
+	 */
+	public FuzzyTrapezoid greatestMembershipSet(double input)
 	{
-		for()
+		double greatestMembership = -1.0; //Want to return a set, even if the greatest membership is zero.
+		FuzzyTrapezoid retSet = null;
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			double testMem = ft.getMembership(input);
+			if(testMem > greatestMembership) 
+			{
+				greatestMembership = testMem;
+				retSet = ft;
+			}
+		}
+		
+		return retSet;
 	}
 	
 	/**
