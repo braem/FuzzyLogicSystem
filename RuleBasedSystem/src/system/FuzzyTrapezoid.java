@@ -1,5 +1,6 @@
 package system;
 
+import java.io.Serializable;
 
 /**
  * For this project, FuzzyValue represents a (possibly degenerate) trapezoidal fuzzy membership function.
@@ -7,8 +8,9 @@ package system;
  * @author Rhys
  * @version 1.0
  * */
-public class FuzzyTrapezoid {
-	
+public class FuzzyTrapezoid implements Serializable{
+
+	private static final long serialVersionUID = -1762880494226392800L;
 	private double leftZero;
 	private double leftHigh;
 	private double rightHigh;
