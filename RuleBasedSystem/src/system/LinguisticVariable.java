@@ -11,6 +11,9 @@ import java.util.EnumMap;
 
 public class LinguisticVariable {
 	
+	
+	private String name;
+
 	private ArrayList<FuzzyTrapezoid> fuzzySets;
 	
 	/**
@@ -70,5 +73,28 @@ public class LinguisticVariable {
 		this.fuzzySets = fuzzySets;
 	}
 	
+	/**
+	 * Returns the name of this LinguisticVariable
+	 * @return name a String giving the name of this LinguisticVaraible
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the name of this LinguisticVariable
+	 * @param name a String giving the name of this LinguisticVaraible
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	/**
+	 * Overrides the Object toString method.  Returns the name of this LinguisticVariable.
+	 */
+	public String toString()
+	{
+		return name;
+	}
 	
 }
