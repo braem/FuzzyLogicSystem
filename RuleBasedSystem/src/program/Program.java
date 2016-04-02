@@ -15,7 +15,7 @@ public class Program
 	 * @param args      List of arguments. Not used.
 	 */
    public static void main(String[] args) {
-		LoginWindow window = new LoginWindow();
+		ChoiceWindow window = new ChoiceWindow();
 		window.enable();
 	}
 }

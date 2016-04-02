@@ -34,6 +34,7 @@ public class LoginWindow extends JFrame
 	private JTextField firstNameTF;
 	private JTextField lastNameTF;
 	private JLabel lblInvalidName;
+	private JButton btnBack;
 
 	/**
 	 * Tests the window
@@ -164,15 +165,27 @@ public class LoginWindow extends JFrame
 			}
 		});
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnLogin.setBounds(76, 67, 89, 32);
+		btnLogin.setBounds(10, 67, 89, 32);
 		contentPane.add(btnLogin);
 		
 		//error label
 		lblInvalidName = new JLabel("invalid name");
 		lblInvalidName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInvalidName.setForeground(Color.RED);
-		lblInvalidName.setBounds(76, 97, 89, 14);
+		lblInvalidName.setBounds(10, 95, 89, 14);
 		contentPane.add(lblInvalidName);
+		
+		btnBack = new JButton("back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChoiceWindow window = new ChoiceWindow();
+				window.enable();
+				thisFrame.dispose();
+			}
+		});
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnBack.setBounds(134, 67, 89, 32);
+		contentPane.add(btnBack);
 		lblInvalidName.setVisible(false);
 	}
 }
