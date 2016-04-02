@@ -137,5 +137,13 @@ public class FuzzyTrapezoid {
 	public void setMaximum(double maximum) {
 		this.maximum = maximum;
 	}
+	
+	/**
+	 * Overrides the Object toString method.  Returns the name of this FuzzyTrapezoid.
+	 */
+	public String toString()
+	{
+		return name;
+	}
 
 }
