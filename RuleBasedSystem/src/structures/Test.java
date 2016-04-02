@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import system.Antecedent;
 import system.Consequent;
+import system.FuzzyTrapezoid;
 
 
 /**
  * A Test is a set of questions and answers and is intended to be used by Goals.
  * It contains a list of questions, a list of bonus questions, and an answer key
- * It can also store a users answers and grade.
+ * It can also store a users answers and grade, as well as the fuzzy value for
+ * success.
  * 
  * @author Braemen
  * @version 1.0
@@ -25,6 +27,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
+	private FuzzyTrapezoid success = null;
 	
 	/**
 	 * Creates an empty Test.

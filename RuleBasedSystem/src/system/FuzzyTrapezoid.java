@@ -179,8 +179,8 @@ public class FuzzyTrapezoid implements Serializable{
 		{//input falls on or between the first two points of the trapezoid.
 			if(leftZero != leftHigh)
 			{//non-vertical rising line-segment
-			double slope = maximum / (leftHigh - leftZero);
-			membership = slope * (input - leftZero);
+				double slope = maximum / (leftHigh - leftZero);
+				membership = slope * (input - leftZero);
 			}
 			else//vertical rising line segment
 			{
@@ -204,14 +204,8 @@ public class FuzzyTrapezoid implements Serializable{
 				membership = maximum;
 			}
 		}
-		
-		
+	
 		return membership;
-		
-		
-		
-		
-		
 	}
 	
 	/**
