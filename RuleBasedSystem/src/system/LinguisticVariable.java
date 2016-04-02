@@ -117,6 +117,23 @@ public class LinguisticVariable {
 	}
 	
 	/**
+	 * Removes from fuzzySets that set with name equal to the name argument.
+	 * As names are required to be unique, only one set will be removed.
+	 * @param name a String giving the name of the fuzzy set to be removed.
+	 */
+	public void removeFuzzySet(String name)
+	{
+		for(FuzzyTrapezoid ft : fuzzySets)
+		{
+			if(ft.getName().equals(name)) 
+			{
+				fuzzySets.remove(ft);
+				break;
+			}
+		}
+	}
+	
+	/**
 	 * Overrides the Object toString method.  Returns the name of this LinguisticVariable.
 	 */
 	public String toString()

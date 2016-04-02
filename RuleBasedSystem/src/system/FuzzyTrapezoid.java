@@ -145,5 +145,21 @@ public class FuzzyTrapezoid {
 	{
 		return name;
 	}
+	
+	/**
+	 * Tests if this FuzzyTrapezoid is the same as another.
+	 * @param ft A FuzzyTrapezoid for equality testing.
+	 * @return	<code>true</code> if equal
+	 *          <code>false</code> if not equal.
+	 */
+	public boolean equals(FuzzyTrapezoid ft)
+	{
+		return 	ft.getName().equals(this.getName()) &&
+				ft.getLeftZero() == this.getLeftZero() &&
+				ft.getLeftHigh() == this.getLeftHigh() &&
+				ft.getRightHigh() == this.getRightHigh() &&
+				ft.getRightZero() == this.getRightZero() &&
+				ft.getMaximum() == this.getMaximum();
+	}
 
 }
