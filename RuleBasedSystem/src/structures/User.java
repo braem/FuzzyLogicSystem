@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import system.FuzzyTrapezoid;
-import system.InvalidTrapezoidArgumentsException;
+import system.FuzzyTrapezoidInvalidPointsException;
+import system.FuzzyTrapezoidNegativeMaximumException;
 import system.LinguisticVariable;
 import system.NonUniqueLinguisticVariableSetNamesException;
 
@@ -85,7 +86,10 @@ public class User implements Serializable {
 			
 			difficulty = new LinguisticVariable(diffList);
 			difficulty.setName("Difficulty");
-		}catch(InvalidTrapezoidArgumentsException e)
+		}catch(FuzzyTrapezoidInvalidPointsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(FuzzyTrapezoidNegativeMaximumException e)
 		{
 			//Print an error to UI somehow.
 		}catch(NonUniqueLinguisticVariableSetNamesException e)
@@ -117,7 +121,10 @@ public class User implements Serializable {
 			
 			success = new LinguisticVariable(succList);
 			success.setName("Difficulty");
-		}catch(InvalidTrapezoidArgumentsException e)
+		}catch(FuzzyTrapezoidInvalidPointsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(FuzzyTrapezoidNegativeMaximumException e)
 		{
 			//Print an error to UI somehow.
 		}catch(NonUniqueLinguisticVariableSetNamesException e)
@@ -149,7 +156,10 @@ public class User implements Serializable {
 			
 			learning = new LinguisticVariable(learnList);
 			learning.setName("Difficulty");
-		}catch(InvalidTrapezoidArgumentsException e)
+		}catch(FuzzyTrapezoidInvalidPointsException e)
+		{
+			//Print an error to UI somehow.
+		}catch(FuzzyTrapezoidNegativeMaximumException e)
 		{
 			//Print an error to UI somehow.
 		}catch(NonUniqueLinguisticVariableSetNamesException e)
