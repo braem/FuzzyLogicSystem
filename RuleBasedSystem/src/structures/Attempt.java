@@ -14,6 +14,7 @@ public class Attempt implements Serializable
 	private static final long serialVersionUID = 1037934762325930610L;
 	private ArrayList<AnswerValue> normalAnswers;
 	private ArrayList<AnswerValue> bonusAnswers;
+	private FuzzyTrapezoid success;
 	
 	/**
 	 * Creates an Attempt with empty answer lists

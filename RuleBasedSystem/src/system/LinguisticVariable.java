@@ -174,6 +174,11 @@ public class LinguisticVariable implements Serializable {
 		return retSet;
 	}
 	
+	public FuzzyTrapezoid greatestMembershipSet(double memValue)
+	{
+		for()
+	}
+	
 	/**
 	 * Overrides the Object toString method.  Returns the name of this LinguisticVariable.
 	 */

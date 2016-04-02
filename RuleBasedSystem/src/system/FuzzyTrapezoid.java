@@ -167,6 +167,54 @@ public class FuzzyTrapezoid implements Serializable{
 	}
 	
 	/**
+	 * Returns the input's membership value in this fuzzy set.
+	 * @param input a double input value
+	 * @return	a double value representing the input's membership in this fuzzy set.
+	 */
+	public double getMembership(double input)
+	{
+		double membership = 0.0;
+		
+		if(leftZero <= input && input <= leftHigh)
+		{//input falls on or between the first two points of the trapezoid.
+			if(leftZero != leftHigh)
+			{//non-vertical rising line-segment
+			double slope = maximum / (leftHigh - leftZero);
+			membership = slope * (input - leftZero);
+			}
+			else//vertical rising line segment
+			{
+				membership = maximum;
+			}
+		}
+		else if(leftHigh <= input && input <= rightHigh)
+		{//input falls on or between the peak values.
+			membership = maximum;
+		}
+		else if(rightHigh <= input && input <= rightZero)
+		{//input falls on or between the last two points of the trapezoid.
+			
+			if(rightHigh != rightZero)
+			{//Non-vertical line-segment			
+				double slope = maximum / (leftHigh - leftZero);
+				membership = slope * (input - rightZero);
+			}
+			else //vertical line segment
+			{
+				membership = maximum;
+			}
+		}
+		
+		
+		return membership;
+		
+		
+		
+		
+		
+	}
+	
+	/**
 	 * Overrides the Object toString method.  Returns the name of this FuzzyTrapezoid.
 	 */
 	public String toString()

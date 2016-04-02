@@ -13,7 +13,7 @@ public class Marker
 	 * @param studentAttempt     The user's attempted answers.
 	 * @return                   The mark the user got on the test.
 	 */
-   public static double mark(Attempt answerKey, Attempt studentAttempt) {
+   public static double mark(User student, Attempt answerKey, Attempt studentAttempt) {
 		int maxScore = answerKey.getNormalAnswers().size();
 		int numOfBonus = answerKey.getBonusAnswers().size();
 		int mark = 0;
@@ -29,16 +29,22 @@ public class Marker
 			if(expectedAnswer.equals(actualAnswer))
 				mark++;
 		}
-		return ((double)mark/(double)maxScore)*100.0;
+		
+		double percentage = ((double)mark/(double)maxScore)*100.0;
+		
+		
+		
+		return percentage;
 	}
 	
    /**
     * Calculates the percentage of correct answers to a test.
+    * Fuzzifies score into a Success fuzzy set by greatest membership, and sets the Attempt's Success to this fuzzy value.
     * @param test               The test that is being marked.
     * @param studentAttempt     The user's attempted answers.
     * @return                   The mark the user got on the test.
     */
-   public static double mark(Test test, Attempt studentAttempt) {
+   public static double mark(User student, Test test, Attempt studentAttempt) {
 		int maxScore = test.getNormalQuestions().size();
 		int numOfBonus = test.getBonusQuestions().size();
 		int mark = 0;
@@ -52,7 +58,10 @@ public class Marker
 			if(currentQuestion.isCorrectAnswer(studentAttempt.getBonusAnswers().get(i)))
 				mark++;
 		}
-		return ((double)mark/(double)maxScore)*100.0;
+		
+		
+		
+		//return ((double)mark/(double)maxScore)*100.0;
 	}
 	
    /**
