@@ -1,5 +1,6 @@
 package system;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
@@ -9,9 +10,10 @@ import java.util.EnumMap;
  * @version 2.0
  */
 
-public class LinguisticVariable {
-	
-	
+public class LinguisticVariable implements Serializable {
+
+	private static final long serialVersionUID = -5394991812000135696L;
+
 	private String name;
 
 	private ArrayList<FuzzyTrapezoid> fuzzySets;
