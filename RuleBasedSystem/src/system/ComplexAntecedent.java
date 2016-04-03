@@ -2,6 +2,8 @@ package system;
 
 import java.util.ArrayList;
 
+import structures.User;
+
 /**
  * An antecedent comprised of multiple conjunctively (logical AND) joined antecedents.
  * 
@@ -53,9 +55,9 @@ public class ComplexAntecedent implements Antecedent{
 	 * @return <code>true</code> if all Antecedents are true.
 	 *         <code>false</code> if not all Antecedents are true.
 	 */
-	public boolean testAntecedent()
+	public boolean testAntecedent(User u)
 	{
-		return testAntecedents();
+		return testAntecedents(u);
 	}
 	
 	/**
@@ -63,13 +65,13 @@ public class ComplexAntecedent implements Antecedent{
 	 * @return <code>true</code> if all Antecedents are true.
 	 *        <code>false</code> if not all Antecedents are true.
 	 */
-	public boolean testAntecedents()
+	public boolean testAntecedents(User u)
 	{
 		boolean answer = true;
 		
 		for(Antecedent ant : antecedents)
 		{
-			answer &= ant.testAntecedent();
+			answer &= ant.testAntecedent(u);
 		}
 		
 		return answer;
