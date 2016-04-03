@@ -98,6 +98,7 @@ public class ToDoWindow extends JFrame
 	 * Create the frame.
 	 */
 	public ToDoWindow() {
+	   setResizable(false);
 		setTitle("Todo List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 497, 333);

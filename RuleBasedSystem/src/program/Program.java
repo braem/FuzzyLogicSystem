@@ -16,6 +16,7 @@ public class Program
 	 */
    public static void main(String[] args) {
 		ChoiceWindow window = new ChoiceWindow();
+		window.setResizable(false);
 		window.enable();
 	}
 }

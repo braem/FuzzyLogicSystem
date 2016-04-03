@@ -94,6 +94,7 @@ public class SelectWindow extends JFrame
 	 * @param user      The current user.
 	 */
 	public SelectWindow(User user) {
+	   setResizable(false);
 		setTitle(user.getUserName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 792, 217);

@@ -48,6 +48,7 @@ public class LoginChoiceWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginChoiceWindow(User user) {
+	   setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 272, 162);
 		contentPane = new JPanel();
