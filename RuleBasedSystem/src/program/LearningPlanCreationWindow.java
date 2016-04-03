@@ -37,9 +37,8 @@ public class LearningPlanCreationWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 4003589580490610269L;
-	private JFrame thisFrame = null;
+	private JFrame thisFrame = this;
 	private JPanel contentPane;
-	private JTextField questionNameTF;
 	private JTextField testNameTF;
 	private JTextField goalNameTF;
 	private JTextArea createQuestionTA;
@@ -48,8 +47,8 @@ public class LearningPlanCreationWindow extends JFrame {
 	private JList<Goal> goalList;
 	private DefaultListModel<Test> testModel;
 	private JList<Test> testList;
-	private DefaultListModel<Question> questionModel;
-	private JList<Question> questionList;
+	private DefaultListModel<Integer> questionModel;
+	private JList<Integer> questionList;
 	private JButton btnAddPlan;
 	private JButton btnAddGoal;
 	private JButton btnAddTest;
@@ -58,9 +57,21 @@ public class LearningPlanCreationWindow extends JFrame {
 	private JCheckBox chckbxIsBonus;
 	private DefaultListModel<PreReq> prereqModel;
 	private JList<PreReq> prereqList;
-	private JButton btnAddAsPrereq;
 	private JTextField planNameTF;
 	private JLabel lblPlanName;
+	
+	private ArrayList<Question> normalQuestions;
+	private ArrayList<Question> bonusQuestions;
+	private int questionCtr = 1;
+	private JComboBox<Goal> prereqCB;
+	private JComboBox<Goal> goalCB;
+	private JLabel lblPrereq;
+	private JLabel lblGoal;
+	private JButton btnAddPrereq;
+	private JButton btnRemoveQuestion;
+	private JButton btnRemoveTest;
+	private JButton btnRemovePrereq;
+	private JButton btnRemoveGoal;
 
 	/**
 	 * Launch the application.
@@ -84,6 +95,22 @@ public class LearningPlanCreationWindow extends JFrame {
 	public void enable() {
 		this.setVisible(true);
 	}
+	
+	/**
+	 * Get the corresponding question from the integer
+	 * 
+	 * @param q      Integer that specifies the question.
+	 * @return       The Question be being specified.
+	 */
+	private Question intToQuestion(int q) {
+		Question question;
+		try {
+			question = normalQuestions.get(q-1);
+		} catch(IndexOutOfBoundsException e) {
+			question = bonusQuestions.get(q-normalQuestions.size()-1);
+		}
+		return question;
+	}
 
 	/**
 	 * Create the frame.
@@ -91,11 +118,14 @@ public class LearningPlanCreationWindow extends JFrame {
 	public LearningPlanCreationWindow() {
 		setTitle("Create a Learning Plan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 915, 519);
+		setBounds(100, 100, 1049, 519);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		normalQuestions = new ArrayList<Question>();
+		bonusQuestions = new ArrayList<Question>();
 		
 		createQuestionTA = new JTextArea();
 		createQuestionTA.setLineWrap(true);
@@ -108,12 +138,6 @@ public class LearningPlanCreationWindow extends JFrame {
 		selectedQuestionTA.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		selectedQuestionTA.setBounds(574, 47, 295, 160);
 		contentPane.add(selectedQuestionTA);
-		
-		questionNameTF = new JTextField();
-		questionNameTF.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		questionNameTF.setBounds(119, 218, 125, 25);
-		contentPane.add(questionNameTF);
-		questionNameTF.setColumns(10);
 		
 		testNameTF = new JTextField();
 		testNameTF.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -131,7 +155,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		goalList = new JList<Goal>(goalModel);
 		goalList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		goalList.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		goalList.setBounds(646, 290, 223, 86);
+		goalList.setBounds(517, 291, 223, 82);
 		contentPane.add(goalList);
 		
 		testModel = new DefaultListModel<Test>();
@@ -141,12 +165,14 @@ public class LearningPlanCreationWindow extends JFrame {
 		testList.setBounds(12, 291, 137, 160);
 		contentPane.add(testList);
 		
-		questionModel = new DefaultListModel<Question>();
-		questionList = new JList<Question>(questionModel);
+		questionModel = new DefaultListModel<Integer>();
+		questionList = new JList<Integer>(questionModel);
 		questionList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				Question q = questionList.getSelectedValue();
-				selectedQuestionTA.setText(q+"");
+				try {
+				Question q = intToQuestion(questionList.getSelectedValue());
+				selectedQuestionTA.setText(q+""); }
+				catch(Exception e) {}
 			}
 		});
 		questionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -157,7 +183,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		prereqModel = new DefaultListModel<PreReq>();
 		prereqList = new JList<PreReq>(prereqModel);
 		prereqList.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		prereqList.setBounds(370, 291, 266, 160);
+		prereqList.setBounds(370, 291, 137, 160);
 		contentPane.add(prereqList);
 		
 		answerCB = new JComboBox<AnswerValue>();
@@ -174,27 +200,59 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddQuestion = new JButton("Add Question to Test");
 		btnAddQuestion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Question q = new Question(createQuestionTA.getText(), (AnswerValue)answerCB.getSelectedItem(), chckbxIsBonus.isSelected());
-				questionModel.addElement(q);
+				if(!createQuestionTA.getText().equals("")) {
+					//add it
+					Question q = new Question(createQuestionTA.getText(), (AnswerValue)answerCB.getSelectedItem(), chckbxIsBonus.isSelected());
+					if(chckbxIsBonus.isSelected())
+						bonusQuestions.add(q);
+					else
+						normalQuestions.add(q);
+					questionModel.addElement(questionCtr);
+					questionCtr++;
+					
+					//clear previous
+					createQuestionTA.setText("");
+				}
 			}
 		});
 		btnAddQuestion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAddQuestion.setBounds(254, 217, 161, 27);
+		btnAddQuestion.setBounds(60, 218, 183, 27);
 		contentPane.add(btnAddQuestion);
 		
 		btnAddTest = new JButton("Add Test to Goal");
 		btnAddTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(testNameTF.getText().equals(""))
+					return;
+				//add it
 				ArrayList<Question> qs = new ArrayList<Question>();
+				ArrayList<Question> bqs = new ArrayList<Question>();
 				ArrayList<AnswerValue> as = new ArrayList<AnswerValue>();
-				for(int i=0; i<questionModel.getSize(); i++) {
-					qs.add((Question)questionModel.getElementAt(i));
+				for(int i=0; i<normalQuestions.size(); i++) {
+					qs.add(normalQuestions.get(i));
+				}
+				for(int i=0; i<bonusQuestions.size(); i++) {
+					bqs.add(bonusQuestions.get(i));
 				}
 				for(int i=0; i<qs.size(); i++) {
 					as.add(qs.get(i).getAnswer());
 				}
-				Test t = new Test(testNameTF.getText(), qs, new Attempt(as));
-				testModel.addElement(t);
+				Test t;
+				if(bqs.size() == 0)
+					t = new Test(testNameTF.getText(), qs, new Attempt(as));
+				else
+					t = new Test(testNameTF.getText(), qs, bqs, new Attempt(as));
+				testModel.addElement(t); 
+				
+				//clear previous
+				questionList.clearSelection();
+				questionModel.clear();
+				createQuestionTA.setText("");
+				normalQuestions.clear();
+				bonusQuestions.clear();
+				selectedQuestionTA.setText("");
+				testNameTF.setText("");
+				questionCtr = 1;
 			}
 		});
 		btnAddTest.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -204,32 +262,31 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddGoal = new JButton("Add Goal to Plan");
 		btnAddGoal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Test> tests = new ArrayList<Test>();
-				for(int i=0; i<testModel.getSize(); i++) {
-					tests.add((Test)testModel.getElementAt(i));
+				if(!goalNameTF.getText().equals("")) {
+					ArrayList<Test> tests = new ArrayList<Test>();
+					for(int i=0; i<testModel.getSize(); i++) {
+						tests.add((Test)testModel.getElementAt(i));
+					}
+					Goal g = new Goal(null, tests, false, goalNameTF.getText());
+					goalModel.addElement(g);
+					prereqCB.addItem(g);
+					goalCB.addItem(g);
+					
+					//clear
+					goalModel.clear();
+					goalNameTF.setText("");
 				}
-				Goal g = new Goal(null, tests, false, goalNameTF.getText());
-				goalModel.addElement(g);
 			}
 		});
 		btnAddGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAddGoal.setBounds(159, 327, 201, 27);
 		contentPane.add(btnAddGoal);
 		
-		btnAddAsPrereq = new JButton("Add as Prereq");
-		btnAddAsPrereq.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CreatePrereqPopupWindow window = new CreatePrereqPopupWindow(prereqModel, goalModel, goalList.getSelectedValue());
-				window.enable();
-			}
-		});
-		btnAddAsPrereq.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAddAsPrereq.setBounds(159, 386, 201, 27);
-		contentPane.add(btnAddAsPrereq);
-		
 		btnAddPlan = new JButton("Add Plan");
 		btnAddPlan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(planNameTF.getText() == "")
+					return;
 				ArrayList<Goal> goals = new ArrayList<Goal>();
 				for(int i=0; i<goalModel.getSize(); i++) {
 					goals.add((Goal)goalModel.getElementAt(i));
@@ -246,7 +303,7 @@ public class LearningPlanCreationWindow extends JFrame {
 			}
 		});
 		btnAddPlan.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAddPlan.setBounds(646, 424, 223, 27);
+		btnAddPlan.setBounds(750, 346, 147, 27);
 		contentPane.add(btnAddPlan);
 		
 		/* back button */
@@ -287,10 +344,6 @@ public class LearningPlanCreationWindow extends JFrame {
 		lblWorkingGoal.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblWorkingGoal.setBounds(10, 254, 176, 25);
 		contentPane.add(lblWorkingGoal);
-		JLabel lblQuestionName = new JLabel("Question Name:");
-		lblQuestionName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblQuestionName.setBounds(10, 218, 113, 25);
-		contentPane.add(lblQuestionName);
 		JLabel lblQuestion = new JLabel("Question");
 		lblQuestion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblQuestion.setBounds(315, 47, 102, 25);
@@ -307,12 +360,104 @@ public class LearningPlanCreationWindow extends JFrame {
 		planNameTF = new JTextField();
 		planNameTF.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		planNameTF.setColumns(10);
-		planNameTF.setBounds(732, 387, 137, 25);
+		planNameTF.setBounds(750, 310, 147, 25);
 		contentPane.add(planNameTF);
 		
 		lblPlanName = new JLabel("Plan Name:");
 		lblPlanName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPlanName.setBounds(646, 387, 84, 25);
+		lblPlanName.setBounds(750, 288, 84, 25);
 		contentPane.add(lblPlanName);
+		
+		prereqCB = new JComboBox<Goal>();
+		prereqCB.setBounds(516, 398, 120, 25);
+		contentPane.add(prereqCB);
+		
+		goalCB = new JComboBox<Goal>();
+		goalCB.setBounds(646, 398, 120, 25);
+		contentPane.add(goalCB);
+		
+		lblPrereq = new JLabel("Prereq:");
+		lblPrereq.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPrereq.setBounds(517, 373, 84, 25);
+		contentPane.add(lblPrereq);
+		
+		lblGoal = new JLabel("Goal:");
+		lblGoal.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblGoal.setBounds(656, 373, 84, 25);
+		contentPane.add(lblGoal);
+		
+		btnAddPrereq = new JButton("Add Prereq");
+		btnAddPrereq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Goal p = (Goal)prereqCB.getSelectedItem();
+				Goal g = (Goal)goalCB.getSelectedItem();
+				PreReq pq = new PreReq(p, g, p+" | "+g);
+				prereqModel.addElement(pq);
+			}
+		});
+		btnAddPrereq.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAddPrereq.setBounds(517, 424, 249, 27);
+		contentPane.add(btnAddPrereq);
+		
+		
+		btnRemoveQuestion = new JButton("Remove \r\nQuestion");
+		btnRemoveQuestion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Question> allQs = new ArrayList<Question>();
+				for(int i=0; i<questionModel.size(); i++) {
+					Question q = intToQuestion(questionModel.getElementAt(i));
+					allQs.add(q);
+				}
+				Question selectedQuestion = intToQuestion(questionList.getSelectedValue());
+				if(!normalQuestions.remove(selectedQuestion))
+					bonusQuestions.remove(selectedQuestion);
+				questionCtr = 1;
+				questionModel.clear();
+				for(Question q : normalQuestions) {
+					questionModel.addElement(questionCtr);
+					questionCtr++;
+				}
+				for(Question q : bonusQuestions) {
+					questionModel.addElement(questionCtr);
+					questionCtr++;
+				}
+				
+				//clear
+				selectedQuestionTA.setText("");
+			}
+		});
+		btnRemoveQuestion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRemoveQuestion.setBounds(570, 12, 152, 27);
+		contentPane.add(btnRemoveQuestion);
+		
+		btnRemoveTest = new JButton("Remove \rTest");
+		btnRemoveTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				testModel.removeElementAt(testList.getSelectedIndex());
+			}
+		});
+		btnRemoveTest.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRemoveTest.setBounds(159, 372, 152, 27);
+		contentPane.add(btnRemoveTest);
+		
+		btnRemovePrereq = new JButton("Remove \r\nPrereq");
+		btnRemovePrereq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				prereqModel.removeElementAt(prereqList.getSelectedIndex());
+			}
+		});
+		btnRemovePrereq.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRemovePrereq.setBounds(208, 424, 152, 27);
+		contentPane.add(btnRemovePrereq);
+		
+		btnRemoveGoal = new JButton("Remove Goal");
+		btnRemoveGoal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				goalModel.removeElementAt(goalList.getSelectedIndex());
+			}
+		});
+		btnRemoveGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRemoveGoal.setBounds(516, 253, 120, 27);
+		contentPane.add(btnRemoveGoal);
 	}
 }
