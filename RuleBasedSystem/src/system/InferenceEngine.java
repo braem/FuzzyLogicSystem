@@ -56,8 +56,6 @@ public class InferenceEngine
 		
 		memory.addHypothesis((Consequent) lp);
 		know.rulesFromPlan(lp);
-		
-		initFuzzyRules();
 	}
 	
 	
