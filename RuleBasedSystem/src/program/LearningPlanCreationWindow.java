@@ -134,6 +134,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		contentPane.add(createQuestionTA);
 		
 		selectedQuestionTA = new JTextArea();
+		selectedQuestionTA.setEditable(false);
 		selectedQuestionTA.setLineWrap(true);
 		selectedQuestionTA.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		selectedQuestionTA.setBounds(574, 47, 295, 160);
@@ -269,12 +270,13 @@ public class LearningPlanCreationWindow extends JFrame {
 					}
 					Goal g = new Goal(null, tests, false, goalNameTF.getText());
 					goalModel.addElement(g);
+					
 					prereqCB.addItem(g);
 					goalCB.addItem(g);
 					
 					//clear
-					goalModel.clear();
-					goalNameTF.setText("");
+					testModel.clear();
+					testNameTF.setText("");
 				}
 			}
 		});
