@@ -223,7 +223,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddTest = new JButton("Add Test to Goal");
 		btnAddTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(testNameTF.getText().equals(""))
+				if(testNameTF.getText().equals("") || (normalQuestions.size() == 0 && bonusQuestions.size() == 0))
 					return;
 				//add it
 				ArrayList<Question> qs = new ArrayList<Question>();
@@ -263,7 +263,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddGoal = new JButton("Add Goal to Plan");
 		btnAddGoal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!goalNameTF.getText().equals("")) {
+				if(!goalNameTF.getText().equals("") && testModel.size() > 0) {
 					ArrayList<Test> tests = new ArrayList<Test>();
 					for(int i=0; i<testModel.getSize(); i++) {
 						tests.add((Test)testModel.getElementAt(i));
@@ -287,7 +287,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddPlan = new JButton("Add Plan");
 		btnAddPlan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(planNameTF.getText() == "")
+				if(planNameTF.getText().equals("") || goalModel.size() == 0)
 					return;
 				ArrayList<Goal> goals = new ArrayList<Goal>();
 				for(int i=0; i<goalModel.getSize(); i++) {
