@@ -8,10 +8,6 @@ import java.util.HashSet;
 
 import system.DiscreteFuzzySet;
 import system.DiscreteLinguisticVariable;
-import system.FuzzyTrapezoid;
-import system.FuzzyTrapezoidInvalidPointsException;
-import system.FuzzyTrapezoidNegativeMaximumException;
-import system.LinguisticVariable;
 import system.NonUniqueLinguisticVariableSetNamesException;
 import system.Pair;
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import system.Antecedent;
 import system.Consequent;
-import system.FuzzyTrapezoid;
+import system.DiscreteFuzzySet;
 
 
 /**
@@ -27,7 +27,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
-	private FuzzyTrapezoid success = null;
+	private DiscreteFuzzySet success = null;
 	
 	/**
 	 * Creates an empty Test.
