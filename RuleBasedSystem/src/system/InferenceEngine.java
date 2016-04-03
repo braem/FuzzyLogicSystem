@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import program.ToDoWindow;
 import structures.Goal;
 import structures.LearningPlan;
+import structures.User;
 
 /**
  * The inference engine performs basic inferences based on rules of the form
@@ -31,6 +32,8 @@ public class InferenceEngine
 	private WorkingMemory memory;
 	private KnowledgeBase know;
 	private Rule selectedRule;
+	private ArrayList<FuzzyRule> fuzzyRules;
+	private User student;
 	
 	
 	/**
@@ -47,13 +50,63 @@ public class InferenceEngine
 	 * 
 	 * @param lp	A learning plan used to initialize the InferenceEngine
 	 * */
-	public void init(LearningPlan lp)
+	public void init(User u, LearningPlan lp)
 	{
+		student = u;
 		memory = new WorkingMemory();
 		know = new KnowledgeBase();
 		
 		memory.addHypothesis((Consequent) lp);
 		know.rulesFromPlan(lp);
+		
+		initFuzzyRules();
+	}
+	
+	/**
+	 * Initializes the nine fuzzy rules used to describe a student's learning
+	 * based on the difficulty of a test and their success on it.
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void initFuzzyRules()
+	{
+		DiscreteLinguisticVariable learning = student.getLearning();
+		DiscreteLinguisticVariable success = student.getSuccess();
+		DiscreteLinguisticVariable difficulty = student.getDifficulty();
+		
+		ArrayList<DiscreteFuzzySet> lSets = learning.getFuzzySets();
+		ArrayList<DiscreteFuzzySet> sSets = success.getFuzzySets();
+		ArrayList<DiscreteFuzzySet> dSets = difficulty.getFuzzySets();
+		
+		int stop = sSets.size() * dSets.size();
+		int picker = 0;
+		
+		DiscreteFuzzySet lbad = learning.getFuzzySet("Bad");
+		DiscreteFuzzySet lgood = learning.getFuzzySet("Good");
+		DiscreteFuzzySet lexc = learning.getFuzzySet("Excellent");
+		
+		ArrayList<DiscreteFuzzySet> consOrdering = new ArrayList<>();
+		consOrdering.add(lbad);
+		consOrdering.add(lbad);
+		consOrdering.add(lgood);
+		consOrdering.add(lbad);
+		consOrdering.add(lgood);
+		consOrdering.add(lexc);
+		consOrdering.add(lbad);
+		consOrdering.add(lexc);
+		consOrdering.add(lexc);
+		
+		for(DiscreteFuzzySet diff : dSets)
+		{
+			for(DiscreteFuzzySet succ : sSets)
+			{
+				ArrayList<DiscreteFuzzySet> ants = new ArrayList<>();
+				ants.add(diff);
+				ants.add(succ);
+				
+				DiscreteFuzzySet cons = consOrdering.get(picker++);
+				fuzzyRules.add((new FuzzyRule(ants, cons)));
+			}
+		}		
 	}
 	
 	/**
@@ -107,8 +160,6 @@ public class InferenceEngine
 										 catch(Exception e){System.out.println(e);}
 									}
 								}
-									
-
 							}
 						}
 						else

@@ -168,6 +168,34 @@ public class DiscreteFuzzySet<Input>{
 	 */
 	public double numericDefuzzify()
 	{
+
+		return centerOfArea();
+
+	}
+	
+	/**
+	 * Returns the Input value where the center of area of this fuzzy set falls.
+	 * @return Input value where the center of area of this fuzzy set falls.
+	 */
+	public Input typedDefuzzify()
+	{	
+		//Here, CoA is used to select an x-axis value to return.
+		
+		double weightedSum = centerOfArea();
+		//Truncate, effectively applying the integer floor function.
+		//This gives the index of the Input that should be returned.
+		int sumInt = (int) weightedSum;
+		
+		return points.get(sumInt).getFirst();
+		
+	}
+	
+	/**
+	 * Returns a double representing the average Input value where the center of area of this fuzzy set falls.
+	 * @return double double representing the average Input value where the center of area of this fuzzy set falls.
+	 */
+	private double centerOfArea()
+	{
 		//As this is a discrete function, we can treat it as a function
 		//comprised of rectangles of width 1.  The Center of Area
 		//of this function will be the average of the centers of area
@@ -184,38 +212,6 @@ public class DiscreteFuzzySet<Input>{
 		}
 		
 		return sum / points.size();
-	}
-	
-	/**
-	 * Returns the Input value where the center of area of this fuzzy set falls.
-	 * @return Input value where the center of area of this fuzzy set falls.
-	 */
-	public Input typedDefuzzify()
-	{
-		//As this is a discrete function, we can treat it as a function
-		//comprised of rectangles of width 1.  The Center of Area
-		//of this function will be the average of the centers of area
-		//of each of the component rectangles, weighted by their heights.
-		//The average computed is, thus, the true center of area
-		//if the input values are mapped to integer-spaced real numbers
-		//between 0 and the number of points in the fuzzy set.
-		//Here, it is then used to select an x-axis value to return.
-		
-		double sum = 0;
-		
-		for(int i = 0 ; i < points.size(); i++ )
-		{
-			sum += (i) * points.get(i).getSecond();
-		}
-		
-		sum /= (double)points.size();
-		
-		//Truncate, effectively applying the integer floor function.
-		//This gives the index of the Input that should be returned.
-		int sumInt = (int) sum;
-		
-		return points.get(sumInt).getFirst();
-		
 	}
 	
 	/**
