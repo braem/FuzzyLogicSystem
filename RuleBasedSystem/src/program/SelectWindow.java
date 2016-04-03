@@ -42,6 +42,7 @@ public class SelectWindow extends JFrame
 	private JComboBox<Test> testCB;
 	private List prereqList;
 	private HashSet<LearningPlan> learningPlans;
+	private ToDoWindow todoWindow;
 
 	/**
 	 * Test launch the window
@@ -125,8 +126,8 @@ public class SelectWindow extends JFrame
 			learningPlans = user.getLearningPlan();
 		
 		//create & show todo list in another window
-		ToDoWindow w = new ToDoWindow();
-		w.enable();
+		todoWindow = new ToDoWindow();
+		todoWindow.enable();
 		
 		//button to start taking a test selected
 		btnStart = new JButton("Start Test");
@@ -240,6 +241,7 @@ public class SelectWindow extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				LoginWindow window = new LoginWindow();
 				thisFrame.dispose();
+				todoWindow.dispose();
 				window.enable();
 			}
 		});
