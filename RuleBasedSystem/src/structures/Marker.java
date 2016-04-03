@@ -78,20 +78,20 @@ public class Marker
 	   int successValue;
 		 switch(grade)
 		 {
-		 case "A+": successValue = 13;
-		 case "A": successValue = 12;
-		 case "A-": successValue = 11;
-		 case "B+": successValue = 10;
-		 case "B": successValue = 9;
-		 case "B-": successValue = 8;
-		 case "C+": successValue = 7;
-		 case "C": successValue = 6;
-		 case "C-": successValue = 5;
-		 case "D+": successValue = 4;
-		 case "D": successValue = 3;
-		 case "D-": successValue = 2;
-		 case "F": successValue = 1;
-		 default: successValue = 0;
+		 case "A+": successValue = 13; break;
+		 case "A": successValue = 12; break;
+		 case "A-": successValue = 11; break;
+		 case "B+": successValue = 10; break;
+		 case "B": successValue = 9; break;
+		 case "B-": successValue = 8; break;
+		 case "C+": successValue = 7; break;
+		 case "C": successValue = 6; break;
+		 case "C-": successValue = 5; break;
+		 case "D+": successValue = 4; break;
+		 case "D": successValue = 3; break;
+		 case "D-": successValue = 2; break;
+		 case "F": successValue = 1; break;
+		 default: successValue = 0; break;
 		 }
 		 
 		 return successValue;

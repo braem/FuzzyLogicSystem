@@ -196,7 +196,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 		Input upperBound = getUpperBound();
 		DiscreteFuzzySet<Input> retSet = null;
 		
-		if(comparator.compare(lowerBound, input) <= 0 && comparator.compare( input, upperBound) >= 0)
+		if(comparator.compare(lowerBound, input) <= 0 && comparator.compare( input, upperBound) <= 0)
 		{
 			double greatestMembership = -1.0; //If the greatest membership is 0, still want to return that set.
 			

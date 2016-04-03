@@ -34,7 +34,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
 	private int minLearning = 7;
-	private int difficulty;
+	private int difficulty = 1;
 	
 	/**
 	 * Creates an empty Test.
@@ -173,26 +173,25 @@ public class Test implements Antecedent, Consequent, Serializable
 		DiscreteLinguisticVariable<Integer> difficulty = u.getDifficulty();
 		FuzzyKnowledgeBase<Double> ruleBase = u.getFuzzyKnowledgeBase();
 		
-		String letterGrade = Marker.getLetterGrade(this.studentGrade);
+		int successValue = Marker.letterGradeToSuccessValue(Marker.getLetterGrade(this.studentGrade));
 		
-		DiscreteFuzzySet<Integer> sSet = success.greatestMembershipSet(Marker.letterGradeToSuccessValue(letterGrade));
+		DiscreteFuzzySet<Integer> sSet = success.greatestMembershipSet(successValue);
 		DiscreteFuzzySet<Integer> dSet = difficulty.greatestMembershipSet(this.difficulty);
 		ArrayList<DiscreteFuzzySet> ants = new ArrayList<>();
-		ants.add(sSet);
 		ants.add(dSet);
+		ants.add(sSet);
 		
 		ArrayList<FuzzyRule<Double>> matchedRules = ruleBase.matchRule(ants);
 		
 		ArrayList<DiscreteFuzzySet<Double>> lSets = new ArrayList<>();
 		
-		Pair[] inputs = {new Pair("Difficulty", this.difficulty), new Pair("Success", letterGrade)};
+		Pair[] inputs = {new Pair("Difficulty", this.difficulty), new Pair("Success", successValue)};
 		
 		for(FuzzyRule rule : matchedRules)
 		{
 			try {
 				lSets.add(rule.fire(inputs));
-			} catch (FuzzyRuleBadInputTypeException e) {
-				// TODO Auto-generated catch block
+			} catch (FuzzyRuleBadInputTypeException e){
 				e.printStackTrace();
 			}
 		}

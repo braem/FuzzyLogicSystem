@@ -18,7 +18,7 @@ public class FuzzyKnowledgeBase<Output> {
 
 	public ArrayList<FuzzyRule<Output>> matchRule(ArrayList<DiscreteFuzzySet> ants)
 	{
-		ArrayList<FuzzyRule<Output>> rules = null;
+		ArrayList<FuzzyRule<Output>> rules = new ArrayList<>();
 		FuzzyRule<Output> rule = null;
 		
 		boolean equal;		
