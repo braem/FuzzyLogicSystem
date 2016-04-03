@@ -20,16 +20,22 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FuzzySetWindow extends JFrame {
+/**
+ * 
+ * @author braem
+ * @version 1.0
+ */
+public class FuzzySetWindow extends JFrame
+{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3599584867107349804L;
 	private JPanel contentPane;
-	private JComboBox<DiscreteFuzzySet<Double>> difficultyCB;
-	private JComboBox<DiscreteFuzzySet<Double>> learningCB;
-	private JComboBox<DiscreteFuzzySet<String>> successCB;
+	private JComboBox<DiscreteFuzzySet<Integer>> difficultyCB;
+	private JComboBox<DiscreteFuzzySet<Integer>> learningCB;
+	private JComboBox<DiscreteFuzzySet<Integer>> successCB;
 	
 	/**
 	 * Launch the application.
@@ -60,45 +66,45 @@ public class FuzzySetWindow extends JFrame {
 	public FuzzySetWindow(User user) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 184);
+		setBounds(100, 100, 467, 209);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		difficultyCB = new JComboBox<DiscreteFuzzySet<Double>>();
+		difficultyCB = new JComboBox<DiscreteFuzzySet<Integer>>();
 		difficultyCB.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		difficultyCB.setBounds(10, 47, 127, 25);
 		contentPane.add(difficultyCB);
 		
-		learningCB = new JComboBox<DiscreteFuzzySet<Double>>();
+		learningCB = new JComboBox<DiscreteFuzzySet<Integer>>();
 		learningCB.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		learningCB.setBounds(147, 47, 127, 25);
 		contentPane.add(learningCB);
 		
-		successCB = new JComboBox<DiscreteFuzzySet<String>>();
+		successCB = new JComboBox<DiscreteFuzzySet<Integer>>();
 		successCB.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		successCB.setBounds(284, 47, 127, 25);
 		contentPane.add(successCB);
 		
 		/* Adding fuzzy sets from the user to the comboboxes */
 		//discrete variables
-		DiscreteLinguisticVariable<Double> difficulty = user.getDifficulty();
-		DiscreteLinguisticVariable<Double> learning = user.getLearning();
-		DiscreteLinguisticVariable<String> success = user.getSuccess();
+		DiscreteLinguisticVariable<Integer> difficulty = user.getDifficulty();
+		DiscreteLinguisticVariable<Integer> learning = user.getLearning();
+		DiscreteLinguisticVariable<Integer> success = user.getSuccess();
 		
 		//fuzzy sets
 		//eg. easy, medium, hard
-		ArrayList<DiscreteFuzzySet<Double>> difficultySets = difficulty.getFuzzySets();
-		ArrayList<DiscreteFuzzySet<Double>> learningSets = learning.getFuzzySets();
-		ArrayList<DiscreteFuzzySet<String>> successSets = success.getFuzzySets();
+		ArrayList<DiscreteFuzzySet<Integer>> difficultySets = difficulty.getFuzzySets();
+		ArrayList<DiscreteFuzzySet<Integer>> learningSets = learning.getFuzzySets();
+		ArrayList<DiscreteFuzzySet<Integer>> successSets = success.getFuzzySets();
 		
 		//adding fuzzy sets to comboxes
-		for(DiscreteFuzzySet<Double> d : difficultySets)
+		for(DiscreteFuzzySet<Integer> d : difficultySets)
 			difficultyCB.addItem(d);
-		for(DiscreteFuzzySet<Double> l : learningSets)
+		for(DiscreteFuzzySet<Integer> l : learningSets)
 			learningCB.addItem(l);
-		for(DiscreteFuzzySet<String> s : successSets)
+		for(DiscreteFuzzySet<Integer> s : successSets)
 			successCB.addItem(s);
 		
 		/* labels */
@@ -121,9 +127,11 @@ public class FuzzySetWindow extends JFrame {
 		JButton btnDifficulty = new JButton("View");
 		btnDifficulty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DiscreteFuzzySet<Double> set = (DiscreteFuzzySet<Double>)difficultyCB.getSelectedItem();
-				ArrayList<Pair<Double,Double>> points = set.getPoints();
-				
+				@SuppressWarnings("unchecked")
+				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)difficultyCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> points = set.getPoints();
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Difficulty Fuzzy Set", "Difficulty", points);
+				window.enable();
 			}
 		});
 		btnDifficulty.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -133,8 +141,11 @@ public class FuzzySetWindow extends JFrame {
 		JButton btnLearning = new JButton("View");
 		btnLearning.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DiscreteFuzzySet<Double> set = (DiscreteFuzzySet<Double>)learningCB.getSelectedItem();
-				ArrayList<Pair<Double,Double>> points = set.getPoints();
+				@SuppressWarnings("unchecked")
+				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)learningCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> points = set.getPoints();
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Learning Fuzzy Set", "Learning", points);
+				window.enable();
 			}
 		});
 		btnLearning.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -144,12 +155,33 @@ public class FuzzySetWindow extends JFrame {
 		JButton btnSuccess = new JButton("View");
 		btnSuccess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DiscreteFuzzySet<String> set = (DiscreteFuzzySet<String>)successCB.getSelectedItem();
-				ArrayList<Pair<String,Double>> points = set.getPoints();
+				@SuppressWarnings("unchecked")
+				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)successCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> points = set.getPoints();
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Success Fuzzy Set", "Success", points);
+				window.enable();
 			}
 		});
 		btnSuccess.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnSuccess.setBounds(284, 83, 127, 25);
 		contentPane.add(btnSuccess);
+		
+		JButton btnViewAll = new JButton("View All");
+		btnViewAll.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
+			public void actionPerformed(ActionEvent arg0) {
+				DiscreteFuzzySet<Integer> sset = (DiscreteFuzzySet<Integer>)successCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> spoints = sset.getPoints();
+				DiscreteFuzzySet<Integer> lset = (DiscreteFuzzySet<Integer>)learningCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> lpoints = lset.getPoints();
+				DiscreteFuzzySet<Integer> dset = (DiscreteFuzzySet<Integer>)difficultyCB.getSelectedItem();
+				ArrayList<Pair<Integer,Double>> dpoints = dset.getPoints();
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Working Fuzzy Sets", "Fuzzy Sets", dpoints, lpoints, spoints);
+				window.enable();
+			}
+		});
+		btnViewAll.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnViewAll.setBounds(147, 119, 127, 37);
+		contentPane.add(btnViewAll);
 	}
 }
