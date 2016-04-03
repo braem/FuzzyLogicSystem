@@ -114,7 +114,7 @@ public class ReviewWindow extends JFrame
 			test.setStudentGrade(percentGrade);
 			bestGradeOnThisTest = true;
 			InferenceEngine iE = new InferenceEngine();
-			iE.init(currentPlan);
+			iE.init(user, currentPlan);
 			iE.inferenceCycle();
 		}
 		FileIO.writeUser(user); //write user to .ser

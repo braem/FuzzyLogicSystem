@@ -195,7 +195,7 @@ public class SelectWindow extends JFrame
 	            //get the newly selected plan, init the inference engine on it & run a cycle
 	            LearningPlan plan = (LearningPlan)learningPlanCB.getSelectedItem();
 	            if(plan == null) return;
-	            iE.init(plan);
+	            iE.init(user, plan);
 	    		iE.inferenceCycle();
 	            for(Goal goal : plan.getGoals()) //add this plan's goals
 	            	goalCB.addItem(goal);
