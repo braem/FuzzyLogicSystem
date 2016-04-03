@@ -1,9 +1,11 @@
 package system;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FuzzyKnowledgeBase<Output> {
+public class FuzzyKnowledgeBase<Output> implements Serializable {
 
+	private static final long serialVersionUID = -6841997985405265742L;
 	private ArrayList<FuzzyRule<Output>> fuzzyRules; 
 	
 	public FuzzyKnowledgeBase(ArrayList<FuzzyRule<Output>> rules) {
@@ -31,7 +33,8 @@ public class FuzzyKnowledgeBase<Output> {
 			ArrayList<DiscreteFuzzySet> ruleAnts = rule.getAntecedents();
 			
 			if(ants.size() == ruleAnts.size())
-			{
+			{	
+				equal = true;
 				for(int j = 0 ; j < ants.size() ; j++ )
 				{
 					if(ants.get(j) != ruleAnts.get(j))
@@ -43,9 +46,7 @@ public class FuzzyKnowledgeBase<Output> {
 				
 				if(equal) rules.add(rule);
 			}
-			else equal = false;
-			
-			if(!equal) break;			
+			else equal = false;			
 		}
 		
 		return rules;
