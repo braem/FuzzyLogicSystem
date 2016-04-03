@@ -408,18 +408,21 @@ public class LearningPlanCreationWindow extends JFrame {
 					Question q = intToQuestion(questionModel.getElementAt(i));
 					allQs.add(q);
 				}
-				Question selectedQuestion = intToQuestion(questionList.getSelectedValue());
-				if(!normalQuestions.remove(selectedQuestion))
-					bonusQuestions.remove(selectedQuestion);
-				questionCtr = 1;
-				questionModel.clear();
-				for(Question q : normalQuestions) {
-					questionModel.addElement(questionCtr);
-					questionCtr++;
-				}
-				for(Question q : bonusQuestions) {
-					questionModel.addElement(questionCtr);
-					questionCtr++;
+				if (!questionList.isSelectionEmpty())
+				{
+				   Question selectedQuestion = intToQuestion(questionList.getSelectedValue());
+	            if(!normalQuestions.remove(selectedQuestion))
+	               bonusQuestions.remove(selectedQuestion);
+	            questionCtr = 1;
+	            questionModel.clear();
+	            for(Question q : normalQuestions) {
+	               questionModel.addElement(questionCtr);
+	               questionCtr++;
+	            }
+	            for(Question q : bonusQuestions) {
+	               questionModel.addElement(questionCtr);
+	               questionCtr++;
+	            }
 				}
 				
 				//clear
@@ -433,7 +436,10 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnRemoveTest = new JButton("Remove \rTest");
 		btnRemoveTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				testModel.removeElementAt(testList.getSelectedIndex());
+				if (!testList.isSelectionEmpty())
+				{
+				   testModel.removeElementAt(testList.getSelectedIndex());
+				}
 			}
 		});
 		btnRemoveTest.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -443,7 +449,10 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnRemovePrereq = new JButton("Remove \r\nPrereq");
 		btnRemovePrereq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				prereqModel.removeElementAt(prereqList.getSelectedIndex());
+				if (!prereqList.isSelectionEmpty())
+				{
+				   prereqModel.removeElementAt(prereqList.getSelectedIndex());
+				}
 			}
 		});
 		btnRemovePrereq.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -453,7 +462,10 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnRemoveGoal = new JButton("Remove Goal");
 		btnRemoveGoal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				goalModel.removeElementAt(goalList.getSelectedIndex());
+				if (!goalList.isSelectionEmpty())
+				{
+				   goalModel.removeElementAt(goalList.getSelectedIndex());
+				}
 			}
 		});
 		btnRemoveGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
