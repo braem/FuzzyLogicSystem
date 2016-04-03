@@ -1,14 +1,19 @@
 package structures;
 
+import java.awt.geom.Point2D;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 
+import system.DiscreteFuzzySet;
+import system.DiscreteLinguisticVariable;
 import system.FuzzyTrapezoid;
 import system.FuzzyTrapezoidInvalidPointsException;
 import system.FuzzyTrapezoidNegativeMaximumException;
 import system.LinguisticVariable;
 import system.NonUniqueLinguisticVariableSetNamesException;
+import system.Pair;
 
 /**
  * Contains the information needed by a user.
@@ -21,7 +26,9 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private HashSet<LearningPlan> plan;
-	private ArrayList<LinguisticVariable> LVProfile;
+	private DiscreteLinguisticVariable<Double> difficulty;
+	private DiscreteLinguisticVariable<String> success;
+	DiscreteLinguisticVariable<Double> learning;
 	
 	/**
 	 * Creates a new User with the specified first name, last name, and learning plan list.
@@ -63,40 +70,80 @@ public class User implements Serializable {
 		initLearning();		
 		
 	}
-	
+
 	/**
 	 * Initializes this User's Difficulty LinguisticVariable and adds it to the LVProfile.
 	 */
+
 	private void initDifficulty()
 	{
-		FuzzyTrapezoid diffEasy = null;
-		FuzzyTrapezoid diffMedium = null;
-		FuzzyTrapezoid diffHard = null;
-		LinguisticVariable difficulty = null;
+		DiscreteFuzzySet<Double> diffEasy = null;
+		DiscreteFuzzySet<Double> diffMedium = null;
+		DiscreteFuzzySet<Double> diffHard = null;
 		
-		try{
-			diffEasy = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Easy");
-			diffMedium = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Medium");
-			diffHard = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Hard");
-			ArrayList<FuzzyTrapezoid> diffList = new ArrayList<>();
+	
+		ArrayList<Pair<Double, Double>> easyPoints = new ArrayList<>();
+		ArrayList<Pair<Double, Double>> mediumPoints = new ArrayList<>();
+		ArrayList<Pair<Double, Double>> hardPoints = new ArrayList<>();
+		
+		easyPoints.add(new Pair<Double, Double>( 1.0, 1.0));
+		easyPoints.add(new Pair<Double, Double>( 2.0, 1.0));
+		easyPoints.add(new Pair<Double, Double>( 3.0, 1.0));
+		easyPoints.add(new Pair<Double, Double>( 4.0, 1.0));
+		easyPoints.add(new Pair<Double, Double>( 5.0, 0.5));
+		easyPoints.add(new Pair<Double, Double>( 6.0, 0.0));
+		easyPoints.add(new Pair<Double, Double>( 7.0, 0.0));
+		easyPoints.add(new Pair<Double, Double>( 8.0, 0.0));
+		easyPoints.add(new Pair<Double, Double>( 9.0, 0.0));
+		easyPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		
+		mediumPoints.add(new Pair<Double, Double>( 1.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 2.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 3.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 4.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 5.0, 0.5));
+		mediumPoints.add(new Pair<Double, Double>( 6.0, 1.0));
+		mediumPoints.add(new Pair<Double, Double>( 7.0, 1.0));
+		mediumPoints.add(new Pair<Double, Double>( 8.0, 0.5));
+		mediumPoints.add(new Pair<Double, Double>( 9.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		
+		hardPoints.add(new Pair<Double, Double>( 1.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 2.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 3.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 4.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 5.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 6.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 7.0, 0.0));
+		hardPoints.add(new Pair<Double, Double>( 8.0, 0.5));
+		hardPoints.add(new Pair<Double, Double>( 9.0, 1.0));
+		hardPoints.add(new Pair<Double, Double>( 10.0, 1.0));
+		
+		Comparator<Double> c = new Comparator<Double>(){
+			public int compare(Double first, Double second)
+			{
+				return first.compareTo(second);
+			}
+		};
+		
+
+		
+		try {
+			difficulty = new DiscreteLinguisticVariable<Double>("Difficulty", c);
+			diffEasy = new DiscreteFuzzySet<Double>(easyPoints, "Easy", difficulty);
+			diffMedium = new DiscreteFuzzySet<Double>(mediumPoints, "Medium", difficulty);
+			diffHard = new DiscreteFuzzySet<Double>(hardPoints, "Hard", difficulty);
+			ArrayList<DiscreteFuzzySet<Double>> diffList = new ArrayList<>();
 			diffList.add(diffEasy);
 			diffList.add(diffMedium);
 			diffList.add(diffHard);
 			
-			difficulty = new LinguisticVariable(diffList);
-			difficulty.setName("Difficulty");
-		}catch(FuzzyTrapezoidInvalidPointsException e)
-		{
-			//Print an error to UI somehow.
-		}catch(FuzzyTrapezoidNegativeMaximumException e)
-		{
-			//Print an error to UI somehow.
-		}catch(NonUniqueLinguisticVariableSetNamesException e)
-		{
-			//Print an error to UI somehow.
+			difficulty.setFuzzySets(diffList);
+			
+		} catch (NonUniqueLinguisticVariableSetNamesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		this.LVProfile.add(difficulty);
 	}
 	
 	/**
@@ -104,34 +151,83 @@ public class User implements Serializable {
 	 */
 	private void initSuccess()
 	{
-		FuzzyTrapezoid succBad = null;
-		FuzzyTrapezoid succGood = null;
-		FuzzyTrapezoid succExcellent = null;
-		LinguisticVariable success = null;
+		DiscreteFuzzySet<String> succBad = null;
+		DiscreteFuzzySet<String> succGood = null;
+		DiscreteFuzzySet<String> succExcellent = null;
+
+		ArrayList<Pair<String, Double>> badPoints = new ArrayList<>();
+		ArrayList<Pair<String, Double>> goodPoints = new ArrayList<>();
+		ArrayList<Pair<String, Double>> excellentPoints = new ArrayList<>();
 		
-		try{
-			succBad = new FuzzyTrapezoid(0.0, 0.0, 50.0, 55.0, 1.0, "Bad");
-			succGood = new FuzzyTrapezoid(55.0, 65.0, 75.0, 85.0, 1.0, "Good");
-			succExcellent = new FuzzyTrapezoid(75.0, 85.0, 100.0, 100.0, 1.0, "Excellent");
-			ArrayList<FuzzyTrapezoid> succList = new ArrayList<>();
+		badPoints.add(new Pair<String, Double>( "F", 1.0));
+		badPoints.add(new Pair<String, Double>( "D-", 1.0));
+		badPoints.add(new Pair<String, Double>( "D", 1.0));
+		badPoints.add(new Pair<String, Double>( "D+", 1.0));
+		badPoints.add(new Pair<String, Double>( "C-", 1.0));
+		badPoints.add(new Pair<String, Double>( "C", 0.5));
+		badPoints.add(new Pair<String, Double>( "C+", 0.0));
+		badPoints.add(new Pair<String, Double>( "B-", 0.0));
+		badPoints.add(new Pair<String, Double>( "B", 0.0));
+		badPoints.add(new Pair<String, Double>( "B+", 0.0));
+		badPoints.add(new Pair<String, Double>( "A-", 0.0));
+		badPoints.add(new Pair<String, Double>( "A", 0.0));
+		badPoints.add(new Pair<String, Double>( "A+", 0.0));
+		
+		goodPoints.add(new Pair<String, Double>( "F", 0.0));
+		goodPoints.add(new Pair<String, Double>( "D-", 0.0));
+		goodPoints.add(new Pair<String, Double>( "D", 0.0));
+		goodPoints.add(new Pair<String, Double>( "D+", 0.0));
+		goodPoints.add(new Pair<String, Double>( "C-", 0.0));
+		goodPoints.add(new Pair<String, Double>( "C", 0.5));
+		goodPoints.add(new Pair<String, Double>( "C+", 1.0));
+		goodPoints.add(new Pair<String, Double>( "B-", 1.0));
+		goodPoints.add(new Pair<String, Double>( "B", 1.0));
+		goodPoints.add(new Pair<String, Double>( "B+", 1.0));
+		goodPoints.add(new Pair<String, Double>( "A-", 0.5));
+		goodPoints.add(new Pair<String, Double>( "A", 0.0));
+		goodPoints.add(new Pair<String, Double>( "A+", 0.0));
+		
+		excellentPoints.add(new Pair<String, Double>( "F", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "D-", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "D", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "D+", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "C-", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "C", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "C+", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "B-", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "B", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "B+", 0.0));
+		excellentPoints.add(new Pair<String, Double>( "A-", 0.5));
+		excellentPoints.add(new Pair<String, Double>( "A", 1.0));
+		excellentPoints.add(new Pair<String, Double>( "A+", 1.0));
+		
+
+		
+		Comparator<String> c = new Comparator<String>(){
+			public int compare(String first, String second)
+			{
+				return first.compareTo(second);
+			}
+		};
+		
+
+		
+		try {
+			success = new DiscreteLinguisticVariable<String>("Success", c);
+			succBad = new DiscreteFuzzySet<String>(badPoints, "Bad", success);
+			succGood = new DiscreteFuzzySet<String>(goodPoints, "Good", success);
+			succExcellent = new DiscreteFuzzySet<String>(excellentPoints, "Excellent", success);
+			ArrayList<DiscreteFuzzySet<String>> succList = new ArrayList<>();
 			succList.add(succBad);
 			succList.add(succGood);
 			succList.add(succExcellent);
 			
-			success = new LinguisticVariable(succList);
-			success.setName("Difficulty");
-		}catch(FuzzyTrapezoidInvalidPointsException e)
-		{
-			//Print an error to UI somehow.
-		}catch(FuzzyTrapezoidNegativeMaximumException e)
-		{
-			//Print an error to UI somehow.
-		}catch(NonUniqueLinguisticVariableSetNamesException e)
-		{
-			//Print an error to UI somehow.
+			success.setFuzzySets(succList);
+		} catch (NonUniqueLinguisticVariableSetNamesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		this.LVProfile.add(success);
+
 	}
 	
 	/**
@@ -139,36 +235,178 @@ public class User implements Serializable {
 	 */
 	private void initLearning()
 	{
-		FuzzyTrapezoid learnBad = null;
-		FuzzyTrapezoid learnGood = null;
-		FuzzyTrapezoid learnExcellent = null;
-		LinguisticVariable learning = null;
+		DiscreteFuzzySet<Double> learnBad = null;
+		DiscreteFuzzySet<Double> learnGood = null;
+		DiscreteFuzzySet<Double> learnExcellent = null;
 		
-		try{
-			learnBad = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Bad");
-			learnGood = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Good");
-			learnExcellent = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Excellent");
-			ArrayList<FuzzyTrapezoid> learnList = new ArrayList<>();
+
+		ArrayList<Pair<Double, Double>> badPoints = new ArrayList<>();
+		ArrayList<Pair<Double, Double>> mediumPoints = new ArrayList<>();
+		ArrayList<Pair<Double, Double>> excellentPoints = new ArrayList<>();
+		
+		badPoints.add(new Pair<Double, Double>( 1.0, 1.0));
+		badPoints.add(new Pair<Double, Double>( 2.0, 1.0));
+		badPoints.add(new Pair<Double, Double>( 3.0, 1.0));
+		badPoints.add(new Pair<Double, Double>( 4.0, 1.0));
+		badPoints.add(new Pair<Double, Double>( 5.0, 0.5));
+		badPoints.add(new Pair<Double, Double>( 6.0, 0.0));
+		badPoints.add(new Pair<Double, Double>( 7.0, 0.0));
+		badPoints.add(new Pair<Double, Double>( 8.0, 0.0));
+		badPoints.add(new Pair<Double, Double>( 9.0, 0.0));
+		badPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		
+		mediumPoints.add(new Pair<Double, Double>( 1.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 2.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 3.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 4.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 5.0, 0.5));
+		mediumPoints.add(new Pair<Double, Double>( 6.0, 1.0));
+		mediumPoints.add(new Pair<Double, Double>( 7.0, 1.0));
+		mediumPoints.add(new Pair<Double, Double>( 8.0, 0.5));
+		mediumPoints.add(new Pair<Double, Double>( 9.0, 0.0));
+		mediumPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		
+		excellentPoints.add(new Pair<Double, Double>( 1.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 2.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 3.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 4.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 5.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 6.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 7.0, 0.0));
+		excellentPoints.add(new Pair<Double, Double>( 8.0, 0.5));
+		excellentPoints.add(new Pair<Double, Double>( 9.0, 1.0));
+		excellentPoints.add(new Pair<Double, Double>( 10.0, 1.0));
+		
+		Comparator<Double> c = new Comparator<Double>(){
+			public int compare(Double first, Double second)
+			{
+				return first.compareTo(second);
+			}
+		};		
+		try {
+			learning = new DiscreteLinguisticVariable<Double>("Difficulty", c);
+			learnBad = new DiscreteFuzzySet<Double>(badPoints, "Bad", learning);
+			learnGood = new DiscreteFuzzySet<Double>(mediumPoints, "Good", learning);
+			learnExcellent = new DiscreteFuzzySet<Double>(excellentPoints, "Excellent", learning);
+			ArrayList<DiscreteFuzzySet<Double>> learnList = new ArrayList<>();
 			learnList.add(learnBad);
 			learnList.add(learnGood);
 			learnList.add(learnExcellent);
-			
-			learning = new LinguisticVariable(learnList);
-			learning.setName("Difficulty");
-		}catch(FuzzyTrapezoidInvalidPointsException e)
-		{
-			//Print an error to UI somehow.
-		}catch(FuzzyTrapezoidNegativeMaximumException e)
-		{
-			//Print an error to UI somehow.
-		}catch(NonUniqueLinguisticVariableSetNamesException e)
-		{
-			//Print an error to UI somehow.
+			learning.setFuzzySets(learnList);
+		} catch (NonUniqueLinguisticVariableSetNamesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		this.LVProfile.add(learning);
 	}
 	
+	
+	
+	
+//	/**
+//	 * Initializes this User's Difficulty LinguisticVariable and adds it to the LVProfile.
+//	 */
+//	private void initDifficulty()
+//	{
+//		FuzzyTrapezoid diffEasy = null;
+//		FuzzyTrapezoid diffMedium = null;
+//		FuzzyTrapezoid diffHard = null;
+//		LinguisticVariable difficulty = null;
+//		
+//		try{
+//			diffEasy = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Easy");
+//			diffMedium = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Medium");
+//			diffHard = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Hard");
+//			ArrayList<FuzzyTrapezoid> diffList = new ArrayList<>();
+//			diffList.add(diffEasy);
+//			diffList.add(diffMedium);
+//			diffList.add(diffHard);
+//			
+//			difficulty = new LinguisticVariable(diffList);
+//			difficulty.setName("Difficulty");
+//		}catch(FuzzyTrapezoidInvalidPointsException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(FuzzyTrapezoidNegativeMaximumException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(NonUniqueLinguisticVariableSetNamesException e)
+//		{
+//			//Print an error to UI somehow.
+//		}
+//		
+//		this.LVProfile.add(difficulty);
+//	}
+//	
+//	/**
+//	 * Initializes this User's Success LinguisticVariable and adds it to the LVProfile.
+//	 */
+//	private void initSuccess()
+//	{
+//		FuzzyTrapezoid succBad = null;
+//		FuzzyTrapezoid succGood = null;
+//		FuzzyTrapezoid succExcellent = null;
+//		LinguisticVariable success = null;
+//		
+//		try{
+//			succBad = new FuzzyTrapezoid(0.0, 0.0, 50.0, 55.0, 1.0, "Bad");
+//			succGood = new FuzzyTrapezoid(55.0, 65.0, 75.0, 85.0, 1.0, "Good");
+//			succExcellent = new FuzzyTrapezoid(75.0, 85.0, 100.0, 100.0, 1.0, "Excellent");
+//			ArrayList<FuzzyTrapezoid> succList = new ArrayList<>();
+//			succList.add(succBad);
+//			succList.add(succGood);
+//			succList.add(succExcellent);
+//			
+//			success = new LinguisticVariable(succList);
+//			success.setName("Success");
+//		}catch(FuzzyTrapezoidInvalidPointsException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(FuzzyTrapezoidNegativeMaximumException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(NonUniqueLinguisticVariableSetNamesException e)
+//		{
+//			//Print an error to UI somehow.
+//		}
+//		
+//		this.LVProfile.add(success);
+//	}
+//	
+//	/**
+//	 * Initializes this User's Success LinguisticVariable and adds it to the LVProfile.
+//	 */
+//	private void initLearning()
+//	{
+//		FuzzyTrapezoid learnBad = null;
+//		FuzzyTrapezoid learnGood = null;
+//		FuzzyTrapezoid learnExcellent = null;
+//		LinguisticVariable learning = null;
+//		
+//		try{
+//			learnBad = new FuzzyTrapezoid(0.0, 0.0, 25.0, 35.0, 1.0, "Bad");
+//			learnGood = new FuzzyTrapezoid(25.0, 35.0, 55.0, 65.0, 1.0, "Good");
+//			learnExcellent = new FuzzyTrapezoid(55.0, 65.0, 100.0, 100.0, 1.0, "Excellent");
+//			ArrayList<FuzzyTrapezoid> learnList = new ArrayList<>();
+//			learnList.add(learnBad);
+//			learnList.add(learnGood);
+//			learnList.add(learnExcellent);
+//			
+//			learning = new LinguisticVariable(learnList);
+//			learning.setName("Learning");
+//		}catch(FuzzyTrapezoidInvalidPointsException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(FuzzyTrapezoidNegativeMaximumException e)
+//		{
+//			//Print an error to UI somehow.
+//		}catch(NonUniqueLinguisticVariableSetNamesException e)
+//		{
+//			//Print an error to UI somehow.
+//		}
+//		
+//		this.LVProfile.add(learning);
+//	}
+//	
 	
 	/**
 	 * Returns the user's full name.
@@ -236,32 +474,30 @@ public class User implements Serializable {
 	}
 	
 	/**
-	 * Returns the LinguisticVariable profile of this user.
-	 * @return An ArrayList<LinguisticVariable> which gives the LinguisticVariable profile of this user.
+	 * Returns the success DiscreteLinguisticVariable belonging to this User
+	 * @return The DiscreteLinguisticVariable the success DiscreteLinguisticVariable belonging to this User
 	 */
-	public ArrayList<LinguisticVariable> getLVProfile()
+	public DiscreteLinguisticVariable<String> getSuccess()
 	{
-		return LVProfile;
+		return success;
 	}
 	
 	/**
-	 * Returns the LinguisticVariable from this User's LVProfile with the name specified.
-	 * @param name A String specifying the name of the desired LinguisticVariable.
-	 * @return	The LinguisticVariable with the name specified.
+	 * Returns the learning DiscreteLinguisticVariable belonging to this User
+	 * @return The DiscreteLinguisticVariable the learning DiscreteLinguisticVariable belonging to this User
 	 */
-	public LinguisticVariable getLinguisticVariable(String name)
+	public DiscreteLinguisticVariable<Double> getLearning()
 	{
-		LinguisticVariable retVar = null;
-		
-		for(LinguisticVariable var : LVProfile)
-		{
-			if(var.getName().equals(name)) 
-			{
-				retVar = var;
-				break;
-			}
-		}
-		
-		return retVar;
+		return learning;
 	}
+	
+	/**
+	 * Returns the difficulty DiscreteLinguisticVariable belonging to this User
+	 * @return The DiscreteLinguisticVariable the difficulty DiscreteLinguisticVariable belonging to this User
+	 */
+	public DiscreteLinguisticVariable<Double> getDifficulty()
+	{
+		return difficulty;
+	}
+	
 }

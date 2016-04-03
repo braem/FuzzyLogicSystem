@@ -59,7 +59,7 @@ public class InferenceEngine
 	/**
 	 * Performs a single inference cycle through all hypotheses and rules.
 	 * Inference proceeds using the backward chaining approach.
-	 * This was deemed best because the goalstate is known ahead of time.
+	 * This was deemed best because the goal state is known ahead of time.
 	 * Specifically, the user must complete all Goals in the LearningPlan provided on initialization.
 	 */
 	public void inferenceCycle()

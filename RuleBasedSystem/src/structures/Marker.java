@@ -1,6 +1,6 @@
 package structures;
 
-import system.FuzzyTrapezoid;
+import system.DiscreteFuzzySet;
 
 /**
  * Marks tests based on an attempt.
@@ -58,14 +58,14 @@ public class Marker
 	}
 	
    /**
-    * Returns the FuzzyTrapezoid representing the Success fuzzy set to which this User's mark has greatest membership.
+    * Returns the DiscreteFuzzySet representing the Success fuzzy set to which this User's mark has greatest membership.
     * @param student A User whose LVProfile is to be used for fuzzy grading.
     * @param mark	The input crisp mark to be fuzzified.
-    * @return		A FuzzyTrapezoid representing the fuzzy value corresponding to the Student's test score.
+    * @return		A DiscreteFuzzySet representing the fuzzy value corresponding to the Student's test score.
     */
-   public static FuzzyTrapezoid fuzzyMark(User student, double mark)
+   public static DiscreteFuzzySet<String> fuzzyMark(User student, double mark)
    {
-	   return student.getLinguisticVariable("Success").greatestMembershipSet(mark);
+	   return student.getSuccess().greatestMembershipSet(getLetterGrade(mark));
    }
    
    /**
