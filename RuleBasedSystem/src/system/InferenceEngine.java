@@ -86,7 +86,7 @@ public class InferenceEngine
 					{
 						wmRules.add(r);//and add it to working memory
 						
-						r.evaluate();// check conditions of R
+						r.evaluate(student);// check conditions of R
 						
 						if(r.getAntecedent() instanceof ComplexAntecedent)//If the antecedent is complex, deal with individual antecedents separately.
 						{

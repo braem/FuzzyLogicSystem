@@ -1,5 +1,7 @@
 package system;
 
+import structures.User;
+
 /**
  * Representation for rules of the form Antecedent -&#62; Consequent
  * @author Rhys
@@ -70,23 +72,11 @@ public class Rule implements Antecedent, Consequent{
 	/**
 	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
 	 * */
-	public void evaluate()
+	public void evaluate(User u)
 	{
-		theRight.setSatisfied(theLeft.testAntecedent());
+		theRight.setSatisfied(theLeft.testAntecedent(u));
 	}
 	
-	/**
-	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
-	 * Returns the value of the consequent (and antecedent).
-	 * @return	<code>true</code> if the Antecedent is true
-	 *          <code>false</code> if the Antecedent is false.
-	 * */
-	public boolean test()
-	{
-		theRight.setSatisfied(theLeft.testAntecedent());
-		return theLeft.testAntecedent();
-	}
-
 	/**
 	 * Overridden from the Consequent interface.
 	 * Sets the satisfied variable to the boolean value provided.
@@ -114,8 +104,8 @@ public class Rule implements Antecedent, Consequent{
 	 *          <code>false</code> if the Antecedent is false.
 	 */
 	@Override
-	public boolean testAntecedent() {
-		return theLeft.testAntecedent();
+	public boolean testAntecedent(User u) {
+		return theLeft.testAntecedent(u);
 	}
 	
 
