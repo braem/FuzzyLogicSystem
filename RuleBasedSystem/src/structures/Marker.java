@@ -63,11 +63,39 @@ public class Marker
     * @param mark	The input crisp mark to be fuzzified.
     * @return		A DiscreteFuzzySet representing the fuzzy value corresponding to the Student's test score.
     */
-   public static DiscreteFuzzySet<String> fuzzyMark(User student, double mark)
+   public static DiscreteFuzzySet<Integer> fuzzyMark(User student, double mark)
    {
-	   return student.getSuccess().greatestMembershipSet(getLetterGrade(mark));
+	   
+	   String grade = getLetterGrade(mark);   
+
+	   
+	 return student.getSuccess().greatestMembershipSet(letterGradeToSuccessValue(grade));
    }
    
+   
+   public static int letterGradeToSuccessValue(String grade)
+   {
+	   int successValue;
+		 switch(grade)
+		 {
+		 case "A+": successValue = 13;
+		 case "A": successValue = 12;
+		 case "A-": successValue = 11;
+		 case "B+": successValue = 10;
+		 case "B": successValue = 9;
+		 case "B-": successValue = 8;
+		 case "C+": successValue = 7;
+		 case "C": successValue = 6;
+		 case "C-": successValue = 5;
+		 case "D+": successValue = 4;
+		 case "D": successValue = 3;
+		 case "D-": successValue = 2;
+		 case "F": successValue = 1;
+		 default: successValue = 0;
+		 }
+		 
+		 return successValue;
+   }
    /**
     * The letter grade based on the percentage grade.
     * @param percent    The percentage grade to be converted.
@@ -96,4 +124,6 @@ public class Marker
 			return "D";
 		else return "F";
 	}
+	
+	
 }

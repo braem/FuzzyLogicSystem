@@ -45,8 +45,8 @@ public class Test implements Antecedent, Consequent, Serializable
 		testName = null;
 		normalQuestions = null;
 		bonusQuestions = null;
-		difficulty = 1.0;
-		minLearning = 0.7;
+		difficulty = 1;
+		minLearning = 7;
 	}
 	//TODO Fix constructors so that minLearning and difficulty are taken as arguments.
 	//Left alone so that I can continue testing without breaking the builder.
@@ -66,8 +66,8 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = bonusQuestions;
 		this.answerKey = answerKey;
-		difficulty = 1.0;
-		minLearning = 0.7;
+		difficulty = 1;
+		minLearning = 7;
 	}
 
 	/**
@@ -169,15 +169,14 @@ public class Test implements Antecedent, Consequent, Serializable
 		//to give a crisp value which is used to determine
 		//if this test has been passed or not.
 		
-		DiscreteLinguisticVariable<String> success = u.getSuccess();
-		DiscreteLinguisticVariable<Double> difficulty = u.getDifficulty();
-		DiscreteLinguisticVariable<Double> learning = u.getLearning();
+		DiscreteLinguisticVariable<Integer> success = u.getSuccess();
+		DiscreteLinguisticVariable<Integer> difficulty = u.getDifficulty();
 		FuzzyKnowledgeBase<Double> ruleBase = u.getFuzzyKnowledgeBase();
 		
 		String letterGrade = Marker.getLetterGrade(this.studentGrade);
 		
-		DiscreteFuzzySet<String> sSet = success.greatestMembershipSet(letterGrade);
-		DiscreteFuzzySet<Double> dSet = difficulty.greatestMembershipSet(this.difficulty);
+		DiscreteFuzzySet<Integer> sSet = success.greatestMembershipSet(Marker.letterGradeToSuccessValue(letterGrade));
+		DiscreteFuzzySet<Integer> dSet = difficulty.greatestMembershipSet(this.difficulty);
 		ArrayList<DiscreteFuzzySet> ants = new ArrayList<>();
 		ants.add(sSet);
 		ants.add(dSet);
