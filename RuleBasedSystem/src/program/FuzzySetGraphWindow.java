@@ -2,6 +2,7 @@ package program;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -12,6 +13,8 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.ApplicationFrame;
 
+import system.Pair;
+
 public class FuzzySetGraphWindow extends ApplicationFrame
 {
 
@@ -20,10 +23,9 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 	 */
 	private static final long serialVersionUID = 4949972124724025615L;
 
-	public FuzzySetGraphWindow(String title, String chartTitle) {
+	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<Pair<Double,Double>> points) {
 		super(title);
-		setResizable(false);
-		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "", createDataset(),
+		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "", createDataset(points),
 				PlotOrientation.VERTICAL, true, true, false);
 		
 		ChartPanel chartPanel = new ChartPanel( xyLineChart );
@@ -40,9 +42,10 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 	    setContentPane( chartPanel ); 
 	}
 	
-	private XYDataset createDataset() {
-		//TODO
-		return null;
+	private XYDataset createDataset(ArrayList<Pair<Double,Double>> points) {
+		for(Pair<Double,Double> pair : points) {
+			
+		}
 	}
 
 }
