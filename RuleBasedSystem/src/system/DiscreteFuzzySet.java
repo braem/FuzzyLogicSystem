@@ -45,6 +45,17 @@ public class DiscreteFuzzySet<Input>{
 	}
 	
 	/**
+	 * Copy constructor.
+	 * @param toCopy The DiscreteFuzzySet<Input> to be copied.
+	 */
+	public DiscreteFuzzySet(DiscreteFuzzySet<Input> toCopy)
+	{
+		setPoints(toCopy.getPoints());
+		this.name = toCopy.getName();
+		this.var = toCopy.getLinguisticVariable();
+	}
+	
+	/**
 	 * Sets this fuzzy set's points to those provided
 	 * @param points An ArrayList<Pair<Input, Double>> of points.
 	 */
@@ -74,6 +85,15 @@ public class DiscreteFuzzySet<Input>{
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	/**
+	 * Returns the DiscreteLinguisticVariable whose comparator is used for sorting this DiscreteFuzzySet.W
+	 * @return DiscreteLinguisticVariable whose comparator is used for sorting this DiscreteFuzzySet.
+	 */
+	public DiscreteLinguisticVariable<Input> getLinguisticVariable()
+	{
+		return var;
 	}
 
 
@@ -128,6 +148,18 @@ public class DiscreteFuzzySet<Input>{
 		}
 		
 		return -1.0;
+	}
+	
+	/**
+	 * Truncates the fuzzy membership function at the maximum value provided.
+	 * @param maximum a double value giving the new maximum membership of this DiscreteFuzzySet.
+	 */
+	public void truncate(double maximum)
+	{
+		for(Pair<Input, Double> pair : points)
+		{
+			if(pair.getSecond() > maximum) pair.setSecond(maximum);
+		}
 	}
 	
 	/**
