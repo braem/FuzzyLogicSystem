@@ -1650,8 +1650,8 @@ public class PlanBuilder
       na.add(AnswerValue.C);
       s = "Round 222 to the nearest hundred.\n\n"
             + "a) 220\tb) 230\tc) 300\td) 350\ne) 200\tf) 222\tg) 225)";
-      nq.add(new Question(s, AnswerValue.F, false));
-      na.add(AnswerValue.F);
+      nq.add(new Question(s, AnswerValue.E, false));
+      na.add(AnswerValue.E);
       s = "Solve for x\n|4| = x\n\n"
             +"a) 0\tb) 1\tc) -4\td) -1\ne) 5\tf) 3\tg) 4";
       nq.add(new Question(s, AnswerValue.G, false));
