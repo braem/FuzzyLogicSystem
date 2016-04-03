@@ -50,7 +50,6 @@ public class FuzzySetWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public FuzzySetWindow(User user) {
-	   setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 793, 478);
 		contentPane = new JPanel();
