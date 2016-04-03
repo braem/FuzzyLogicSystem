@@ -24,9 +24,9 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private HashSet<LearningPlan> plan;
-	private DiscreteLinguisticVariable<Double> difficulty;
-	private DiscreteLinguisticVariable<String> success;
-	private DiscreteLinguisticVariable<Double> learning;
+	private DiscreteLinguisticVariable<Integer> difficulty;
+	private DiscreteLinguisticVariable<Integer> success;
+	private DiscreteLinguisticVariable<Integer> learning;
 	private FuzzyKnowledgeBase<Double> fuzzyRules;
 	
 	/**
@@ -127,50 +127,50 @@ public class User implements Serializable {
 
 	private void initDifficulty()
 	{
-		DiscreteFuzzySet<Double> diffEasy = null;
-		DiscreteFuzzySet<Double> diffMedium = null;
-		DiscreteFuzzySet<Double> diffHard = null;
+		DiscreteFuzzySet<Integer> diffEasy = null;
+		DiscreteFuzzySet<Integer> diffMedium = null;
+		DiscreteFuzzySet<Integer> diffHard = null;
 		
 	
-		ArrayList<Pair<Double, Double>> easyPoints = new ArrayList<>();
-		ArrayList<Pair<Double, Double>> mediumPoints = new ArrayList<>();
-		ArrayList<Pair<Double, Double>> hardPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> easyPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> mediumPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> hardPoints = new ArrayList<>();
 		
-		easyPoints.add(new Pair<Double, Double>( 1.0, 1.0));
-		easyPoints.add(new Pair<Double, Double>( 2.0, 1.0));
-		easyPoints.add(new Pair<Double, Double>( 3.0, 1.0));
-		easyPoints.add(new Pair<Double, Double>( 4.0, 1.0));
-		easyPoints.add(new Pair<Double, Double>( 5.0, 0.5));
-		easyPoints.add(new Pair<Double, Double>( 6.0, 0.0));
-		easyPoints.add(new Pair<Double, Double>( 7.0, 0.0));
-		easyPoints.add(new Pair<Double, Double>( 8.0, 0.0));
-		easyPoints.add(new Pair<Double, Double>( 9.0, 0.0));
-		easyPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		easyPoints.add(new Pair<Integer, Double>( 1, 1.0));
+		easyPoints.add(new Pair<Integer, Double>( 2, 1.0));
+		easyPoints.add(new Pair<Integer, Double>( 3, 1.0));
+		easyPoints.add(new Pair<Integer, Double>( 4, 1.0));
+		easyPoints.add(new Pair<Integer, Double>( 5, 0.5));
+		easyPoints.add(new Pair<Integer, Double>( 6, 0.0));
+		easyPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		easyPoints.add(new Pair<Integer, Double>( 8, 0.0));
+		easyPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		easyPoints.add(new Pair<Integer, Double>( 10, 0.0));
 		
-		mediumPoints.add(new Pair<Double, Double>( 1.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 2.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 3.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 4.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 5.0, 0.5));
-		mediumPoints.add(new Pair<Double, Double>( 6.0, 1.0));
-		mediumPoints.add(new Pair<Double, Double>( 7.0, 1.0));
-		mediumPoints.add(new Pair<Double, Double>( 8.0, 0.5));
-		mediumPoints.add(new Pair<Double, Double>( 9.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 5, 0.5));
+		mediumPoints.add(new Pair<Integer, Double>( 6, 1.0));
+		mediumPoints.add(new Pair<Integer, Double>( 7, 1.0));
+		mediumPoints.add(new Pair<Integer, Double>( 8, 0.5));
+		mediumPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 10, 0.0));
 		
-		hardPoints.add(new Pair<Double, Double>( 1.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 2.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 3.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 4.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 5.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 6.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 7.0, 0.0));
-		hardPoints.add(new Pair<Double, Double>( 8.0, 0.5));
-		hardPoints.add(new Pair<Double, Double>( 9.0, 1.0));
-		hardPoints.add(new Pair<Double, Double>( 10.0, 1.0));
+		hardPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 5, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 6, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		hardPoints.add(new Pair<Integer, Double>( 8, 0.5));
+		hardPoints.add(new Pair<Integer, Double>( 9, 1.0));
+		hardPoints.add(new Pair<Integer, Double>( 10, 1.0));
 		
-		Comparator<Double> c = new Comparator<Double>(){
-			public int compare(Double first, Double second)
+		Comparator<Integer> c = new Comparator<Integer>(){
+			public int compare(Integer first, Integer  second)
 			{
 				return first.compareTo(second);
 			}
@@ -179,11 +179,11 @@ public class User implements Serializable {
 
 		
 		try {
-			difficulty = new DiscreteLinguisticVariable<Double>("Difficulty", c);
-			diffEasy = new DiscreteFuzzySet<Double>(easyPoints, "Easy", difficulty);
-			diffMedium = new DiscreteFuzzySet<Double>(mediumPoints, "Medium", difficulty);
-			diffHard = new DiscreteFuzzySet<Double>(hardPoints, "Hard", difficulty);
-			ArrayList<DiscreteFuzzySet<Double>> diffList = new ArrayList<>();
+			difficulty = new DiscreteLinguisticVariable<Integer>("Difficulty", c);
+			diffEasy = new DiscreteFuzzySet<Integer>(easyPoints, "Easy", difficulty);
+			diffMedium = new DiscreteFuzzySet<Integer>(mediumPoints, "Medium", difficulty);
+			diffHard = new DiscreteFuzzySet<Integer>(hardPoints, "Hard", difficulty);
+			ArrayList<DiscreteFuzzySet<Integer>> diffList = new ArrayList<>();
 			diffList.add(diffEasy);
 			diffList.add(diffMedium);
 			diffList.add(diffHard);
@@ -200,60 +200,60 @@ public class User implements Serializable {
 	 */
 	private void initSuccess()
 	{
-		DiscreteFuzzySet<String> succBad = null;
-		DiscreteFuzzySet<String> succGood = null;
-		DiscreteFuzzySet<String> succExcellent = null;
+		DiscreteFuzzySet<Integer> succBad = null;
+		DiscreteFuzzySet<Integer> succGood = null;
+		DiscreteFuzzySet<Integer> succExcellent = null;
 
-		ArrayList<Pair<String, Double>> badPoints = new ArrayList<>();
-		ArrayList<Pair<String, Double>> goodPoints = new ArrayList<>();
-		ArrayList<Pair<String, Double>> excellentPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> badPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> goodPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> excellentPoints = new ArrayList<>();
 		
-		badPoints.add(new Pair<String, Double>( "F", 1.0));
-		badPoints.add(new Pair<String, Double>( "D-", 1.0));
-		badPoints.add(new Pair<String, Double>( "D", 1.0));
-		badPoints.add(new Pair<String, Double>( "D+", 1.0));
-		badPoints.add(new Pair<String, Double>( "C-", 1.0));
-		badPoints.add(new Pair<String, Double>( "C", 0.5));
-		badPoints.add(new Pair<String, Double>( "C+", 0.0));
-		badPoints.add(new Pair<String, Double>( "B-", 0.0));
-		badPoints.add(new Pair<String, Double>( "B", 0.0));
-		badPoints.add(new Pair<String, Double>( "B+", 0.0));
-		badPoints.add(new Pair<String, Double>( "A-", 0.0));
-		badPoints.add(new Pair<String, Double>( "A", 0.0));
-		badPoints.add(new Pair<String, Double>( "A+", 0.0));
+		badPoints.add(new Pair<Integer, Double>( 1, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 2, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 3, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 4, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 5, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 6, 0.5));
+		badPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 8, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 10, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 11, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 12, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 13, 0.0));
 		
-		goodPoints.add(new Pair<String, Double>( "F", 0.0));
-		goodPoints.add(new Pair<String, Double>( "D-", 0.0));
-		goodPoints.add(new Pair<String, Double>( "D", 0.0));
-		goodPoints.add(new Pair<String, Double>( "D+", 0.0));
-		goodPoints.add(new Pair<String, Double>( "C-", 0.0));
-		goodPoints.add(new Pair<String, Double>( "C", 0.5));
-		goodPoints.add(new Pair<String, Double>( "C+", 1.0));
-		goodPoints.add(new Pair<String, Double>( "B-", 1.0));
-		goodPoints.add(new Pair<String, Double>( "B", 1.0));
-		goodPoints.add(new Pair<String, Double>( "B+", 1.0));
-		goodPoints.add(new Pair<String, Double>( "A-", 0.5));
-		goodPoints.add(new Pair<String, Double>( "A", 0.0));
-		goodPoints.add(new Pair<String, Double>( "A+", 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 5, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 6, 0.5));
+		goodPoints.add(new Pair<Integer, Double>( 7, 1.0));
+		goodPoints.add(new Pair<Integer, Double>( 8, 1.0));
+		goodPoints.add(new Pair<Integer, Double>( 9, 1.0));
+		goodPoints.add(new Pair<Integer, Double>( 10, 1.0));
+		goodPoints.add(new Pair<Integer, Double>( 11,  0.5));
+		goodPoints.add(new Pair<Integer, Double>( 12, 0.0));
+		goodPoints.add(new Pair<Integer, Double>( 13, 0.0));
 		
-		excellentPoints.add(new Pair<String, Double>( "F", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "D-", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "D", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "D+", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "C-", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "C", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "C+", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "B-", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "B", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "B+", 0.0));
-		excellentPoints.add(new Pair<String, Double>( "A-", 0.5));
-		excellentPoints.add(new Pair<String, Double>( "A", 1.0));
-		excellentPoints.add(new Pair<String, Double>( "A+", 1.0));
+		excellentPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 5, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 6, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 8, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 10, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 11, 0.5));
+		excellentPoints.add(new Pair<Integer, Double>( 12, 1.0));
+		excellentPoints.add(new Pair<Integer, Double>( 13, 1.0));
 		
 
 		
-		Comparator<String> c = new Comparator<String>(){
-			public int compare(String first, String second)
+		Comparator<Integer> c = new Comparator<Integer>(){
+			public int compare(Integer first, Integer second)
 			{
 				return first.compareTo(second);
 			}
@@ -262,11 +262,11 @@ public class User implements Serializable {
 
 		
 		try {
-			success = new DiscreteLinguisticVariable<String>("Success", c);
-			succBad = new DiscreteFuzzySet<String>(badPoints, "Bad", success);
-			succGood = new DiscreteFuzzySet<String>(goodPoints, "Good", success);
-			succExcellent = new DiscreteFuzzySet<String>(excellentPoints, "Excellent", success);
-			ArrayList<DiscreteFuzzySet<String>> succList = new ArrayList<>();
+			success = new DiscreteLinguisticVariable<Integer>("Success", c);
+			succBad = new DiscreteFuzzySet<Integer>(badPoints, "Bad", success);
+			succGood = new DiscreteFuzzySet<Integer>(goodPoints, "Good", success);
+			succExcellent = new DiscreteFuzzySet<Integer>(excellentPoints, "Excellent", success);
+			ArrayList<DiscreteFuzzySet<Integer>> succList = new ArrayList<>();
 			succList.add(succBad);
 			succList.add(succGood);
 			succList.add(succExcellent);
@@ -284,60 +284,60 @@ public class User implements Serializable {
 	 */
 	private void initLearning()
 	{
-		DiscreteFuzzySet<Double> learnBad = null;
-		DiscreteFuzzySet<Double> learnGood = null;
-		DiscreteFuzzySet<Double> learnExcellent = null;
+		DiscreteFuzzySet<Integer> learnBad = null;
+		DiscreteFuzzySet<Integer> learnGood = null;
+		DiscreteFuzzySet<Integer> learnExcellent = null;
 		
 
-		ArrayList<Pair<Double, Double>> badPoints = new ArrayList<>();
-		ArrayList<Pair<Double, Double>> mediumPoints = new ArrayList<>();
-		ArrayList<Pair<Double, Double>> excellentPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> badPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> mediumPoints = new ArrayList<>();
+		ArrayList<Pair<Integer, Double>> excellentPoints = new ArrayList<>();
 		
-		badPoints.add(new Pair<Double, Double>( 1.0, 1.0));
-		badPoints.add(new Pair<Double, Double>( 2.0, 1.0));
-		badPoints.add(new Pair<Double, Double>( 3.0, 1.0));
-		badPoints.add(new Pair<Double, Double>( 4.0, 1.0));
-		badPoints.add(new Pair<Double, Double>( 5.0, 0.5));
-		badPoints.add(new Pair<Double, Double>( 6.0, 0.0));
-		badPoints.add(new Pair<Double, Double>( 7.0, 0.0));
-		badPoints.add(new Pair<Double, Double>( 8.0, 0.0));
-		badPoints.add(new Pair<Double, Double>( 9.0, 0.0));
-		badPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 1, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 2, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 3, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 4, 1.0));
+		badPoints.add(new Pair<Integer, Double>( 5, 0.5));
+		badPoints.add(new Pair<Integer, Double>( 6, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 8, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		badPoints.add(new Pair<Integer, Double>( 10, 0.0));
 		
-		mediumPoints.add(new Pair<Double, Double>( 1.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 2.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 3.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 4.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 5.0, 0.5));
-		mediumPoints.add(new Pair<Double, Double>( 6.0, 1.0));
-		mediumPoints.add(new Pair<Double, Double>( 7.0, 1.0));
-		mediumPoints.add(new Pair<Double, Double>( 8.0, 0.5));
-		mediumPoints.add(new Pair<Double, Double>( 9.0, 0.0));
-		mediumPoints.add(new Pair<Double, Double>( 10.0, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 5, 0.5));
+		mediumPoints.add(new Pair<Integer, Double>( 6, 1.0));
+		mediumPoints.add(new Pair<Integer, Double>( 7, 1.0));
+		mediumPoints.add(new Pair<Integer, Double>( 8, 0.5));
+		mediumPoints.add(new Pair<Integer, Double>( 9, 0.0));
+		mediumPoints.add(new Pair<Integer, Double>( 10, 0.0));
 		
-		excellentPoints.add(new Pair<Double, Double>( 1.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 2.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 3.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 4.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 5.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 6.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 7.0, 0.0));
-		excellentPoints.add(new Pair<Double, Double>( 8.0, 0.5));
-		excellentPoints.add(new Pair<Double, Double>( 9.0, 1.0));
-		excellentPoints.add(new Pair<Double, Double>( 10.0, 1.0));
+		excellentPoints.add(new Pair<Integer, Double>( 1, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 2, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 3, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 4, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 5, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 6, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 7, 0.0));
+		excellentPoints.add(new Pair<Integer, Double>( 8, 0.5));
+		excellentPoints.add(new Pair<Integer, Double>( 9, 1.0));
+		excellentPoints.add(new Pair<Integer, Double>( 10, 1.0));
 		
-		Comparator<Double> c = new Comparator<Double>(){
-			public int compare(Double first, Double second)
+		Comparator<Integer> c = new Comparator<Integer>(){
+			public int compare(Integer first, Integer second)
 			{
 				return first.compareTo(second);
 			}
 		};		
 		try {
-			learning = new DiscreteLinguisticVariable<Double>("Difficulty", c);
-			learnBad = new DiscreteFuzzySet<Double>(badPoints, "Bad", learning);
-			learnGood = new DiscreteFuzzySet<Double>(mediumPoints, "Good", learning);
-			learnExcellent = new DiscreteFuzzySet<Double>(excellentPoints, "Excellent", learning);
-			ArrayList<DiscreteFuzzySet<Double>> learnList = new ArrayList<>();
+			learning = new DiscreteLinguisticVariable<Integer>("Difficulty", c);
+			learnBad = new DiscreteFuzzySet<Integer>(badPoints, "Bad", learning);
+			learnGood = new DiscreteFuzzySet<Integer>(mediumPoints, "Good", learning);
+			learnExcellent = new DiscreteFuzzySet<Integer>(excellentPoints, "Excellent", learning);
+			ArrayList<DiscreteFuzzySet<Integer>> learnList = new ArrayList<>();
 			learnList.add(learnBad);
 			learnList.add(learnGood);
 			learnList.add(learnExcellent);
@@ -526,7 +526,7 @@ public class User implements Serializable {
 	 * Returns the success DiscreteLinguisticVariable belonging to this User
 	 * @return The DiscreteLinguisticVariable the success DiscreteLinguisticVariable belonging to this User
 	 */
-	public DiscreteLinguisticVariable<String> getSuccess()
+	public DiscreteLinguisticVariable<Integer> getSuccess()
 	{
 		return success;
 	}
@@ -535,7 +535,7 @@ public class User implements Serializable {
 	 * Returns the learning DiscreteLinguisticVariable belonging to this User
 	 * @return The DiscreteLinguisticVariable the learning DiscreteLinguisticVariable belonging to this User
 	 */
-	public DiscreteLinguisticVariable<Double> getLearning()
+	public DiscreteLinguisticVariable<Integer> getLearning()
 	{
 		return learning;
 	}
@@ -544,7 +544,7 @@ public class User implements Serializable {
 	 * Returns the difficulty DiscreteLinguisticVariable belonging to this User
 	 * @return The DiscreteLinguisticVariable the difficulty DiscreteLinguisticVariable belonging to this User
 	 */
-	public DiscreteLinguisticVariable<Double> getDifficulty()
+	public DiscreteLinguisticVariable<Integer> getDifficulty()
 	{
 		return difficulty;
 	}

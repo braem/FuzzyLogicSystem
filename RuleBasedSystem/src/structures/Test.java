@@ -33,9 +33,8 @@ public class Test implements Antecedent, Consequent, Serializable
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
-	private DiscreteFuzzySet<String> success = null;//Not really sure if this should be here.  Fuzzification should take place in the InferenceEngine.
-	private double minLearning = 7.0;
-	private double difficulty = 0.0;
+	private int minLearning = 7;
+	private int difficulty;
 	
 	/**
 	 * Creates an empty Test.
@@ -46,7 +45,11 @@ public class Test implements Antecedent, Consequent, Serializable
 		testName = null;
 		normalQuestions = null;
 		bonusQuestions = null;
+		difficulty = 1.0;
+		minLearning = 0.7;
 	}
+	//TODO Fix constructors so that minLearning and difficulty are taken as arguments.
+	//Left alone so that I can continue testing without breaking the builder.
 	
 	/**
 	 * Creates a Test with normal and bonus questions.
@@ -57,10 +60,14 @@ public class Test implements Antecedent, Consequent, Serializable
 	 * @param answerKey          The list of answers to both sets of questions.
 	 */
 	public Test(String testName, ArrayList<Question> normalQuestions, ArrayList<Question> bonusQuestions, Attempt answerKey) {
+		
+		
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = bonusQuestions;
 		this.answerKey = answerKey;
+		difficulty = 1.0;
+		minLearning = 0.7;
 	}
 
 	/**
