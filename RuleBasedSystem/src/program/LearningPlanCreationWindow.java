@@ -397,7 +397,7 @@ public class LearningPlanCreationWindow extends JFrame {
 				if (!p.equals(g))
 				{
 				   PreReq pq = new PreReq(p, g, p+" | "+g);
-	            prereqModel.addElement(pq);
+				   prereqModel.addElement(pq);
 				}
 			}
 		});
@@ -416,19 +416,19 @@ public class LearningPlanCreationWindow extends JFrame {
 				}
 				if (!questionList.isSelectionEmpty())
 				{
-				   Question selectedQuestion = intToQuestion(questionList.getSelectedValue());
-	            if(!normalQuestions.remove(selectedQuestion))
-	               bonusQuestions.remove(selectedQuestion);
-	            questionCtr = 1;
-	            questionModel.clear();
-	            for(Question q : normalQuestions) {
-	               questionModel.addElement(questionCtr);
-	               questionCtr++;
-	            }
-	            for(Question q : bonusQuestions) {
-	               questionModel.addElement(questionCtr);
-	               questionCtr++;
-	            }
+					Question selectedQuestion = intToQuestion(questionList.getSelectedValue());
+		            if(!normalQuestions.remove(selectedQuestion))
+		               bonusQuestions.remove(selectedQuestion);
+		            questionCtr = 1;
+		            questionModel.clear();
+		            for(Question q : normalQuestions) {
+		               questionModel.addElement(questionCtr);
+		               questionCtr++;
+		            }
+		            for(Question q : bonusQuestions) {
+		               questionModel.addElement(questionCtr);
+		               questionCtr++;
+		            }
 				}
 				
 				//clear

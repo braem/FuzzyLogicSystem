@@ -5,17 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import structures.User;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ChoiceWindow extends JFrame {
+public class LoginChoiceWindow extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -606638665140433493L;
+	private static final long serialVersionUID = -5431857948026169133L;
 	private JPanel contentPane;
 	private JFrame thisFrame = this;
 
@@ -26,7 +28,7 @@ public class ChoiceWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChoiceWindow frame = new ChoiceWindow();
+					LoginChoiceWindow frame = new LoginChoiceWindow(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,47 +36,47 @@ public class ChoiceWindow extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
-	 * Enable this window
+	 * enable this frame
 	 */
 	public void enable() {
 		this.setVisible(true);
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
-	public ChoiceWindow() {
+	public LoginChoiceWindow(User user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 339, 157);
+		setBounds(100, 100, 272, 162);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
+		JButton btnTakeTests = new JButton("Take Tests");
+		btnTakeTests.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginWindow window = new LoginWindow();
-				window.enable();
+				SelectWindow window = new SelectWindow(user);
 				thisFrame.dispose();
+				window.enable();
 			}
 		});
-		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnLogin.setBounds(82, 11, 137, 39);
-		contentPane.add(btnLogin);
+		btnTakeTests.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnTakeTests.setBounds(10, 11, 221, 38);
+		contentPane.add(btnTakeTests);
 		
-		JButton btnCreateALearning = new JButton("Create a Learning Plan");
-		btnCreateALearning.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LearningPlanCreationWindow window = new LearningPlanCreationWindow();
-				window.enable();
-				thisFrame.dispose();
+		JButton btnChangeFuzzySets = new JButton("Change Fuzzy Sets");
+		btnChangeFuzzySets.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FuzzySetWindow window = new FuzzySetWindow(user);
+				
 			}
 		});
-		btnCreateALearning.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCreateALearning.setBounds(10, 57, 288, 39);
-		contentPane.add(btnCreateALearning);
+		btnChangeFuzzySets.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnChangeFuzzySets.setBounds(10, 60, 221, 38);
+		contentPane.add(btnChangeFuzzySets);
 	}
+
 }
