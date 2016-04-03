@@ -7,9 +7,16 @@ public class FuzzyKnowledgeBase<Output> implements Serializable {
 
 	private static final long serialVersionUID = -6841997985405265742L;
 	private ArrayList<FuzzyRule<Output>> fuzzyRules; 
+	private String name;
 	
+	
+	/**
+	 * Constructs a new FuzzyKnowledgeBase from a list of provided rules.
+	 * @param rules An ArrayList of FuzzyRules to put in this FuzzyKnowledgeBase
+	 */
 	public FuzzyKnowledgeBase(ArrayList<FuzzyRule<Output>> rules) {
 		this.fuzzyRules = rules;
+		this.name = "" + serialVersionUID;
 	}
 	
 	/**
@@ -54,6 +61,9 @@ public class FuzzyKnowledgeBase<Output> implements Serializable {
 	}
 	
 	
-	
+	public String toString()
+	{
+		return name;
+	}
 	
 }
