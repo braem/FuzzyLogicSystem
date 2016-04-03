@@ -277,6 +277,7 @@ public class LearningPlanCreationWindow extends JFrame {
 					//clear
 					testModel.clear();
 					testNameTF.setText("");
+					goalNameTF.setText("");
 				}
 			}
 		});
@@ -393,8 +394,11 @@ public class LearningPlanCreationWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Goal p = (Goal)prereqCB.getSelectedItem();
 				Goal g = (Goal)goalCB.getSelectedItem();
-				PreReq pq = new PreReq(p, g, p+" | "+g);
-				prereqModel.addElement(pq);
+				if (!p.equals(g))
+				{
+				   PreReq pq = new PreReq(p, g, p+" | "+g);
+	            prereqModel.addElement(pq);
+				}
 			}
 		});
 		btnAddPrereq.setFont(new Font("Tahoma", Font.PLAIN, 14));
