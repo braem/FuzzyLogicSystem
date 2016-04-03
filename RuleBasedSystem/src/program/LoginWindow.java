@@ -95,6 +95,7 @@ public class LoginWindow extends JFrame
 	 * Create the frame.
 	 */
 	public LoginWindow() {
+	   setResizable(false);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 271, 172);

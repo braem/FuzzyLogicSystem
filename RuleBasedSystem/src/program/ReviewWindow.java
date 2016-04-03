@@ -83,6 +83,7 @@ public class ReviewWindow extends JFrame
 	 * @param currentPlan  The current learning plan.
 	 */
 	public ReviewWindow(Test test, Attempt userAttempt, User user, LearningPlan currentPlan) {
+	   setResizable(false);
 		setTitle(test.getTestName()+" Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 348, 479);

@@ -22,6 +22,7 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 
 	public FuzzySetGraphWindow(String title, String chartTitle) {
 		super(title);
+		setResizable(false);
 		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "", createDataset(),
 				PlotOrientation.VERTICAL, true, true, false);
 		

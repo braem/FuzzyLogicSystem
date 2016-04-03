@@ -116,6 +116,7 @@ public class LearningPlanCreationWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public LearningPlanCreationWindow() {
+	   setResizable(false);
 		setTitle("Create a Learning Plan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1049, 519);
