@@ -8,6 +8,8 @@ import java.util.HashSet;
 
 import system.DiscreteFuzzySet;
 import system.DiscreteLinguisticVariable;
+import system.FuzzyKnowledgeBase;
+import system.FuzzyRule;
 import system.NonUniqueLinguisticVariableSetNamesException;
 import system.Pair;
 
@@ -24,7 +26,8 @@ public class User implements Serializable {
 	private HashSet<LearningPlan> plan;
 	private DiscreteLinguisticVariable<Double> difficulty;
 	private DiscreteLinguisticVariable<String> success;
-	DiscreteLinguisticVariable<Double> learning;
+	private DiscreteLinguisticVariable<Double> learning;
+	private FuzzyKnowledgeBase<Double> fuzzyRules;
 	
 	/**
 	 * Creates a new User with the specified first name, last name, and learning plan list.
@@ -39,6 +42,7 @@ public class User implements Serializable {
 		this.setLearningPlan(p);
 		
 		initLinguisticVariables();
+		initFuzzyRules();
 	}
 	
 	/**
@@ -52,6 +56,7 @@ public class User implements Serializable {
 		this.setLastName(lastName);
 		
 		initLinguisticVariables();
+		initFuzzyRules();
 	}
 	
 	/**
@@ -60,11 +65,60 @@ public class User implements Serializable {
 	private void initLinguisticVariables()
 	{
 		initDifficulty();
-		
-		initSuccess();
-		
+		initSuccess();	
 		initLearning();		
+	}
+	
+
+	/**
+	 * Initializes the nine fuzzy rules used to describe a student's learning
+	 * based on the difficulty of a test and their success on it.
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void initFuzzyRules()
+	{
+		DiscreteLinguisticVariable learning = this.getLearning();
+		DiscreteLinguisticVariable success = this.getSuccess();
+		DiscreteLinguisticVariable difficulty = this.getDifficulty();
 		
+		ArrayList<DiscreteFuzzySet> lSets = learning.getFuzzySets();
+		ArrayList<DiscreteFuzzySet> sSets = success.getFuzzySets();
+		ArrayList<DiscreteFuzzySet> dSets = difficulty.getFuzzySets();
+		
+		int stop = sSets.size() * dSets.size();
+		int picker = 0;
+		
+		DiscreteFuzzySet<Double> lbad = learning.getFuzzySet("Bad");
+		DiscreteFuzzySet<Double> lgood = learning.getFuzzySet("Good");
+		DiscreteFuzzySet<Double> lexc = learning.getFuzzySet("Excellent");
+		
+		ArrayList<DiscreteFuzzySet<Double>> consOrdering = new ArrayList<>();
+		consOrdering.add(lbad);
+		consOrdering.add(lbad);
+		consOrdering.add(lgood);
+		consOrdering.add(lbad);
+		consOrdering.add(lgood);
+		consOrdering.add(lexc);
+		consOrdering.add(lbad);
+		consOrdering.add(lexc);
+		consOrdering.add(lexc);
+		
+		ArrayList<FuzzyRule<Double>> rules = new ArrayList<>();
+		
+		for(DiscreteFuzzySet diff : dSets)
+		{
+			for(DiscreteFuzzySet succ : sSets)
+			{
+				ArrayList<DiscreteFuzzySet> ants = new ArrayList<>();
+				ants.add(diff);
+				ants.add(succ);
+				
+				DiscreteFuzzySet cons = consOrdering.get(picker++);
+				rules.add((new FuzzyRule<Double>(ants, cons)));
+			}
+		}	
+		
+		this.fuzzyRules = new FuzzyKnowledgeBase<Double>(rules);
 	}
 
 	/**
@@ -137,7 +191,6 @@ public class User implements Serializable {
 			difficulty.setFuzzySets(diffList);
 			
 		} catch (NonUniqueLinguisticVariableSetNamesException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -220,7 +273,7 @@ public class User implements Serializable {
 			
 			success.setFuzzySets(succList);
 		} catch (NonUniqueLinguisticVariableSetNamesException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -290,7 +343,7 @@ public class User implements Serializable {
 			learnList.add(learnExcellent);
 			learning.setFuzzySets(learnList);
 		} catch (NonUniqueLinguisticVariableSetNamesException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -494,6 +547,11 @@ public class User implements Serializable {
 	public DiscreteLinguisticVariable<Double> getDifficulty()
 	{
 		return difficulty;
+	}
+	
+	public FuzzyKnowledgeBase<Double> getFuzzyKnowledgeBase()
+	{
+		return this.fuzzyRules;
 	}
 	
 }

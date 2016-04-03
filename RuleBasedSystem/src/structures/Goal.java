@@ -2,9 +2,9 @@ package structures;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
 import system.Antecedent;
 import system.Consequent;
+import structures.User;
 
 /**
  * A set of tests that need to be completed.
@@ -150,11 +150,11 @@ public class Goal implements Consequent, Antecedent, Serializable {
 	 *               <code>false</code> if any test has not been passed.
 	 */
 	@Override
-	public boolean testAntecedent() {
+	public boolean testAntecedent(User u) {
 		boolean answer = true;
 		for (Test test : tests)
 		{
-			answer &= test.isPassed();
+			answer &= test.testAntecedent(u);
 		}
 		
 		return answer;

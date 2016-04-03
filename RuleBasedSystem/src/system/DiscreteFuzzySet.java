@@ -213,6 +213,52 @@ public class DiscreteFuzzySet<Input>{
 		
 		return sum / points.size();
 	}
+
+	/**
+	 * Returns the DiscreteFuzzySet resulting from performing the fuzzy AND (minimum) operation
+	 * on this set and the one provided.
+	 * @param ander a DiscreteFuzzySet to AND with this one.
+	 * @return the DiscreteFuzzySet resulting from performing the fuzzy AND (minimum) operation
+	 * on this set and the one provided.
+	 */
+	public DiscreteFuzzySet<Input> AND(DiscreteFuzzySet<Input> ander)
+	{
+		ArrayList<Pair<Input, Double>> newValues = new ArrayList<>();
+		
+		if(ander.getPoints().size() == points.size())
+		{
+			for(int i = 0; i < this.points.size() ; i++)
+			{
+				newValues.add(new Pair<Input, Double>(points.get(i).getFirst(), Math.min(points.get(i).getSecond(), ander.getPoints().get(i).getSecond())));
+			}
+			
+			return new DiscreteFuzzySet<Input>(newValues, name + " AND " + ander.getName(), this.getLinguisticVariable());
+		}
+		else return null;
+	}
+	
+	/**
+	 * Returns the DiscreteFuzzySet resulting from performing the fuzzy OR (maximum) operation
+	 * on this set and the one provided.
+	 * @param ander a DiscreteFuzzySet to OR with this one.
+	 * @return the DiscreteFuzzySet resulting from performing the fuzzy OR (maximum) operation
+	 * on this set and the one provided.
+	 */
+	public DiscreteFuzzySet<Input> OR(DiscreteFuzzySet<Input> orer)
+	{
+		ArrayList<Pair<Input, Double>> newValues = new ArrayList<>();
+		
+		if(orer.getPoints().size() == points.size())
+		{
+			for(int i = 0; i < this.points.size() ; i++)
+			{
+				newValues.add(new Pair<Input, Double>(points.get(i).getFirst(), Math.max(points.get(i).getSecond(), orer.getPoints().get(i).getSecond())));
+			}
+			
+			return new DiscreteFuzzySet<Input>(newValues, name + " AND " + orer.getName(), this.getLinguisticVariable());
+		}
+		else return null;
+	}
 	
 	/**
 	 * Overrides the Object toString method.  Returns the name of this FuzzyTrapezoid.

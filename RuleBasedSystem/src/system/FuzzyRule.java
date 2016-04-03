@@ -63,6 +63,7 @@ public class FuzzyRule<OutputX> {
 	 * @throws FuzzyRuleBadInputTypeException 
 	 * @throws DiscreteFuzzySetNegativeMaximumException 
 	 */
+	@SuppressWarnings("rawtypes")
 	public DiscreteFuzzySet<OutputX> fire(Pair[] inputs) throws FuzzyRuleBadInputTypeException
 	{
 		DiscreteFuzzySet<OutputX> output = new DiscreteFuzzySet<OutputX>(consequent);

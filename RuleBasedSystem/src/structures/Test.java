@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import system.Antecedent;
 import system.Consequent;
 import system.DiscreteFuzzySet;
+import system.DiscreteLinguisticVariable;
+import system.FuzzyKnowledgeBase;
+import system.FuzzyRule;
+import system.FuzzyRuleBadInputTypeException;
+import system.Pair;
+import structures.User;
 
 
 /**
@@ -27,7 +33,9 @@ public class Test implements Antecedent, Consequent, Serializable
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
-	private DiscreteFuzzySet success = null;
+	private DiscreteFuzzySet<String> success = null;//Not really sure if this should be here.  Fuzzification should take place in the InferenceEngine.
+	private double minLearning = 7.0;
+	private double difficulty = 0.0;
 	
 	/**
 	 * Creates an empty Test.
@@ -76,7 +84,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	 *         <code>false</code> if the test does not have a passing grade.
 	 */
 	public boolean isPassed()
-	{//TODO
+	{
 		return studentGrade >= passingGrade;
 	}
 	
@@ -138,14 +146,61 @@ public class Test implements Antecedent, Consequent, Serializable
 	
 	/**
 	 * Returns whether or not the test has a passing grade.
-	 * 
+	 * @param A User whose fuzzy set profile will be used to test Antecedent
 	 * @return       <code>true</code> if test has a passing grade.
 	 *               <code>false</code> if the test does not have a passing grade.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public boolean testAntecedent()
+	public boolean testAntecedent(User u)
 	{
-		return this.isPassed();
+		//A test is passed if it's learning is above some number.
+		//To determine this, must take this test's crisp difficulty
+		//and success values and apply the User's fuzzy sets 
+		//then use fuzzy rules and inference to produce
+		//a fuzzy learning value.  This is then defuzzified
+		//to give a crisp value which is used to determine
+		//if this test has been passed or not.
+		
+		DiscreteLinguisticVariable<String> success = u.getSuccess();
+		DiscreteLinguisticVariable<Double> difficulty = u.getDifficulty();
+		DiscreteLinguisticVariable<Double> learning = u.getLearning();
+		FuzzyKnowledgeBase<Double> ruleBase = u.getFuzzyKnowledgeBase();
+		
+		String letterGrade = Marker.getLetterGrade(this.studentGrade);
+		
+		DiscreteFuzzySet<String> sSet = success.greatestMembershipSet(letterGrade);
+		DiscreteFuzzySet<Double> dSet = difficulty.greatestMembershipSet(this.difficulty);
+		ArrayList<DiscreteFuzzySet> ants = new ArrayList<>();
+		ants.add(sSet);
+		ants.add(dSet);
+		
+		ArrayList<FuzzyRule<Double>> matchedRules = ruleBase.matchRule(ants);
+		
+		ArrayList<DiscreteFuzzySet<Double>> lSets = new ArrayList<>();
+		
+		Pair[] inputs = {new Pair("Difficulty", this.difficulty), new Pair("Success", letterGrade)};
+		
+		for(FuzzyRule rule : matchedRules)
+		{
+			try {
+				lSets.add(rule.fire(inputs));
+			} catch (FuzzyRuleBadInputTypeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		DiscreteFuzzySet finalSet = lSets.get(0);
+		
+		for(DiscreteFuzzySet<Double> set : lSets)
+		{
+			finalSet = finalSet.OR(set);
+		}
+		
+		double learningValue = finalSet.numericDefuzzify();
+		
+		return learningValue >= minLearning;	
 	}
 	
 	/**
@@ -167,7 +222,6 @@ public class Test implements Antecedent, Consequent, Serializable
 	 */
 	@Override
 	public void setSatisfied(boolean arg) {
-		// TODO Auto-generated method stub
 		satisfied = arg;
 	}
 	
@@ -223,6 +277,15 @@ public class Test implements Antecedent, Consequent, Serializable
 	 */
 	public void setStudentGrade(double studentGrade) {
 		this.studentGrade = studentGrade;
+	}
+	
+	/**
+	 * Returns the crisp difficulty value for this Test.
+	 * @return a double giving the crisp difficulty value for this test.
+	 */
+	public double getDifficulty()
+	{
+		return this.difficulty;
 	}
 	
 	/**
