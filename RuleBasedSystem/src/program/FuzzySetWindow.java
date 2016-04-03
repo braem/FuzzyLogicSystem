@@ -40,7 +40,7 @@ public class FuzzySetWindow extends JFrame {
 	}
 
 	/**
-	 * enable this frame
+	 * enable this frame 
 	 */
 	public void enable() {
 		this.setVisible(true);
