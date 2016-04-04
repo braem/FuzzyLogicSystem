@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener ;
 import javax.swing.event.ListSelectionEvent ;
 import javax.swing.event.ListSelectionListener ;
 
+import file_io.FileIO ;
 import structures.User;
 import system.DiscreteFuzzySet;
 import system.DiscreteLinguisticVariable;
@@ -533,6 +534,7 @@ public class FuzzySetWindow extends JFrame
                s.setPoints(points.get(2).get(i));
                i++;
             }
+            FileIO.writeUser(user);
          }
       });
       btnEditSave.setBounds(147, 206, 127, 23);
