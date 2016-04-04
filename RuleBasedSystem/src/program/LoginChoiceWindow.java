@@ -72,7 +72,8 @@ public class LoginChoiceWindow extends JFrame {
 		btnChangeFuzzySets.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FuzzySetWindow window = new FuzzySetWindow(user);
-				
+				window.enable();
+				thisFrame.dispose();
 			}
 		});
 		btnChangeFuzzySets.setFont(new Font("Tahoma", Font.PLAIN, 20));

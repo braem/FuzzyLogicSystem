@@ -35,16 +35,18 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 
 	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<Pair<Integer,Double>> points) {
 		super(title);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "", createSingleDataset(points, chartTitle),
-				PlotOrientation.VERTICAL, true, true, false);
+		super.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
+		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "",
+				createSingleDataset(points, chartTitle), PlotOrientation.VERTICAL, true, true, false);
 		setupChart(xyLineChart);
 	}
 	
 	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<Pair<Integer,Double>> dPoints,
 			ArrayList<Pair<Integer,Double>> lPoints, ArrayList<Pair<Integer,Double>> sPoints) {
 		super(title);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		super.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
 		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "",
 				createMultipleDataset(dPoints, lPoints, sPoints, chartTitle), PlotOrientation.VERTICAL, true, true, false);
 		setupChart(xyLineChart);

@@ -239,7 +239,7 @@ public class SelectWindow extends JFrame
 		JButton btnBack = new JButton("back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginWindow window = new LoginWindow();
+				LoginChoiceWindow window = new LoginChoiceWindow(user);
 				thisFrame.dispose();
 				todoWindow.dispose();
 				window.enable();

@@ -86,7 +86,7 @@ public class LoginWindow extends JFrame
 			return;
 		}
 		User user = FileIO.loadUser(firstName, lastName);
-		SelectWindow window = new SelectWindow(user);
+		LoginChoiceWindow window = new LoginChoiceWindow(user);
 		thisFrame.dispose();
 		window.enable();
 	}
