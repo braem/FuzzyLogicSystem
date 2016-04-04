@@ -66,7 +66,7 @@ public class FuzzySetWindow extends JFrame
 	public FuzzySetWindow(User user) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 209);
+		setBounds(100, 100, 430, 196);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -124,49 +124,112 @@ public class FuzzySetWindow extends JFrame
 		lblDifficulty.setBounds(10, 11, 127, 25);
 		contentPane.add(lblDifficulty);
 		
-		JButton btnDifficulty = new JButton("View");
-		btnDifficulty.addActionListener(new ActionListener() {
+		JButton btnDifficultyOne = new JButton("One");
+		btnDifficultyOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				@SuppressWarnings("unchecked")
 				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)difficultyCB.getSelectedItem();
 				ArrayList<Pair<Integer,Double>> points = set.getPoints();
-				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Difficulty Fuzzy Set", "Difficulty", points);
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Difficulty Fuzzy Set", "Difficulty", difficultyCB.getSelectedItem().toString(), points);
 				window.enable();
 			}
 		});
-		btnDifficulty.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnDifficulty.setBounds(10, 83, 127, 25);
-		contentPane.add(btnDifficulty);
+		btnDifficultyOne.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnDifficultyOne.setBounds(10, 83, 61, 25);
+		contentPane.add(btnDifficultyOne);
 		
-		JButton btnLearning = new JButton("View");
-		btnLearning.addActionListener(new ActionListener() {
+		JButton btnDifficultyAll = new JButton("All");
+      btnDifficultyAll.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+            ArrayList<ArrayList<Pair<Integer,Double>>> points = new ArrayList<ArrayList<Pair<Integer,Double>>>();
+            for (int i = 0; i < difficultyCB.getItemCount(); i++)
+            {
+               points.add(((DiscreteFuzzySet<Integer>)difficultyCB.getItemAt(i)).getPoints());
+            }
+            ArrayList<String> names = new ArrayList<String>();
+            for (int i = 0; i < difficultyCB.getItemCount(); i++)
+            {
+               names.add((String)difficultyCB.getItemAt(i).toString());
+            }
+            FuzzySetGraphWindow window = new FuzzySetGraphWindow("Difficulty Fuzzy Set", "Difficulty", names, points);
+            window.enable();
+         }
+      });
+      btnDifficultyAll.setFont(new Font("Tahoma", Font.PLAIN, 15));
+      btnDifficultyAll.setBounds(76, 83, 61, 25);
+      contentPane.add(btnDifficultyAll);
+      
+      JButton btnLearningOne = new JButton("One");
+		btnLearningOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("unchecked")
 				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)learningCB.getSelectedItem();
 				ArrayList<Pair<Integer,Double>> points = set.getPoints();
-				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Learning Fuzzy Set", "Learning", points);
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Learning Fuzzy Set", "Learning", learningCB.getSelectedItem().toString(), points);
 				window.enable();
 			}
 		});
-		btnLearning.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnLearning.setBounds(147, 83, 127, 25);
-		contentPane.add(btnLearning);
-		
-		JButton btnSuccess = new JButton("View");
-		btnSuccess.addActionListener(new ActionListener() {
+		btnLearningOne.setFont(new Font("Tahoma", Font.PLAIN, 15));
+      btnLearningOne.setBounds(147, 83, 61, 25);
+      contentPane.add(btnLearningOne);
+      
+      JButton btnLearningAll = new JButton("All");
+      btnLearningAll.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+            ArrayList<ArrayList<Pair<Integer,Double>>> points = new ArrayList<ArrayList<Pair<Integer,Double>>>();
+            for (int i = 0; i < learningCB.getItemCount(); i++)
+            {
+               points.add(((DiscreteFuzzySet<Integer>)learningCB.getItemAt(i)).getPoints());
+            }
+            ArrayList<String> names = new ArrayList<String>();
+            for (int i = 0; i < learningCB.getItemCount(); i++)
+            {
+               names.add((String)learningCB.getItemAt(i).toString());
+            }
+            FuzzySetGraphWindow window = new FuzzySetGraphWindow("Learning Fuzzy Set", "Learning", names, points);
+            window.enable();
+         }
+      });
+      btnLearningAll.setFont(new Font("Tahoma", Font.PLAIN, 15));
+      btnLearningAll.setBounds(213, 83, 61, 25);
+      contentPane.add(btnLearningAll);
+      
+      JButton btnSuccessOne = new JButton("One");
+		btnSuccessOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("unchecked")
 				DiscreteFuzzySet<Integer> set = (DiscreteFuzzySet<Integer>)successCB.getSelectedItem();
 				ArrayList<Pair<Integer,Double>> points = set.getPoints();
-				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Success Fuzzy Set", "Success", points);
+				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Success Fuzzy Set", "Success", successCB.getSelectedItem().toString(), points);
 				window.enable();
 			}
 		});
-		btnSuccess.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnSuccess.setBounds(284, 83, 127, 25);
-		contentPane.add(btnSuccess);
-		
-		JButton btnViewAll = new JButton("View All");
+		btnSuccessOne.setFont(new Font("Tahoma", Font.PLAIN, 15));
+      btnSuccessOne.setBounds(284, 83, 61, 25);
+      contentPane.add(btnSuccessOne);
+      
+      JButton btnSuccessAll = new JButton("All");
+      btnSuccessAll.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+            ArrayList<ArrayList<Pair<Integer,Double>>> points = new ArrayList<ArrayList<Pair<Integer,Double>>>();
+            for (int i = 0; i < successCB.getItemCount(); i++)
+            {
+               points.add(((DiscreteFuzzySet<Integer>)successCB.getItemAt(i)).getPoints());
+            }
+            ArrayList<String> names = new ArrayList<String>();
+            for (int i = 0; i < successCB.getItemCount(); i++)
+            {
+               names.add((String)successCB.getItemAt(i).toString());
+            }
+            FuzzySetGraphWindow window = new FuzzySetGraphWindow("Success Fuzzy Set", "Success", names, points);
+            window.enable();
+         }
+      });
+      btnSuccessAll.setFont(new Font("Tahoma", Font.PLAIN, 15));
+      btnSuccessAll.setBounds(350, 83, 61, 25);
+      contentPane.add(btnSuccessAll);
+      
+      JButton btnViewAll = new JButton("back?");
 		btnViewAll.addActionListener(new ActionListener() {
 			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
@@ -176,8 +239,8 @@ public class FuzzySetWindow extends JFrame
 				ArrayList<Pair<Integer,Double>> lpoints = lset.getPoints();
 				DiscreteFuzzySet<Integer> dset = (DiscreteFuzzySet<Integer>)difficultyCB.getSelectedItem();
 				ArrayList<Pair<Integer,Double>> dpoints = dset.getPoints();
-				FuzzySetGraphWindow window = new FuzzySetGraphWindow("Working Fuzzy Sets", "Fuzzy Sets", dpoints, lpoints, spoints);
-				window.enable();
+				//FuzzySetGraphWindow window = new FuzzySetGraphWindow("Working Fuzzy Sets", "Fuzzy Sets", dpoints, lpoints, spoints);
+				//window.enable();
 			}
 		});
 		btnViewAll.setFont(new Font("Tahoma", Font.PLAIN, 20));

@@ -25,7 +25,7 @@ import system.Pair;
  * @author braem
  * @version 1.0
  */
-public class FuzzySetGraphWindow extends ApplicationFrame
+public class FuzzySetGraphWindow extends JFrame
 {
 
 	/**
@@ -33,22 +33,21 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 	 */
 	private static final long serialVersionUID = 4949972124724025615L;
 
-	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<Pair<Integer,Double>> points) {
+	public FuzzySetGraphWindow(String title, String chartTitle, String dataName, ArrayList<Pair<Integer,Double>> points) {
 		super(title);
 		super.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
 		this.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
 		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "",
-				createSingleDataset(points, chartTitle), PlotOrientation.VERTICAL, true, true, false);
+				createSingleDataset(points, dataName), PlotOrientation.VERTICAL, true, true, false);
 		setupChart(xyLineChart);
 	}
 	
-	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<Pair<Integer,Double>> dPoints,
-			ArrayList<Pair<Integer,Double>> lPoints, ArrayList<Pair<Integer,Double>> sPoints) {
+	public FuzzySetGraphWindow(String title, String chartTitle, ArrayList<String> names, ArrayList<ArrayList<Pair<Integer,Double>>> points) {
 		super(title);
 		super.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
 		this.setDefaultCloseOperation(ApplicationFrame.DISPOSE_ON_CLOSE);
 		JFreeChart xyLineChart = ChartFactory.createXYLineChart(chartTitle, "", "",
-				createMultipleDataset(dPoints, lPoints, sPoints, chartTitle), PlotOrientation.VERTICAL, true, true, false);
+				createMultipleDataset(points, names), PlotOrientation.VERTICAL, true, true, false);
 		setupChart(xyLineChart);
 	}
 	
@@ -67,23 +66,16 @@ public class FuzzySetGraphWindow extends ApplicationFrame
 	    setContentPane( chartPanel ); 
 	}
 	
-	private XYDataset createMultipleDataset(ArrayList<Pair<Integer,Double>> dPoints,
-			ArrayList<Pair<Integer,Double>> lPoints, ArrayList<Pair<Integer,Double>> sPoints, String title) {
-		final XYSeries difficulty = new XYSeries(title);
-		for(Pair<Integer,Double> point : dPoints)
-			difficulty.add(point.getFirst(), point.getSecond());
-		final XYSeries learning = new XYSeries(title);
-		for(Pair<Integer,Double> point : lPoints)
-			learning.add(point.getFirst(), point.getSecond());
-		final XYSeries success = new XYSeries(title);
-		for(Pair<Integer,Double> point : sPoints)
-			success.add(point.getFirst(), point.getSecond());
-		
-		final XYSeriesCollection dataset = new XYSeriesCollection();
-		dataset.addSeries(difficulty);
-		dataset.addSeries(learning);
-		dataset.addSeries(success);
-		return dataset;
+	private XYDataset createMultipleDataset(ArrayList<ArrayList<Pair<Integer,Double>>> points, ArrayList<String> names) {
+	   final XYSeriesCollection dataset = new XYSeriesCollection();
+      for (int i = 0; i < points.size(); i++)
+		{
+		   final XYSeries series = new XYSeries(names.get(i));
+		   for(Pair<Integer,Double> point : points.get(i))
+	         series.add(point.getFirst(), point.getSecond());
+		   dataset.addSeries(series);
+	   }
+	   return dataset;
 	}
 	
 	private XYDataset createSingleDataset(ArrayList<Pair<Integer,Double>> points, String title) {
