@@ -266,9 +266,11 @@ public class FuzzySetWindow extends JFrame
          points.get(2).add(s.getPoints());
       for (int i = 0; i < points.size(); i++){
          for (int j = 0; j < points.get(i).size(); j++){
+            ArrayList<Pair<Integer,Double>> newList = new ArrayList<Pair<Integer,Double>>();
             for (int k = 0; k < points.get(i).get(j).size(); k++){
-               points.get(i).get(j).set(k, points.get(i).get(j).get(k).clone());
+               newList.add(new Pair<Integer, Double>(points.get(i).get(j).get(k).getFirst().intValue(), points.get(i).get(j).get(k).getSecond().doubleValue()));
             }
+            points.get(i).set(j, newList);
          }
       }
       

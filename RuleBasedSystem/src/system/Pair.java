@@ -57,14 +57,6 @@ public class Pair<K, V> implements Serializable, Comparable<K>{
 	   public V getSecond() {
 	     return this.second;
 	   }
-	   
-	   /**
-	    * Produces a copy of the Pair
-	    * @return The copy of the Pair
-	    */
-	   public Pair<K, V> clone(){
-	      return new Pair<K, V>(this.first, this.second);
-	   }
 
 	@Override
 	public int compareTo(K arg0) {
