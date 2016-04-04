@@ -405,7 +405,7 @@ public class LearningPlanCreationWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Goal p = (Goal)prereqCB.getSelectedItem();
 				Goal g = (Goal)goalCB.getSelectedItem();
-				if (!p.equals(g))
+				if (p != g)
 				{
 				   PreReq pq = new PreReq(p, g, p+" | "+g);
 				   prereqModel.addElement(pq);
@@ -481,7 +481,16 @@ public class LearningPlanCreationWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (!goalList.isSelectionEmpty())
 				{
-				   goalModel.removeElementAt(goalList.getSelectedIndex());
+               prereqCB.removeItem(goalModel.getElementAt(goalList.getSelectedIndex()));
+               goalCB.removeItem(goalModel.getElementAt(goalList.getSelectedIndex()));
+               for(int i = 0; i < prereqModel.size(); i++)
+               {
+                  if (prereqModel.getElementAt(i).getGoal() == goalModel.getElementAt(goalList.getSelectedIndex()) || prereqModel.getElementAt(i).getPreReq() == goalModel.getElementAt(goalList.getSelectedIndex()))
+                  {
+                     prereqModel.removeElementAt(i);
+                  }
+               }
+               goalModel.removeElementAt(goalList.getSelectedIndex());
 				}
 			}
 		});
