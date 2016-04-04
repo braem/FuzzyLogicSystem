@@ -5,8 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import structures.SerializableComparator;
-
 /**
  * 
  * @author Rhys Beck

@@ -12,6 +12,7 @@ import system.FuzzyKnowledgeBase;
 import system.FuzzyRule;
 import system.NonUniqueLinguisticVariableSetNamesException;
 import system.Pair;
+import system.SerializableComparator;
 
 /**
  * Contains the information needed by a user.
