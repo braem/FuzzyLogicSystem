@@ -256,7 +256,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	 * Returns the comparator used by this DiscreteLinguisticVariable.
 	 * @return Comparator used by this DiscreteLinguisticVariable.
 	 */
-	public Comparator<Input> getComparator()
+	public SerializableComparator<Input> getComparator()
 	{
 		return comparator;
 	}
