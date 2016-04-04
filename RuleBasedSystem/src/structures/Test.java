@@ -46,7 +46,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		normalQuestions = null;
 		bonusQuestions = null;
 		difficulty = 1;
-		minLearning = 7;
+		minLearning = 6;
 	}
 	//TODO Fix constructors so that minLearning and difficulty are taken as arguments.
 	//Left alone so that I can continue testing without breaking the builder.
@@ -65,7 +65,7 @@ public class Test implements Antecedent, Consequent, Serializable
 		this.bonusQuestions = bonusQuestions;
 		this.answerKey = answerKey;
 		difficulty = 1;
-		minLearning = 7;
+		minLearning = 6;
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class Test implements Antecedent, Consequent, Serializable
       this.bonusQuestions = bonusQuestions;
       this.answerKey = answerKey;
       this.difficulty = difficulty;
-      minLearning = 7;
+      minLearning = 6;
    }
 	
    /**
@@ -99,7 +99,7 @@ public class Test implements Antecedent, Consequent, Serializable
       this.bonusQuestions = new ArrayList<Question>();
       this.answerKey = answerKey;
       difficulty = 1;
-      minLearning = 7;
+      minLearning = 6;
    }
    
    /**
@@ -116,7 +116,7 @@ public class Test implements Antecedent, Consequent, Serializable
       this.bonusQuestions = new ArrayList<Question>();
       this.answerKey = answerKey;
       this.difficulty = difficulty;
-      minLearning = 7;
+      minLearning = 6;
    }
    
    /**
@@ -238,7 +238,7 @@ public class Test implements Antecedent, Consequent, Serializable
 			finalSet = finalSet.OR(set);
 		}
 		
-		double learningValue = finalSet.numericDefuzzify();
+		double learningValue = 1.0 + finalSet.numericDefuzzify(); //This returns an "index" so we add 1 to get the correct output value.
 		
 		return learningValue >= minLearning;	
 	}

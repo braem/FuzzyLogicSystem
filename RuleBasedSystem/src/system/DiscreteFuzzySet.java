@@ -208,14 +208,16 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 		//if the input values are mapped to integer-spaced real numbers
 		//between 0 and one less than the number of points in the fuzzy set.
 		
-		double sum = 0;
+		double upperSum = 0;
+		double lowerSum = 0;
 		
 		for(int i = 0 ; i < points.size(); i++ )
 		{
-			sum += (i) * points.get(i).getSecond();
+			upperSum += (i) * points.get(i).getSecond();
+			lowerSum += points.get(i).getSecond();
 		}
 		
-		return sum / points.size();
+		return upperSum / lowerSum;
 	}
 
 	/**
@@ -259,7 +261,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 				newValues.add(new Pair<Input, Double>(points.get(i).getFirst(), Math.max(points.get(i).getSecond(), orer.getPoints().get(i).getSecond())));
 			}
 			
-			return new DiscreteFuzzySet<Input>(newValues, name + " AND " + orer.getName(), this.getLinguisticVariable());
+			return new DiscreteFuzzySet<Input>(newValues, name + " OR " + orer.getName(), this.getLinguisticVariable());
 		}
 		else return null;
 	}
