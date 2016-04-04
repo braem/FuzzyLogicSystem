@@ -202,7 +202,7 @@ public class LearningPlanCreationWindow extends JFrame {
 		
 		chckbxIsBonus = new JCheckBox("Is Bonus");
 		chckbxIsBonus.setBounds(311, 139, 97, 23);
-		contentPane.add(chckbxIsBonus);
+		//contentPane.add(chckbxIsBonus); //Fuck it
 		
 		btnAddQuestion = new JButton("Add Question to Test");
 		btnAddQuestion.addActionListener(new ActionListener() {

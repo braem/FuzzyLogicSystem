@@ -174,6 +174,8 @@ public class TestWindow extends JFrame
 		btnLockAnswer.setBounds(86, 191, 153, 29);
 		contentPane.add(btnLockAnswer);
 		
+		btnSubmit = new JButton("Submit");
+      
 		//progress bar for test completion
 		progressBar = new JProgressBar();
 		progressBar.setBounds(15, 229, 295, 14);
@@ -188,7 +190,6 @@ public class TestWindow extends JFrame
 		progressBar.setMaximum(normalQuestions.size());
 		
 		//submit the test for review (marking)
-		btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Attempt attempt = new Attempt(normalAnswers, bonusAnswers);
