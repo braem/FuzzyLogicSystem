@@ -50,7 +50,7 @@ public class LoginChoiceWindow extends JFrame {
 	public LoginChoiceWindow(User user) {
 	   setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 272, 162);
+		setBounds(100, 100, 247, 138);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

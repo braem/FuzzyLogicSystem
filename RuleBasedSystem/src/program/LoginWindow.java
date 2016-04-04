@@ -98,7 +98,7 @@ public class LoginWindow extends JFrame
 	   setResizable(false);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 271, 172);
+		setBounds(100, 100, 242, 146);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -48,7 +48,7 @@ public class ChoiceWindow extends JFrame {
 	public ChoiceWindow() {
 	   setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 339, 157);
+		setBounds(100, 100, 313, 135);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

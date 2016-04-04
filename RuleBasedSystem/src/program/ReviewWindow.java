@@ -86,7 +86,7 @@ public class ReviewWindow extends JFrame
 	   setResizable(false);
 		setTitle(test.getTestName()+" Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 348, 479);
+		setBounds(100, 100, 308, 451);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

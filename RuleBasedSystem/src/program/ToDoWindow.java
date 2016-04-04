@@ -101,7 +101,7 @@ public class ToDoWindow extends JFrame
 	   setResizable(false);
 		setTitle("Todo List");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 497, 333);
+		setBounds(100, 100, 447, 293);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
