@@ -45,7 +45,7 @@ public class InferenceEngine
 	
 	/**
 	 * initializes the InferenceEngine using the provided LearningPlan instance.
-	 * 
+	 * @param u the current active User
 	 * @param lp	A learning plan used to initialize the InferenceEngine
 	 * */
 	public void init(User u, LearningPlan lp)

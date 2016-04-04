@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * This class represents a fuzzy rule with multiple antecedent fuzzy sets and a single output fuzzy set.
  * @author Rhys Beck
- * @verion 2.0
+ * @version 2.0
  */
 
 public class FuzzyRule<OutputX> implements Serializable{
@@ -61,10 +61,9 @@ public class FuzzyRule<OutputX> implements Serializable{
 	
 	/**
 	 * Returns the DiscreteFuzzySet determined by the provided inputs.
-	 * @param inputs An array of Pair<String, Input> where String is the name of the fuzzy set to which the Input belongs.
+	 * @param inputs An array of Pair&#60;String, Input&#62; where String is the name of the fuzzy set to which the Input belongs.
 	 * @return the output DiscreteFuzzySet resulting from firing this rule with the inputs provided.
 	 * @throws FuzzyRuleBadInputTypeException 
-	 * @throws DiscreteFuzzySetNegativeMaximumException 
 	 */
 	@SuppressWarnings("rawtypes")
 	public DiscreteFuzzySet<OutputX> fire(Pair[] inputs) throws FuzzyRuleBadInputTypeException

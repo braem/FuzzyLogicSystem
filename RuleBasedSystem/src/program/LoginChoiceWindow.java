@@ -23,6 +23,7 @@ public class LoginChoiceWindow extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param args input argument array from calling function.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,6 +47,7 @@ public class LoginChoiceWindow extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param user the current active User.
 	 */
 	public LoginChoiceWindow(User user) {
 	   setResizable(false);

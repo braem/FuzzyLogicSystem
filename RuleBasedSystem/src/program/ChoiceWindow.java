@@ -21,6 +21,7 @@ public class ChoiceWindow extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param args input argument array from calling function.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

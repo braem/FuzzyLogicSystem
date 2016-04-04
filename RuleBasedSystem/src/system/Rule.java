@@ -71,6 +71,7 @@ public class Rule implements Antecedent, Consequent{
 	
 	/**
 	 * Sets the Consequent's satisfied variable to the value returned by testing the Antecedent.
+	 * @param u the current active User
 	 * */
 	public void evaluate(User u)
 	{

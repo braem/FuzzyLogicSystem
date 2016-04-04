@@ -62,6 +62,7 @@ public class ComplexAntecedent implements Antecedent{
 	
 	/**
 	 * Tests the Antecedents that make up this ComplexAntecedent.
+	 * @param u The current active User.
 	 * @return <code>true</code> if all Antecedents are true.
 	 *        <code>false</code> if not all Antecedents are true.
 	 */

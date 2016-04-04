@@ -21,7 +21,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	/**
 	 * Constructs an empty DiscreteLinguisticVariable.
 	 * @param name String giving the name of this DiscreteLinguisticVariable
-	 * @param Comparator<Input> to be used to compare Input values of this variable's DiscreteFuzzySets.
+	 * @param c SerializableComparator&#60;Input&#62; to be used to compare Input values of this variable's DiscreteFuzzySets.
 	 */
 	public DiscreteLinguisticVariable(String name, SerializableComparator<Input> c)
 	{
@@ -32,10 +32,10 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	
 	/**
 	 * Creates a new DiscreteLingusiticVariable with the given named fuzzy sets.
-	 * @param sets An ArrayList of DiscreteFuzzySet<Input>s.
+	 * @param sets An ArrayList of DiscreteFuzzySet&#60;Input&#62;s.
 	 * @param name String giving the name of this DiscreteLinguisticVariable
-	 * @param Comparator<Input> to be used to compare Input values of this variable's DiscreteFuzzySets.
-	 * The Strings give the names of the DiscreteFuzzySet<Input>s, and must be unique.
+	 * @param c SerializableComparator&#60;Input&#62; to be used to compare Input values of this variable's DiscreteFuzzySets.
+	 * The Strings give the names of the DiscreteFuzzySet&#60;Input&#62;s, and must be unique.
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 */
 	public DiscreteLinguisticVariable(ArrayList<DiscreteFuzzySet<Input>> sets, String name, SerializableComparator<Input> c) throws NonUniqueLinguisticVariableSetNamesException
@@ -47,8 +47,8 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 
 	/**
 	 * Returns the name, fuzzy set pairs contained within this DiscreteLinguisticVariable.
-	 * @return An ArrayList of DiscreteFuzzySet<Input>s.
-	 * The Strings give the names of the DiscreteFuzzySet<Input>s, and must be unique.
+	 * @return An ArrayList of DiscreteFuzzySet&#60;Input&#60;s.
+	 * The Strings give the names of the DiscreteFuzzySet&#60;Input&#62;s, and must be unique.
 	 */
 	public ArrayList<DiscreteFuzzySet<Input>> getFuzzySets() {
 		return fuzzySets;
@@ -56,8 +56,8 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 
 	/**
 	 * Sets the name, fuzzy sets pairs for this DiscreteLinguisticVariable to those provided.
-	 * @param fuzzySets An ArrayList of DiscreteFuzzySet<Input>s.
-	 * The Strings give the names of the DiscreteFuzzySet<Input>s, and must be unique.
+	 * @param fuzzySets An ArrayList of DiscreteFuzzySet&#60;Input&#60;s.
+	 * The Strings give the names of the DiscreteFuzzySet&#60;Input&#60;s, and must be unique.
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 */
 	public void setFuzzySets(ArrayList<DiscreteFuzzySet<Input>> fuzzySets) throws NonUniqueLinguisticVariableSetNamesException
@@ -103,7 +103,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 * Adds a fuzzy set to this linguistic variable if it's name is not the same as another fuzzy set.
 	 * Returns true if successful, false if unsuccessful.
-	 * @param ft A DiscreteFuzzySet<Input> representing a fuzzy membership function.
+	 * @param ft A DiscreteFuzzySet&#60;Input&#62; representing a fuzzy membership function.
 	 * @throws NonUniqueLinguisticVariableSetNamesException
 	 * 
 	 */
@@ -149,7 +149,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	 * Removes from fuzzySets that set equal to the argument.
 	 * If no matching set is found, nothing happens.
 	 * As names are required to be unique, only one set will be removed.
-	 * @param name the DiscreteFuzzySet<Input> to be removed.
+	 * @param remove the DiscreteFuzzySet&#60;Input&#62; to be removed.
 	 */
 	public void removeFuzzySet(DiscreteFuzzySet<Input> remove)
 	{
@@ -164,9 +164,9 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	}
 	
 	/**
-	 * Returns the DiscreteFuzzySet<Input> with the name provided.  Returns null if no fuzzy set with that name exists.
-	 * @param name A String giving the name of the desired DiscreteFuzzySet<Input>
-	 * @return	retSet A DiscreteFuzzySet<Input> with the name provided, if it exists.  Otherwise, null.
+	 * Returns the DiscreteFuzzySet&#60;Input&#62; with the name provided.  Returns null if no fuzzy set with that name exists.
+	 * @param name A String giving the name of the desired DiscreteFuzzySet&#60;Input&#62;
+	 * @return	retSet A DiscreteFuzzySet&#60;Input&#62; with the name provided, if it exists.  Otherwise, null.
 	 */
 	public DiscreteFuzzySet<Input> getFuzzySet(String name)
 	{
@@ -184,10 +184,10 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	}
 	
 	/**
-	 * Returns the DiscreteFuzzySet<Input> among this DiscreteLinguisticVariable's fuzzy sets which gives the greatest
+	 * Returns the DiscreteFuzzySet&#60;Input&#62; among this DiscreteLinguisticVariable's fuzzy sets which gives the greatest
 	 * membership value to the input, or null if the input is outside the defined bounds of this DiscreteLinguisticVariable's fuzzy sets.
 	 * @param input	 A double value.
-	 * @return	A DiscreteFuzzySet<Input> representing the fuzzy set to which the input has the greatest membership.
+	 * @return	A DiscreteFuzzySet&#60;Input&#62; representing the fuzzy set to which the input has the greatest membership.
 	 */
 	public DiscreteFuzzySet<Input> greatestMembershipSet(Input input)
 	{
@@ -262,7 +262,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	}
 	
 	/**
-	 * Returns the DiscreteFuzzySet<Input> resulting from the AND (minimum) operation on the two named
+	 * Returns the DiscreteFuzzySet&#60;Input&#62; resulting from the AND (minimum) operation on the two named
 	 * which are part of this DicreteLinguisticVariable.
 	 * @param fname String name of one of the DiscreteFuzzySets to be used.
 	 * @param sname	String name of the other DiscreteFuzzySet to be used.
@@ -291,7 +291,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	}
 	
 	/**
-	 * Returns the DiscreteFuzzySet<Input> resulting from the OR (maximum) operation on the two named
+	 * Returns the DiscreteFuzzySet&#60;Input&#62; resulting from the OR (maximum) operation on the two named
 	 * which are part of this DicreteLinguisticVariable.
 	 * @param fname String name of one of the DiscreteFuzzySets to be used.
 	 * @param sname	String name of the other DiscreteFuzzySet to be used.

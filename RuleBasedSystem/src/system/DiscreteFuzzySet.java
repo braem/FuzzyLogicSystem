@@ -8,8 +8,9 @@ import java.util.Comparator;
 /**
  * 
  * @author Rhys Beck
+ * @version 2.0
  *
- * @param <Input>
+ * @param <Input> The type of the x axis for this discrete fuzzy sets membership function.
  */
 
 public class DiscreteFuzzySet<Input> implements Serializable{
@@ -23,7 +24,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 	
 	/**
 	 * Constructs a new DiscreteFuzzySet. Sorts the points based on a Comparator provided by this set's DiscreteLinguisticVariable.
-	 * @param pts	ArrayList<Pair<Input, Double>> which gives the points for this DiscreteFuzzySet
+	 * @param pts	ArrayList&#60;Pair&#60;Input, Double&#62;&#62; which gives the points for this DiscreteFuzzySet
 	 * @param name	The name of this DiscreteFuzzySet
 	 * @param v		The DiscreteLinguisticVariable to which this set belongs.  Used to acquire comparator for sorting points.
 	 */
@@ -50,7 +51,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 	
 	/**
 	 * Copy constructor.
-	 * @param toCopy The DiscreteFuzzySet<Input> to be copied.
+	 * @param toCopy The DiscreteFuzzySet&#60;Input&#62; to be copied.
 	 */
 	public DiscreteFuzzySet(DiscreteFuzzySet<Input> toCopy)
 	{
@@ -61,7 +62,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 	
 	/**
 	 * Sets this fuzzy set's points to those provided
-	 * @param points An ArrayList<Pair<Input, Double>> of points.
+	 * @param points An ArrayList&#60;Pair&#60;Input, Double&#62;&#62; of points.
 	 */
 	public void setPoints(ArrayList<Pair<Input, Double>> points) {
 		this.points = points;
@@ -69,7 +70,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 
 	/**
 	 * Returns this fuzzy set's points
-	 * @return an ArrayList<Pair<Input, Double>> containing this fuzzy set's points.
+	 * @return an ArrayList&#60;Pair&#60;Input, Double&#62;&#62; containing this fuzzy set's points.
 	 */
 	public ArrayList<Pair<Input, Double>> getPoints() {
 		return points;
@@ -129,8 +130,8 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 	/**
 	 * Removes the old point, if it exists, and adds the new one, if it does not already exist.
 	 * Sorts the points if any new points were added.
-	 * @param oldP A Pair<Input, Double>  giving the point to be relocated.
-	 * @param newP A Pair<Input, Double>  giving the new location of the point.
+	 * @param oldP A Pair&#60;Input, Double&#62;  giving the point to be relocated.
+	 * @param newP A Pair&#60;Input, Double&#62;  giving the new location of the point.
 	 */
 	public void movePoint(Pair<Input, Double>  oldP, Pair<Input, Double>  newP) {
 		removePoint(oldP);
@@ -246,7 +247,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 	/**
 	 * Returns the DiscreteFuzzySet resulting from performing the fuzzy OR (maximum) operation
 	 * on this set and the one provided.
-	 * @param ander a DiscreteFuzzySet to OR with this one.
+	 * @param orer a DiscreteFuzzySet to OR with this one.
 	 * @return the DiscreteFuzzySet resulting from performing the fuzzy OR (maximum) operation
 	 * on this set and the one provided.
 	 */

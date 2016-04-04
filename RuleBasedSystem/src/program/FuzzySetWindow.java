@@ -50,6 +50,7 @@ public class FuzzySetWindow extends JFrame
 	
 	/**
 	 * Launch the application.
+	 * @param args input argument array from calling function.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -73,6 +74,7 @@ public class FuzzySetWindow extends JFrame
 	
 	/**
 	 * Create the frame.
+	 * @param user the current active User.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
    public FuzzySetWindow(User user) {

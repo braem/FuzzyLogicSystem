@@ -188,7 +188,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	
 	/**
 	 * Returns whether or not the test has a passing grade.
-	 * @param A User whose fuzzy set profile will be used to test Antecedent
+	 * @param u User whose fuzzy set profile will be used to test Antecedent
 	 * @return       <code>true</code> if test has a passing grade.
 	 *               <code>false</code> if the test does not have a passing grade.
 	 */
