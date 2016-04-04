@@ -33,7 +33,7 @@ public class Test implements Antecedent, Consequent, Serializable
 	private boolean satisfied = false;
 	private Attempt studentAttempt;
 	private double studentGrade = 0.0;
-	private int minLearning = 7;
+	private int minLearning = 6;
 	private int difficulty = 1;
 	
 	/**
