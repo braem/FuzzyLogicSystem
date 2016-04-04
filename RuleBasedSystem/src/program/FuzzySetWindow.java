@@ -33,6 +33,7 @@ public class FuzzySetWindow extends JFrame
 	 */
 	private static final long serialVersionUID = 3599584867107349804L;
 	private JPanel contentPane;
+	private JFrame thisFrame = this;
 	private JComboBox<DiscreteFuzzySet<Integer>> difficultyCB;
 	private JComboBox<DiscreteFuzzySet<Integer>> learningCB;
 	private JComboBox<DiscreteFuzzySet<Integer>> successCB;
@@ -229,18 +230,12 @@ public class FuzzySetWindow extends JFrame
       btnSuccessAll.setBounds(350, 83, 61, 25);
       contentPane.add(btnSuccessAll);
       
-      JButton btnViewAll = new JButton("back?");
+      JButton btnViewAll = new JButton("back");
 		btnViewAll.addActionListener(new ActionListener() {
-			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
-				DiscreteFuzzySet<Integer> sset = (DiscreteFuzzySet<Integer>)successCB.getSelectedItem();
-				ArrayList<Pair<Integer,Double>> spoints = sset.getPoints();
-				DiscreteFuzzySet<Integer> lset = (DiscreteFuzzySet<Integer>)learningCB.getSelectedItem();
-				ArrayList<Pair<Integer,Double>> lpoints = lset.getPoints();
-				DiscreteFuzzySet<Integer> dset = (DiscreteFuzzySet<Integer>)difficultyCB.getSelectedItem();
-				ArrayList<Pair<Integer,Double>> dpoints = dset.getPoints();
-				//FuzzySetGraphWindow window = new FuzzySetGraphWindow("Working Fuzzy Sets", "Fuzzy Sets", dpoints, lpoints, spoints);
-				//window.enable();
+				LoginChoiceWindow window = new LoginChoiceWindow(user);
+				thisFrame.dispose();
+				window.enable();
 			}
 		});
 		btnViewAll.setFont(new Font("Tahoma", Font.PLAIN, 20));
