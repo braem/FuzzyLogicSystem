@@ -60,8 +60,6 @@ public class Test implements Antecedent, Consequent, Serializable
 	 * @param answerKey          The list of answers to both sets of questions.
 	 */
 	public Test(String testName, ArrayList<Question> normalQuestions, ArrayList<Question> bonusQuestions, Attempt answerKey) {
-		
-		
 		this.testName = testName;
 		this.normalQuestions = normalQuestions;
 		this.bonusQuestions = bonusQuestions;
@@ -69,22 +67,59 @@ public class Test implements Antecedent, Consequent, Serializable
 		difficulty = 1;
 		minLearning = 7;
 	}
-
-	/**
-	 * Creates a Test with only normal questions.
-	 * 
-	 * @param testName           The title of the test.
-	 * @param normalQuestions    The list of questions.
-	 * @param answerKey          The list of answers.
-	 */
-	public Test(String testName, ArrayList<Question> normalQuestions, Attempt answerKey) {
-		this.testName = testName;
-		this.normalQuestions = normalQuestions;
-		this.bonusQuestions = new ArrayList<Question>();
-		this.answerKey = answerKey;
-	}
 	
 	/**
+    * Creates a Test with normal and bonus questions.
+    * 
+    * @param testName           The title of the test.
+    * @param normalQuestions    The list of normal questions.
+    * @param bonusQuestions     The list of bonus questions.
+    * @param answerKey          The list of answers to both sets of questions.
+    * @param difficulty         The difficulty of the test. Should be an integer from 1 to 10.
+    */
+   public Test(String testName, ArrayList<Question> normalQuestions, ArrayList<Question> bonusQuestions, Attempt answerKey, int difficulty) {
+      this.testName = testName;
+      this.normalQuestions = normalQuestions;
+      this.bonusQuestions = bonusQuestions;
+      this.answerKey = answerKey;
+      this.difficulty = difficulty;
+      minLearning = 7;
+   }
+	
+   /**
+    * Creates a Test with only normal questions.
+    * 
+    * @param testName           The title of the test.
+    * @param normalQuestions    The list of questions.
+    * @param answerKey          The list of answers.
+    */
+   public Test(String testName, ArrayList<Question> normalQuestions, Attempt answerKey) {
+      this.testName = testName;
+      this.normalQuestions = normalQuestions;
+      this.bonusQuestions = new ArrayList<Question>();
+      this.answerKey = answerKey;
+      difficulty = 1;
+      minLearning = 7;
+   }
+   
+   /**
+    * Creates a Test with only normal questions.
+    * 
+    * @param testName           The title of the test.
+    * @param normalQuestions    The list of questions.
+    * @param answerKey          The list of answers.
+    * @param difficulty         The difficulty of the test. Should be an integer from 1 to 10.
+    */
+   public Test(String testName, ArrayList<Question> normalQuestions, Attempt answerKey, int difficulty) {
+      this.testName = testName;
+      this.normalQuestions = normalQuestions;
+      this.bonusQuestions = new ArrayList<Question>();
+      this.answerKey = answerKey;
+      this.difficulty = difficulty;
+      minLearning = 7;
+   }
+   
+   /**
 	 * Checks if the test has been passed.
 	 * 
 	 * @return <code>true</code> if the test has a passing grade.

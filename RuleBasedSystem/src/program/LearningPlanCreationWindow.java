@@ -29,7 +29,12 @@ import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
+
+import org.jfree.ui.Spinner ;
+
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class LearningPlanCreationWindow extends JFrame {
 
@@ -119,7 +124,7 @@ public class LearningPlanCreationWindow extends JFrame {
 	   setResizable(false);
 		setTitle("Create a Learning Plan");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1049, 519);
+		setBounds(100, 100, 916, 497);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -221,6 +226,11 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnAddQuestion.setBounds(60, 218, 183, 27);
 		contentPane.add(btnAddQuestion);
 		
+		JSpinner spinner = new JSpinner();
+      spinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
+      spinner.setBounds(831, 16, 38, 20);
+      contentPane.add(spinner);
+		
 		btnAddTest = new JButton("Add Test to Goal");
 		btnAddTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -241,9 +251,9 @@ public class LearningPlanCreationWindow extends JFrame {
 				}
 				Test t;
 				if(bqs.size() == 0)
-					t = new Test(testNameTF.getText(), qs, new Attempt(as));
+					t = new Test(testNameTF.getText(), qs, new Attempt(as), (Integer)spinner.getValue());
 				else
-					t = new Test(testNameTF.getText(), qs, bqs, new Attempt(as));
+					t = new Test(testNameTF.getText(), qs, bqs, new Attempt(as), (Integer)spinner.getValue());
 				testModel.addElement(t); 
 				
 				//clear previous
@@ -320,13 +330,13 @@ public class LearningPlanCreationWindow extends JFrame {
 			}
 		});
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnBack.setBounds(780, 13, 89, 25);
+		btnBack.setBounds(10, 11, 89, 25);
 		contentPane.add(btnBack);
 		
 		/* labels */
 		JLabel lblCreateQuestion = new JLabel("Create Question:");
 		lblCreateQuestion.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCreateQuestion.setBounds(10, 11, 176, 25);
+		lblCreateQuestion.setBounds(111, 11, 176, 25);
 		contentPane.add(lblCreateQuestion);
 		JLabel lblWorkingTest = new JLabel("Working Test:");
 		lblWorkingTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -478,5 +488,10 @@ public class LearningPlanCreationWindow extends JFrame {
 		btnRemoveGoal.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRemoveGoal.setBounds(516, 253, 120, 27);
 		contentPane.add(btnRemoveGoal);
+		
+		JLabel lblDifficuty = new JLabel("Test difficuty:");
+		lblDifficuty.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDifficuty.setBounds(745, 18, 76, 18);
+		contentPane.add(lblDifficuty);
 	}
 }
