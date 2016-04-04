@@ -1,8 +1,11 @@
 package system;
 
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+
+import structures.SerializableComparator;
 
 /**
  * 
@@ -11,12 +14,13 @@ import java.util.Comparator;
  * @param <Input>
  */
 
-public class DiscreteFuzzySet<Input>{
+public class DiscreteFuzzySet<Input> implements Serializable{
 
+	private static final long serialVersionUID = -5750115777879754506L;
 	ArrayList<Pair<Input, Double>> points;
 	DiscreteLinguisticVariable<Input> var;
 	
-	Comparator<Pair<Input, Double>> comparator;
+	SerializableComparator<Pair<Input, Double>> comparator;
 	String name;
 	
 	/**
@@ -31,8 +35,10 @@ public class DiscreteFuzzySet<Input>{
 		this.name = name;
 		this.var = v;
 		
-		comparator = new Comparator<Pair<Input, Double>>()
+		comparator = new SerializableComparator<Pair<Input, Double>>()
 		{
+			private static final long serialVersionUID = 4712624533822769884L;
+
 			public int compare(Pair<Input, Double> first, Pair<Input, Double> second)
 			{
 				Comparator<Input> vc = v.getComparator();
@@ -261,7 +267,7 @@ public class DiscreteFuzzySet<Input>{
 	}
 	
 	/**
-	 * Overrides the Object toString method.  Returns the name of this FuzzyTrapezoid.
+	 * Overrides the Object toString method.  Returns the name of this DiscreteFuzzySet.
 	 */
 	public String toString()
 	{

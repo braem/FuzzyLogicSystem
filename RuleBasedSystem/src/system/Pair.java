@@ -1,5 +1,7 @@
 package system;
 
+import java.io.Serializable;
+
 /**
  * This is a generic class to represent a pair of objects.
  * @author The Internet
@@ -8,9 +10,11 @@ package system;
  * @param <V> Formal type parameter for the second pair element.
  */
 
-public class Pair<K, V>{
-	   private K first;
-	   private V second;
+public class Pair<K, V> implements Serializable, Comparable<K>{
+
+	private static final long serialVersionUID = -6604435243305253419L;
+	private K first;
+	private V second;
 	   
 	   /**
 	    * Constructs a new K V pair
@@ -53,5 +57,11 @@ public class Pair<K, V>{
 	   public V getSecond() {
 	     return this.second;
 	   }
+
+	@Override
+	public int compareTo(K arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	}
 

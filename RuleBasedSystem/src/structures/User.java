@@ -169,7 +169,10 @@ public class User implements Serializable {
 		hardPoints.add(new Pair<Integer, Double>( 9, 1.0));
 		hardPoints.add(new Pair<Integer, Double>( 10, 1.0));
 		
-		Comparator<Integer> c = new Comparator<Integer>(){
+		SerializableComparator<Integer> c = new SerializableComparator<Integer>(){
+
+			private static final long serialVersionUID = -8640276694362303951L;
+
 			public int compare(Integer first, Integer  second)
 			{
 				return first.compareTo(second);
@@ -251,9 +254,10 @@ public class User implements Serializable {
 		excellentPoints.add(new Pair<Integer, Double>( 13, 1.0));
 		
 
-		
-		Comparator<Integer> c = new Comparator<Integer>(){
-			public int compare(Integer first, Integer second)
+		SerializableComparator<Integer> c = new SerializableComparator<Integer>(){
+			static final long serialVersionUID = 3108445256624907255L;
+
+			public int compare(Integer first, Integer  second)
 			{
 				return first.compareTo(second);
 			}
@@ -326,12 +330,15 @@ public class User implements Serializable {
 		excellentPoints.add(new Pair<Integer, Double>( 9, 1.0));
 		excellentPoints.add(new Pair<Integer, Double>( 10, 1.0));
 		
-		Comparator<Integer> c = new Comparator<Integer>(){
-			public int compare(Integer first, Integer second)
+		SerializableComparator<Integer> c = new SerializableComparator<Integer>(){
+
+			private static final long serialVersionUID = -6750738022821576317L;
+
+			public int compare(Integer first, Integer  second)
 			{
 				return first.compareTo(second);
 			}
-		};		
+		};
 		try {
 			learning = new DiscreteLinguisticVariable<Integer>("Difficulty", c);
 			learnBad = new DiscreteFuzzySet<Integer>(badPoints, "Bad", learning);

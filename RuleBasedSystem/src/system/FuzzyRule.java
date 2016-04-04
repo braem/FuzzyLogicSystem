@@ -1,5 +1,6 @@
 package system;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,10 +9,12 @@ import java.util.ArrayList;
  * @verion 2.0
  */
 
-public class FuzzyRule<OutputX> {
+public class FuzzyRule<OutputX> implements Serializable{
 
+	private static final long serialVersionUID = -1012205804486859967L;
 	ArrayList<DiscreteFuzzySet> antecedents;
 	DiscreteFuzzySet<OutputX> consequent;
+	String name;
 	
 	/**
 	 * Constructs a FuzzyRule from the antecedents and consequent provided.
@@ -98,5 +101,21 @@ public class FuzzyRule<OutputX> {
 		return output;
 	}
 	
+	/**
+	 * Sets the name of this FuzzyRule.
+	 * @param name a String giving the name of this FuzzyRule.
+	 */
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	/**
+	 * Overrides the default toString method. Returns the name of this FuzzyRule.
+	 */
+	public String toString()
+	{
+		return name;
+	}
 
 }

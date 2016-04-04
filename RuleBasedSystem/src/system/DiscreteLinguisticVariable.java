@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import structures.SerializableComparator;
+
 /**
  * 
  * @author Rhys Beck
@@ -16,14 +18,14 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 
 	private String name;
 	private ArrayList<DiscreteFuzzySet<Input>> fuzzySets;
-	Comparator<Input> comparator;
+	SerializableComparator<Input> comparator;
 	
 	/**
 	 * Constructs an empty DiscreteLinguisticVariable.
 	 * @param name String giving the name of this DiscreteLinguisticVariable
 	 * @param Comparator<Input> to be used to compare Input values of this variable's DiscreteFuzzySets.
 	 */
-	public DiscreteLinguisticVariable(String name, Comparator<Input> c)
+	public DiscreteLinguisticVariable(String name, SerializableComparator<Input> c)
 	{
 		setName(name);
 		fuzzySets = new ArrayList<DiscreteFuzzySet<Input>> ();
@@ -38,7 +40,7 @@ public class DiscreteLinguisticVariable<Input> implements Serializable {
 	 * The Strings give the names of the DiscreteFuzzySet<Input>s, and must be unique.
 	 * @throws NonUniqueLinguisticVariableSetNamesException 
 	 */
-	public DiscreteLinguisticVariable(ArrayList<DiscreteFuzzySet<Input>> sets, String name, Comparator<Input> c) throws NonUniqueLinguisticVariableSetNamesException
+	public DiscreteLinguisticVariable(ArrayList<DiscreteFuzzySet<Input>> sets, String name, SerializableComparator<Input> c) throws NonUniqueLinguisticVariableSetNamesException
 	{
 		setFuzzySets(sets);
 		setName(name);

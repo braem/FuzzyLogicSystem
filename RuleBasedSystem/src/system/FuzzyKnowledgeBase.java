@@ -16,7 +16,6 @@ public class FuzzyKnowledgeBase<Output> implements Serializable {
 	 */
 	public FuzzyKnowledgeBase(ArrayList<FuzzyRule<Output>> rules) {
 		this.fuzzyRules = rules;
-		this.name = "" + serialVersionUID;
 	}
 	
 	/**
@@ -60,6 +59,10 @@ public class FuzzyKnowledgeBase<Output> implements Serializable {
 		
 	}
 	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 	
 	public String toString()
 	{
