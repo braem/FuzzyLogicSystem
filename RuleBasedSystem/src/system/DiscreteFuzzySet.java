@@ -206,7 +206,7 @@ public class DiscreteFuzzySet<Input> implements Serializable{
 		//of each of the component rectangles, weighted by their heights.
 		//The value returned is, thus, the true center of area
 		//if the input values are mapped to integer-spaced real numbers
-		//between 0 and the number of points in the fuzzy set.
+		//between 0 and one less than the number of points in the fuzzy set.
 		
 		double sum = 0;
 		
